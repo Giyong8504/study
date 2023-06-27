@@ -14,6 +14,7 @@
 ![image](https://github.com/Giyong8504/study/assets/128211712/85170272-b51c-4e55-b007-e0c2b54d6297)
 
 ![image](https://github.com/Giyong8504/study/assets/128211712/8e1752ff-f4b4-46c8-9e80-503086ce8f7d)
+
 <br>
 
 ## IntelliJ 설치
@@ -22,8 +23,12 @@
 - <a href="https://www.jetbrains.com/ko-kr/idea/" traget="_blank">IntelliJ 다운로드</a>
 
 ----------------
+<br>
 
-
+# 컴퓨터의 데이터 표현
+- 우리가 사용하는 모든 데이터는 0과 1로 이루어져있다.
+- 컴퓨터는 전기적 신호로 내부에서 0과 1로 만 받아드리며 불이 켜지는 경우와 꺼지는 경우라 생각하면 된다.
+- 
 
 자바 파일(java) -> 컴파일 -> 클래스 (class)
 
