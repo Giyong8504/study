@@ -1,6 +1,6 @@
 # html5
 --------------
-### 1일차(day01_20230626)
+## 1일차(day01_20230626)
 1. 정의
 2. 기본 구조
 3. HTML 요소
@@ -15,7 +15,7 @@
 12. 테이블(Tables)
 <br>
 
-### 2일차(day02_20230627)
+## 2일차(day02_20230627)
 13. 리스트(List)태그
 14. Block &Inline 요소
 15. class 속성
@@ -23,7 +23,9 @@
 17. iframes
 18. Javascript
 
-##### HTML Head
+### HTML Head
 1. 시멘틱 요소(Semantic Elements)
 	1. 웹페이지의 영역을 정의하는 요소
 	2. 엔티티<Entities>
+		- Form
+		- input
