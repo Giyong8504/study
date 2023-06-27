@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>회원가입</title>
+    </head>
+    <body>
+        <h1>회원가입</h1>
+        <form method="POST" action="join_ps.html">
+            <input type="hidden" name="mode" value="join">
+            <dl>
+                <dt>가입구분</dt>
+                <dd>
+                    <!--
+                    <label>
+                        <input type="radio" name="userType">일반회원
+                    </label>
+                    <label>
+                        <input type="radio" name="userType">사업자회원
+                    </label>
+                    -->
+                    <input type="radio" name="userType" id="userType1" value="user" checked>
+                    <label for="userType1">일반회원</label>
+
+                    <input type="radio" name="userType" id="userType2" value="business">
+                    <label for="userType2">사업자회원</label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>아이디</dt>
+                <dd>
+                    <input type="text" name="userId" value="" required>
+                </dd>
+            </dl>
+            <dl>
+                <dt>회원명</dt>
+                <dd>
+                    <input type="text" name="userNm" required>
+                </dd>
+            </dl>
+            <dl>
+                <dt>비밀번호</dt>
+                <dd>
+                    <input type="password" name="userPw" required>
+                </dd>
+            </dl>
+            <dl>
+                <dt>비밀번호확인</dt>
+                <dd>
+                    <input type="password" name="userPwRe" required>
+                </dd>
+            </dl>
+            <dl>
+                <dt>취미</dt>
+                <dd>
+                    <input type="checkbox" name="hobby" id="hobby1" value="축구">
+                    <label for="hobby1">축구</label>
+
+                    <input type="checkbox" name="hobby" id="hobby2" value="야구">
+                    <label for="hobby2">야구</label>
+
+                    <input type="checkbox" name="hobby" id="hobby3" value="피아노">
+                    <label for="hobby3">피아노</label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>생년월일</dt>
+                <dd>
+                    <input type="date" name="brithDt" disabled>
+                </dd>
+            </dl>
+            <dl>
+                <dt>좋아하는 색상</dt>
+                <dd>
+                    <input type="color" name="favoriteColor">
+                </dd>
+            </dl>
+            <dl>
+                <dt>이메일</dt>
+                <dd>
+                    <!--<input type="email" name="eamil">-->
+                    <input type="text" name="eamil"> 
+                   <!-- <select name="emailDomain" multiple size="2">-->
+                    <select name="emailDomain">
+                        <option value="naver.com">naver.com</option>
+                        <option value="kakao.com">kakao.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="" selected>직접 입력</option>
+                        
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+            </dl>
+            <dl>
+                <dt>나이</dt>
+                <dd>
+                    <input type="range" name="age" min="16" max="100">
+                </dd>
+            </dl>
+            <dl>
+                <dt>자기소개</dt>
+                <dd>
+                    <textarea name="intro" row="10" cols="100" placeholder="10자 이상 입력하세요..."></textarea>
+                </dd>
+            </dl>
+            <!--
+            <input type="submit" value="가입하기">
+            -->
+            <button type="reset">다시입력</button>
+            <button type="submit">가입하기</button>
+        </form>
+    </body>
+</html>

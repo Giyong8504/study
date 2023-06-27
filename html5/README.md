@@ -13,4 +13,17 @@
 10. 링크(Links)
 11. 이미지(Images)
 12. 테이블(Tables)
+<br>
+
+### 2일차(day02_20230627)
 13. 리스트(List)태그
+14. Block &Inline 요소
+15. class 속성
+16. id 속성
+17. iframes
+18. Javascript
+
+##### HTML Head
+1. 시멘틱 요소(Semantic Elements)
+	1. 웹페이지의 영역을 정의하는 요소
+	2. 엔티티<Entities>
