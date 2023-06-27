@@ -1,3 +1,30 @@
+# 환경구축 하기
+<br>
+
+## 자바 설치하기 
+<br>
+
+- <a href="https://www.oracle.com/kr/java/technologies/downloads/" target="_blank">JDK 다운로드</a>
+- <a href="https://www.oracle.com/java/technologies/javase-jdk18-doc-downloads.html" target="_blank">JDK 문서 다운로드</a>
+
+![image](https://github.com/Giyong8504/study/assets/128211712/4731eb37-a6b1-486d-b949-bea32d465828)
+
+![image](https://github.com/Giyong8504/study/assets/128211712/076d1387-d9e8-4a51-86c5-192fee105983)
+
+![image](https://github.com/Giyong8504/study/assets/128211712/85170272-b51c-4e55-b007-e0c2b54d6297)
+
+![image](https://github.com/Giyong8504/study/assets/128211712/8e1752ff-f4b4-46c8-9e80-503086ce8f7d)
+<br>
+
+## IntelliJ 설치
+<br>
+
+- <a href="https://www.jetbrains.com/ko-kr/idea/" traget="_blank">IntelliJ 다운로드</a>
+
+----------------
+
+
+
 자바 파일(java) -> 컴파일 -> 클래스 (class)
 
 java 컴파일 -> 클래스(class) - 중간언어
@@ -5,12 +32,18 @@ java 컴파일 -> 클래스(class) - 중간언어
 	JVM(Java Virtual Machine) : 자바 가상머신
 	플랫폼에 맞는 바이트 코드(실행코드)
 
+컴퓨터
+- 반도체 -> 신호(1), 없으면(0)
+
+진법
+- 10진법 0~9
+- 2진법(0,1)
+- 메모리
 
  System.out.print();
    --> 출력 
  System.out.println() -> ln -> 줄개행
   --> 출력 + 다음줄로 이동
-
 
 System.out.printf()
 f - > format : 형식
@@ -35,13 +68,7 @@ f - > format : 형식
 -> 프로그램 실행 배제
 
 
-컴퓨터
-- 반도체 -> 신호(1), 없으면(0)
 
-진법
-- 10진법 0~9
-- 2진법(0,1)
-- 메모리
 
 변수
 1. 변수란?
