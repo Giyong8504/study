@@ -143,64 +143,64 @@ file:///C:/Users/Administrator/Desktop/김기용/1.웹기초/day01/ex/../images/
 ### 12. 테이블(Tables)
 - 표를 만드는 태그
 ```html
-	<table>
-		<thead>
-			<tr>
-				<th>항목명</th>
-				<th>항목명</th>
-				<th>항목명</th>
-				...
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>값</td>
-				<td>값</td>
-				<td>값</td>
-				...
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td>요약정리</td>
-				<td>요약정리</td>
-				<td>요약정리</td>
-				...		
-			</tr>
-		</tfoot>
-	</table>
+<table>
+	<thead>
+		<tr>
+			<th>항목명</th>
+			<th>항목명</th>
+			<th>항목명</th>
+			...
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>값</td>
+			<td>값</td>
+			<td>값</td>
+			...
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>요약정리</td>
+			<td>요약정리</td>
+			<td>요약정리</td>
+			...		
+		</tr>
+	</tfoot>
+</table>
 ```
 	td, th
 		- align : 좌우, 가운데
-							left, right,center
+			   left, right,center
 			
 		- valign : 상하, 가운데
-							top,bottom,middle
+			   top,bottom,middle
 							
 		- rowspan : 행 병합
 		- colspan : 열 병합
 		
 ### 13. 리스트(List)태그
-	<ul> : unordered list : 순서 표기를 하지 않는 목록 ● ● ● ●
-		<li>항목</li>
-		
-		list-style-type : disc - 채워진 원(기본값)
-											circle - 채워지지 않은 원
-											square - 사각형
-											none - 없음
-		
-	<ol> : ordered list : 순서 표기를 하는 목록 1.2.3.4
-		<li>항목</li>
-		
-		-type : 순서표기 형태
-					- 1(기본값) : 숫자
-					- A(대문자 알파벳 순서)
-					- a(소문자 알파벳 순서)
-					- I(대문자 로마자 표기법)
-					- i(소문자 로마자 표기법)
+```
+<ul> : unordered list : 순서 표기를 하지 않는 목록 ● ● ● ●
+<li>항목</li>
+list-style-type : disc - 채워진 원(기본값)
+circle - 채워지지 않은 원
+square - 사각형									
+none - 없음
+	
+<ol> : ordered list : 순서 표기를 하는 목록 1.2.3.4
+<li>항목</li>
+-type : 순서표기 형태
+	- 1(기본값) : 숫자
+	- A(대문자 알파벳 순서)
+	- a(소문자 알파벳 순서)
+	- I(대문자 로마자 표기법)
+	- i(소문자 로마자 표기법)
+```
 					
-	참고) 
-	<style>
-		.. 적용할 스타일 정의
-	</style>
+참고) 
+<style>
+	.. 적용할 스타일 정의
+</style>
 					
