@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            input[type='radio'] {display:none;}
+            input[type='radio']+label {background:url('images/radio-off.png') no-repeat left center; padding-left: 30px;}
+            input[type="radio"]:checked+label {background:url('images/radio-on.png ') no-repeat left center}
+        </style>
+        <input type="radio" name="memberType" value ="user" id="memberType1">
+        <label for="memberType1">일반회원</label>
+
+        <input type="radio" name="memberType" value ="business" id="memberType2">
+        <label for="memberType2">사업자회원</label>
+
+    </body>
+</html>
