@@ -94,6 +94,9 @@
 	자바스크립트 코드
 </script>
 ```
+![image](https://github.com/Giyong8504/study/assets/128211712/a936621b-0da7-4252-91b3-8b668d76c0e3)
+
+
 
 --------------------
 ## HTML Head
@@ -103,6 +106,7 @@
 4. <meta> 요소 : 사이트 정보
 5. <script> 요소	: 자바스크립트
 <br>
+
 
 ## 시멘틱 요소(Semantic Elements)
 - 의미를 가진 태그를 의미.
@@ -132,7 +136,7 @@
 &copy;
 ```
 
-연습 사이트 dm.n-mk.kr
+연습 예제 사이트 : dm.n-mk.kr
 <br>
 
 ## Forms
@@ -143,12 +147,16 @@
 ```
 <br>
 
+
 ## input
 - type : 입력형태
 - text : 한줄 텍스트
 - password : 비밀번호 전용 - 안보임 처리
 - radio : 여러개 중에서 한개 선택 (join.html)
 	- name 속성이 같아야 하나의 그룹으로 묶인다. 값이 같으면 하나만 선택가능하게 바뀜
+![image](https://github.com/Giyong8504/study/assets/128211712/f9f4a5c8-5798-4dab-bccf-79786431f7e3)
+<br>
+<br>
 <br>
 
 - label 태그로 감싸면 텍스트를 클릭해도 선택, 해제가 된다.
@@ -169,12 +177,21 @@
 - step : 증감단위
 <br>
 
+![image](https://github.com/Giyong8504/study/assets/128211712/d8455a9c-3f6e-426d-8cc9-36b918435bd3)
+<br>
+<br>
+<br>
+
 - submit : 양식 제출
 - value : 버튼명
 - reset : 입력항목 취소 :다시 입력
 - button : submit 보다 더 선호
 - type: button : 일반버튼
 - submit : 제출버튼
+
+![image](https://github.com/Giyong8504/study/assets/128211712/baa79e89-a749-4b04-92d5-4646f9c3431e)
+<br>
+<br>
 <br>
 
 - reset : 입력항목을 취소 : 다시 입력
@@ -188,9 +205,13 @@ join.html?userType=on&hobby=on&hobby=on&hobby=on
 이름=값&이름=값
 ```
 <br>
+<br>
+<br>
+
+
 
 - select : 여러개중에서 선택(1개 또는 여러개)
   - option - value
-		
-		
+ 
+![image](https://github.com/Giyong8504/study/assets/128211712/1e485fe7-21e9-4f13-b536-5e9aabe403b8)
 		
