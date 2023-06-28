@@ -190,8 +190,7 @@ join.html?userType=on&hobby=on&hobby=on&hobby=on
 <br>
 
 - select : 여러개중에서 선택(1개 또는 여러개)
-  - option
-		- value
+  - option - value
 		
 		
 		
