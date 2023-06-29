@@ -4,6 +4,10 @@ HTML에서 CSS를 적용하는 방법
 	style 속성에다 직접 지정
 	
 ## 2. style 태그
+![image](https://github.com/Giyong8504/study/assets/128211712/892705fb-86a1-4534-b857-553a24449895)
+<br>
+<br>
+
 ## 3. 외부 파일로 적용하는 방법
 	<link rel="stylesheet" type="text/css" href="스타일 파일 경로">
 	
@@ -51,21 +55,20 @@ ul 위 조상, ul 아래 자손
 7) 가상 클래스 선택자
 - 상태를 선택자
 	- 선택자:checked - 체크된 상태 선택
-		- display:none; 이건 체크박스 선택하면 체크박스 사라짐.
+		- display:none; 기본으로 제공되는 checkbox 숨김.
 	- 선택자:hover - 마우스 커서가 올라온 상태
-		- transition: all 1s : 호버시 점점 커짐
+		- transition: all 1s : 호버시 점점 커지는 효과.
 	- 선택자:selected - 선택된 상태
-	- 선택자:focus - 포커스 상태(마우스 커서 깜빡임)
+	- 선택자:focus - 포커스 상태(마우스 커서 깜빡임 후 처리)
 	
 - 조건, 순서로 선택
 	- 선택자:not('제외할 선택자'): 원하는거만 제외 선택해서 적용한다.
 	- 선택자:first-child : 첫번째 자식 선택자
 	- 선택자:last-child : 마지막 자식 선택자
-	- 선택자:nth-child(수치, 수식) 수치 : 수치만큼의 위치(1부터 시작)
-														 수식 : 수식대로 계산해서 선택
+	- 선택자:nth-child(수치, 수식) 수치 : 수치만큼의 위치(1부터 시작) 수식 : 수식대로 계산해서 선택
 														 
-														 1,3,5,7,9 .. // 2n+1
-														 2,4,6,8,10 .. // 2n
+			1,3,5,7,9 .. // 2n+1
+			2,4,6,8,10 .. // 2n
 														 
 	- 선택자:first-of-type : 첫번째 요소 선택
 	- 선택자:last-of-type : 마지막 요소 선택
@@ -144,7 +147,7 @@ opacity : 0~1; 1에 가까울수록 투명, 0에 가까울수록 불투명
 
 - text-align : 좌우 가운데 정렬 left | rigth | center;
 
-							justify : 양쪽정렬  - 글을 끝에 라인에 맞춰서 정렬
+		justify : 양쪽정렬  - 글을 끝에 라인에 맞춰서 정렬
 
 - line-height : 행간 - 숫자만 입력 비율
 							1.2 : 20% 상하 여백
