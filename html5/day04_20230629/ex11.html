@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            ul {list-style: none; padding: 0;}
+            li { float: left; }
+            /* li {float : right;} */
+            .clear {clear :left; display:block;}
+            ul:after{ clear:left; content:''; display:block;}
+        </style>
+        <ul>
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+            <li>메뉴4</li>
+        </ul>
+        <!-- <span class="clear"></span> -->
+        <div>본문 내용...</div>
+    </body>
+</html>
