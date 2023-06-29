@@ -4,6 +4,10 @@ HTML에서 CSS를 적용하는 방법
 	style 속성에다 직접 지정
 	
 ## 2. style 태그
+![image](https://github.com/Giyong8504/study/assets/128211712/892705fb-86a1-4534-b857-553a24449895)
+<br>
+<br>
+
 ## 3. 외부 파일로 적용하는 방법
 	<link rel="stylesheet" type="text/css" href="스타일 파일 경로">
 	
