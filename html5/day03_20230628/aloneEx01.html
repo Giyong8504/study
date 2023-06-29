@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            ul {background: yellow;}
+            .menu {background: blue;}
+            .menu2 {background: red;}
+            #menuId {background: violet;}
+            
+            input[type="radio"] {display: none;}
+            input[type="radio"] +label{background: url('images/radio-off.png')no-repeat left center; padding-left: 30px;}
+            input[type="radio"]:checked + label{background: url('images/radio-on.png')no-repeat left center;}
+
+            span{font-size:2rem;}
+            .font1{font-size: 10px; color:rgb(200, 50, 40);}
+            .font2{font-size: 20px; color:#a498d8}
+            .font3{font-size: 30px; color:#ffa}
+        </style>
+        <ul>
+            <li>메뉴1</li>
+            <li class="menu menu2">메뉴2</li>
+            <li class="menu" id="menuId" style="background: green;">메뉴3</li>
+            <li>메뉴4</li>
+            <li>메뉴5</li>
+        </ul>
+        <input type="radio" name="memberType" value="user" id="memberType1">
+        <label for="memberType1">일반회원</label>
+        
+        <input type="radio" name="memberType" value="business" id="memberType2">
+        <label for="memberType2">사업자회원</label>
+
+        <p class="font1">
+            <sapn>가나다</sapn>
+        </p>
+        <p class="font2">
+            <sapn>가나다</sapn>
+        </p>
+        <p class="font3">
+            <sapn>가나다</sapn>
+        </p>
+    </body>
+</html>
