@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+         <style>
+              ul { list-style: none; padding: 0; }
+              ul { display: flex; } /*부모에 넣게되면 자식요소가 배치된다.*/
+              .flex1 { flex-direction: column-reverse;  /*flex-direction: row-reverse;*/}
+              .flex2 { justify-content: flex-start; /*왼쪽정렬*/}
+              .flex3 { justify-content: center; /*가운데정렬*/}
+              .flex4 { justify-content: flex-end; /*우측정렬*/}
+
+         </style>
+            <ul class="flex1">
+               <li>메뉴1</li>
+               <li>메뉴2</li>
+               <li>메뉴3</li>
+            </ul>
+
+            <h2>flex-start</h2>
+            <ul class="flex2">
+                <li>메뉴1</li>
+                <li>메뉴2</li>
+                <li>메뉴3</li>
+             </ul>
+
+             <h2>center</h2>
+             <ul class="flex3">
+                <li>메뉴1</li>
+                <li>메뉴2</li>
+                <li>메뉴3</li>
+             </ul>
+
+             <h2>flex-end</h2>
+             <ul class="flex4">
+                <li>메뉴1</li>
+                <li>메뉴2</li>
+                <li>메뉴3</li>
+             </ul>
+            
+    </body>
+</html>

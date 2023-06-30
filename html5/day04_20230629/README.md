@@ -163,4 +163,53 @@ opacity : 0~1; 1에 가까울수록 투명, 0에 가까울수록 불투명
 transition: 속성 지연시간 애니매이션효과 전환발생 대기시간 -> 위에 내용 축약형
 **속성과 지연시간은 필수요소
 
-flexbox
+- flexbox
+		display:flex; -> 부모요소에 적용하면 하위쪽에 -> 자식 요소의 배치
+		flex-direction : row - 기본값: 좌->우 배치
+										row-reverse : 우->좌 배치
+										column - 위->아래 배치
+										column-reverse - 아래->위 배치
+										
+		justify-content: 좌,우, 가운데 배치
+										flex-start : 좌측 정렬
+										flex-end : 우측 정렬
+										center : 가운데 정렬
+										
+										공백에 대한 정렬
+										space-between (화면 상단에 좌, 중간, 우 를 간단하게 세팅가능함.)
+										space-around (메뉴 전,후에 동일 여백을 주는것.)
+										space-evenly (전체에 동일한 여백을 주는 것.)
+								
+		align-items : 위, 가운데, 아래정렬
+										stretch : 부모 요소의 높이에 맞춰서 자식요소 높이를 늘려서 고정
+										flex-start : 위쪽 정렬
+										center : 가운데 정렬
+										flex-end : 아래쪽 정렬
+										
+		flex-wrap : nowrap - 기본값 : 모든 요소를 한 줄에 배치
+								wrap : 끝에 도달 시 줄 개행
+		
+		flex-grow : 자식 요소 적용, 남아있는 여백의 비율별 배분
+		
+index.html
+
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+
+width=device-width -> 디바이스에 맞춰서 해상도를 맞춰줌.
+
+user-scalable=yes -> yes가 되어있으면 확대가능, no 이면 확대 불가
+initial-scale=1.0, 
+maximum-scale=3.0, 300% 까지 확대 가능 
+minimum-scale=5.0 50% 축소 가능
+
+
+
+
+
+
+
+
+
+
+
+xeicon
