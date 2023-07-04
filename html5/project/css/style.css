@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap');
 * { box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif; color: #212121; outline: none;}
 
+
 html { font-size: 13px; } /*기준 폰트사이즈 - 1rem - 13px */
+.montserrat { font-family: 'Montserrat', sans-serif !important; }
 
 /* 초기화 */
 body { margin: 0; }
@@ -48,6 +51,7 @@ nav a {flex-grow: 1; width: 0; text-align: center; line-height: 44px; color: #49
 
 
 /* 베스트 상품 영역 S */
+/*
 .best_product { display:flex; flex-wrap:wrap;}
 .best_product img {display: block; width: 100%; border-radius: 20px; border : 6px solid #fff;}
 .best_product a:nth-of-type(1),
@@ -56,5 +60,16 @@ nav a {flex-grow: 1; width: 0; text-align: center; line-height: 44px; color: #49
 .best_product a:nth-of-type(4) {width: 50%;}
 .best_product a:nth-of-type(5),
 .best_product a:nth-of-type(6) {width: 50%;}
+*/
+.best_product { display: flex; flex-wrap: wrap; margin: 0 15px;  }
+.best_product > .product { width: calc(100% / 2 - 8px); margin-left: 16px; margin-bottom: 30px; }
+.best_product > .product:nth-of-type(2n+1) { margin-left: 0; }
+.best_product .image { display: block; width: 100%; border-radius: 20px; margin-bottom: 10px; }
+.best_product .price_wrap { color: #000; font-size: 1.154rem; }
+.best_product .price { font-weight: 800; letter-spacing: -1px; font-size: 1.385rem; }
+.best_product .product_nm { color: #3e3d3c; font-size: 1.154rem; }
+.best_product .review_wrap { margin-top: 10px; }
+.best_product .score img { height: 11px; }
+.best_product .review_wrap .txt { color: #a7a7a7; margin-left: 5px; font-size: 0.923rem; }
 
 /* 베스트 상품 영역 E */
