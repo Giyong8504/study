@@ -235,14 +235,20 @@ var sym2 = Symbol.for('ABC');
 			
 ## 3. 보간 표현식(placeholder)
 - 변수를 문자열에 추가할때의 단점을 보완
-		var num1 = 10;
-		var num2 = 20;
-		var str = num1 + "+" + num2 + "=" + (num1+num2);
-		
+	```
+ 	var num1 = 10;
+	var num2 = 20;
+	var str = num1 + "+" + num2 + "=" + (num1+num2);
+	```
+ <br>
+ 
 - 템플릿 리터널 내에서 사용가능
-	- ${변수명} / 간단한 연산가능 ${num1 + num2} / 메서드, 함수 호출도 가능 ${date.getFullYear}
-			var str2 = `${num1}+${num2}=${num1+num2}`;
-
+	```
+	${변수명} / 간단한 연산가능 ${num1 + num2} / 메서드, 함수 호출도 가능 ${date.getFullYear}
+	var str2 = `${num1}+${num2}=${num1+num2}`;
+	```
+ <br>
+ 
 ------------
 # 객체
 ## 1. 객체 리터널
