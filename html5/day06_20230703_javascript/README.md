@@ -166,7 +166,7 @@ var str = num == 10 ? "10 입니다." : " 10이 아닙니다.";
 - if
 
 ## 6. 선택문
-```
+```javascript
 switch(키워드){
 	case 값 1:
 		//실행코드
@@ -182,7 +182,7 @@ switch(키워드){
 <br>
 
 ## 7. 반복문
-```
+```javascript
 while(조건식) {
 // 조건식이 참일 때 반복되는 코드
 }
@@ -210,12 +210,12 @@ continue : 반복건너띄기
 - 중복이 되지 않게 해서 메서드를 사용하게 하기 위함.
 
 ### 1) 심벌의 생성
-```
+```javascript
 var sym1 = Symbol("ABC");
 ```
 
 ### 2)심벌과 문자열 연결하기
-```
+```javascript
 var sym1 = Symbol.for('ABC');
 var sym2 = Symbol.for('ABC');
 ```
@@ -235,7 +235,7 @@ var sym2 = Symbol.for('ABC');
 			
 ## 3. 보간 표현식(placeholder)
 - 변수를 문자열에 추가할때의 단점을 보완
-	```
+	```javascript
  	var num1 = 10;
 	var num2 = 20;
 	var str = num1 + "+" + num2 + "=" + (num1+num2);
@@ -256,7 +256,7 @@ var sym2 = Symbol.for('ABC');
 - 객체는 데이터 여러개를 하나로 모은 복합 데이터로 연관배열 또는 사전(Diciton) 이라고부른다.
 
 ## 2. 객체 리터럴로 객체 생성하기
-```
+```javascript
 {
 	속성:값,
 	속성:값,
@@ -309,24 +309,34 @@ var person = {
 - 객체에 특정 속성이 포함되어 있는지 체크하는 연산자
 	- "속성명"in 객체의 변수명 / true / false
 		- **for(...in) 구문에서 많이 사용된다.
+
+				```
 				for (var key in person){
 				console.log(key, person[key]);
 				}
+    		```
+<br>
 
 ## 5. 메서드
 - 객체안에 값으로써 함수 객체가 오면, 메서드
-		var person = {
-    name : "이이름", 
-    age : 40,
-			showInfo : function() {
-					console.log("메서드");
-			}
-		};
-		person.showInfo();
-		
+
+```javascript
+var person = {
+	name : "이이름", 
+	age : 40,
+	showInfo : function() {
+	console.log("메서드");
+	}
+};
+
+person.showInfo();
+```
+ 
+ <br>
+ 
 ## 6. 객체는 참조 타입 (참조자료형 - 주소를 가지고 있는 자료형)
 - 객체에 대입되어 있는 변수 : 참조변수
-- **주소 값을 가지고 객체를 참조한다.
+- **주소 값을 가지고 객체를 참조한다.**
 
 --------------------
 # 함수
@@ -343,7 +353,7 @@ function 함수명(매개변수, ...) {
 <br>
 
 ## 2. 함수 호출
-```
+```javascript
 함수명(...);
 
 function add(num1, num2){
