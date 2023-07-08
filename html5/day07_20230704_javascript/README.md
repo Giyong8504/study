@@ -139,7 +139,7 @@ const result= (function(num1,num2){
 		- prototype
 			- .constructor : 함수 그자체를 스스로 참조하는 변수 
 		
-	```
+	```javascript
 	function 예약어로 함수를 정의하면 ->Function.prototype 상속이 발생한다.
 		Function 함수명 = new Function("매개변수 정의", "실행내용정의");
 		
@@ -151,7 +151,8 @@ const result= (function(num1,num2){
 함수가 객체 -> 값으로 사용
 					-> 매개변수
 						 화살표 함수 
-								```
+				
+								```javascript
 								const fruits = ["apple" , "orange" , "mango"];
 								
 								fruits.forEach((fruits) => console.log(fruit));
@@ -164,7 +165,7 @@ const result= (function(num1,num2){
 	- __proto__ : 브라우저에 따라서 호환이 안되는 경우도 있다.
 		- Object.setPrototypeOf(...)
 
-```
+```javascript
 obj1.__proto__ = obj2; //이렇게 연결하면 상속이 됨. 
 
 Object.setPrototypeOf(obj1, obj2);
@@ -196,7 +197,7 @@ class 구문
 		}
 <br>
 
-```
+```javascript
 class Ellipsis {
     static count = 0;
     
@@ -236,7 +237,7 @@ setter와 getter
 
 	
 #### **완전한 정보은닉아니다.**
-```
+```javascript
 const person = {
     _name : null,
     _age : null,
@@ -258,7 +259,7 @@ const person = {
 
 
 #### **완전한 정보 은닉을 위해서 즉시 실행 함수를 응용해야한다.** 
-```
+```javascript
 const person = (function(){
     let _name, _age;
 
@@ -279,7 +280,7 @@ const person = (function(){
 })();
 ```
 <br>
-```
+```javascript
 class Person {
     constructor(_name, _age) {
         this._name = _name;
