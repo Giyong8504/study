@@ -1,0 +1,120 @@
+
+String클래스
+-문자열
+
+1.String을 선언하는 두가지 방법
+String str = "ABC";  문자열 상수
+String str = new String("ABC");
+
+(자료형 ... ...) : 가변 매개변수
+
+- 산술연산자 + : 문자열 결합
+
+
+2. String 클래스의 final char[] 변수 -JDK12 이후 --> final byte[]
+  - 문자가 여러개 (배열)
+  - 상수 : 변경 불가 
+  - 문자의 불변성
+  - 변경이 필요하면 새로 객체가 생성(추가, 수정)
+  - 잦은 문자열 추가 수정, 삭제 발생 -> 성능저하
+
+
+
+3. StringBuffer와 StringBuilder 클래스 활용하기 
+(문자열을 많이 사용할 경우 StringBuffer가 좋다. -> 성능저하를 막아줌.)
+  버퍼 -> 임시 메모리 공간 :문자열을 임시로 추가
+
+  StringBuffer : 쓰레드 안정성 확보
+  StringBuilder : 쓰레드 안정성X
+
+
+Wrapper 클래스 - 객체가 되기 위해 (기능으로 쓰기 위해서)
+
+Wrapper :  기본형 값을 감싸주고 있는.
+
+1. 기본 자료형을 위한 클래스
+2. Wrapper 클래스의 종류
+byte - Byte
+short - Short
+int  - Integer
+long - Long
+float - Float
+double - Double
+boolean - Boolen
+char - Character
+
+================================
+정수의 특화된 기능을 가공해서 쓰기위해서 
+기능이 없다 x 근데 이걸 정수를 사용해서 기능하기 위해 객체로 만들어줘야하는데
+정수에 특화된 기능을 제공하기 위한. 
+============================
+class Integer { // 기능을 쓰기 위해서 객체가 되어야함.  기본적으로 warpper 클래스에 정의되어있다.
+
+...  메서드, 상수 ,변수
+
+  private final int value;
+
+...메서드, 상수 ,변수
+
+}
+
+연산 : 기본 자료형 
+
+숫자에 관련된 상위클래스는 java.lang Number 추상클래스 
+
+3. Integer 클래스 사용하기
+4.오토박싱과 언박싱
+
+parse : 변환(문자열 -> 자바 객체, 기본형)
+Integer
+    parseInt(...)
+
+
+유용한 클래스
+1.java.lang.Math
+abs(...) 절대값
+ceil(...)  : 올림
+floor(...) : 버림
+round(...) : 반올림
+pow(double a, double b) : a^b
+sqrt(double a) - 루트
+random(...) : 0~1 미만의 랜덤수(double)
+
+
+//과제 - 알고리즘8 풀기
+
+
+2.java.util.Objects
+3.java.util.Random
+4.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
