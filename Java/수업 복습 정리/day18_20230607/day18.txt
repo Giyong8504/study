@@ -1,0 +1,166 @@
+날짜와 시간
+
+1.Date - JDK 1.0  (exam03.Ex01) 이제 안쓴다 쓰지마
+
+2.Calendar - JDK 1.1  (형식화 되어있지 않다.)  = 설계부족 .
+너무 많은 상수가 정의되어있어 정신없네
+
+ - 생성자 메서드는 protected : 직접 new 연산자를 통해서 생성불가
+ - static Calendar getInstance() : 객체 생성 후 조회
+ - 그레고리력(서기) (현재 쓰고있는 달력)
+ -불기 (태국꺼) 달력이다름
+getInstance() 가져오면 알아서 적용해서 달력 맞춰줌.
+
+
+ Locale : 지역화 클래스
+         -GregorianCalendar()
+         -Budiste()
+  - 날짜, 시간 조회
+    .get(날짜, 시간 항목 필드 상수)
+
+  - 날짜, 시간을 변경
+    .set(날짜, 시간 항목 필드 상수, 값);
+    .add(필드명, 값) : 날짜 시간을 뒤로 옮기거나- 값이 양수, 앞으로 변경 - 값이 음수
+    .roll(필드명, 값);
+    .roll(필드명, true); 시간을 한칸 뒤로
+    .roll(필드명, false); 시간을 한칸 앞으로
+
+  - 단점
+   1) 날짜 변경 시 원 객체가 변동(큰문제) / 원 객체는 사용 불가
+   2) add() 가 날짜, 시간 가감하는데 명칭에서 오는 혼동이 있다. 
+   3) 시간 단위, 필드에 대한 상수가 너무 한곳에 몰려 있는 단점.
+
+
+java.time 패키지 (JDK 8)
+-java.time : 핵심 클래스 (날짜, 시간)
+-java.format : 형식화 / DateTimeFormatter (자바 객체 -> 형식화된 날짜 문자열)
+-java.time.temporal : 날짜 시간 필드, 단위
+                         TemporalField - ChronoField : 날짜 시간 필드 
+                         TemporalUnit - ChronoUnit : 날짜 시간 단위
+-java.time.zone : 시간대 
+                     Zonedld
+                     ZonedOffset
+
+1. 핵심 클래스  (exam02.Ex01)
+1)LocalDate - 날짜
+ -> LocalDateTime 변환 메서드
+ -> LocalTime atTime(LocalTime localtime);
+
+
+2)LocalTime - 시간
+ -> LocalDateTime 변환 메서드
+ -> LocalDateTime atDate(LocalDate localDate);
+
+
+
+3)LocalDateTime - 날짜/시간 같이 다룸.  ******************** 제일 많이씀***********
+                    - LocalDate + LocalTime 두가지를 포함한 형태 (정의되어있음) 별거없다.
+
+
+4)ZonedDateTime - 날짜/시간 + 시간대
+   -Zoneld          - LocalDateTime + 시간대(Zoneld..)	
+                      - Zoneld.of("시간대 ID");
+                         예)Asia/Seoul
+                            Ameria/New_York
+
+                       - withZoneSameInstance() : 각 시간대별 현재 시간
+
+                       - 서머타임제 : 고려해서 반영되어있음 (해당 나라 타임제가 있으면 적용됨) 
+
+
+5) OffsetDateTime - 날짜/ 시간 + 시간대
+   - ZoneOffset   - LocalDateTime + 시간대 (ZonedOffset...) 
+                          - 시간 차이 +9  // 물리적 시간 차이  //*** 이걸 더 사용함. 정확한시간차이
+                     - wihtOffsetSameInstance() : 각 시간 차이별 현재시간
+
+-날짜와 시간 객체 생성
+  -of(int year ...) : 직접 날짜와 시간 지정
+  -now () : 현재 지금 날짜 시간 
+
+
+-특정 필드의 값 가져오기 -get(), getXXX()
+  -TemporalField field
+     - enum ChronoField   (Enum 상수 클래스를 상속 받아서 정의되어있음.)
+  - int get(TemporalField field)
+
+  참고)***
+
+ DayOfWeek::getDisplayName(TextStyle style, Lccale locale) : 요일 표기
+
+
+-필드의 값 변경하기 - with(), plus(), minus()
+  - 반환값이 새로운 객체 / 기존 시간의 불변성 유지
+  - 
+  - with() : 날짜, 시간 변경
+        - with(TemporalField field, int value);  //오라클 문서 확인
+        - withXxx(int value); 문서에보면 withDayOfMonth 같은 메서드가 이미 정의 되어있음
+
+  - plus() : 날짜 시간(+).
+        - plus(long amountToAdd, TemporalUnit unit); //귀찮아! 메서드가 정의되어있음
+        - plusXxx(long value);
+
+  - minus() : 날짜 시간(-)
+        - minus(long amountToAdd, TemporalUnit unit); //귀찮아! 메서드가 정의되어있음
+        - minusXxx(long value);
+   참고)
+        ChronoUnit : 날짜, 시간 단위
+
+
+-날짜와 시간의 비교 - isAfter(), is Before(), isEqual()
+- LocalTime의 truncatedTo()
+
+
+2. Period와 Duration
+  - between() 과 unit()
+  - of(), with()
+  - 다른 단위로 변환 - toTotalMonths(), toDays(), toHours() to Minutes()
+
+Period : 날짜 사이 간격 (년,월,일) - LocalDate
+Duration : 시간 사이간 격(나노, 초)
+
+
+ - TemporalAmount 인터페이스 - 설계 툴
+
+
+
+
+참고)
+Temporal
+-TemporalAccessor : 날짜, 시간 조회
+-TemporalAdjuster : 날짜, 시간 변경
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

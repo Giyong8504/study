@@ -1,0 +1,48 @@
+java.time 패키지 
+1)LocalDate - 날짜
+2)LocalTime - 시간
+3)LocalDateTime - 날짜/시간 같이 다룸.
+4)ZonedDateTime - 날짜/시간 + 시간대
+   -Zoneld
+5) OffsetDateTime - 날짜/ 시간 + 시간대
+Instant
+
+
+java.format 패키지
+  -형식화
+  -DateTimeFormatter
+
+java.time.temporal 패키지  (핵심정인 Enum 상수 ↓)
+  -TemporalField - ChronoField :날짜, 시간 필드 상수
+  -TemporalUnit - ChronoUnit : 날짜, 시간 단위 상수
+
+
+
+-java.time.zone
+  -Zonedld
+  -ZonedOffset
+
+
+
+Temporal, TemporalAccessor - 조회 설계 , TemporalAdjustor- 변경 설계
+- LocalDate, LocalTime, LocalDateTime,ZonedDateTime, OffsetDateTime, Instant
+
+
+날짜, 시간 객체
+- of(int year, int month ....) : 특정 날짜, 시간
+- now() :  현재 날짜 시간.
+
+
+조회 
+  - int get(TemporalField field); // 더 편리한 메서드가 정의되어있음.
+  - int getXxx(); 예) getYear(), getDayOfMonth()....
+
+변경 -  //기존객체를 변경하지 않음 (불변성 유지), 새로운 객체 반환
+  - LocalDate with(TemporalField field, int value);
+  - LocalDate withXxx(int value);
+
+  -LocalDate plus(long addValue, TemporalUnit unit);
+  -LocalDate plusXxx(long addValue);
+
+  -LocalDate minus(ling minusValue, TemporalUnit unit);
+  -LocalDate minusXxx(long minusValue);
