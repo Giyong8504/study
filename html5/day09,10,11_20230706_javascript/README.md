@@ -399,3 +399,171 @@ const person2 = {...personm,age : 30};
 const person2 = {...person,age : 30};
 ```
 <br>
+
+----------------------
+
+# 예외처리 (에러생성사 객체)
+- 사용자에게 알려주는 역할을 많이하게 된다.
+
+```javascript
+try{
+    const isError =true;
+    if (isError) {//에러가 발생한 경우
+        throw new Error("에러 발생");
+    }
+} catch(err) {
+    //err.message
+    alert(err.message);
+}
+``` 
+<br>
+
+# Date 생성자 객체 : 날짜/시간
+```javascript
+const strDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+```
+<br>
+
+- 오늘부터 일주일전!
+
+```javascript
+const date = new Date();
+date.setDate(date.getDate() - 7); // 7일 전 - 현재날짜에서 7일 빼기
+```
+<br>
+
+- 30개월 전
+
+```javascript
+const date = new Date();
+date.setMonth(date.getMonth() -30); // 30 개월 전
+date.toLocaleString();
+```
+
+------------------
+# 내장 객체
+## Math
+- abs() : 절대값.
+- sign() : 부호(음수 -1, 양수 1, 0)
+- sqrt() : 
+- pow(..) : Math.pow(2,3) :2의 3승 - 8
+<br>
+
+- round() : 반올림
+- floor() : 버림
+- ceil() : 올림
+<br>
+
+- random() : 0~1 사이의 난수
+<br>
+
+## JSON - (javascript Object Notation - 자바스크립트 객체 표기법)
+- 자바스크립트 표기법으로 표현된 문자열
+- 다른 플랫폼과 통신하기 위한 공통 형식
+- stringify (자바스크립트 객체) : 자바스크립트 객체 -> JSON 문자열로 변환(직렬화)
+- parse("JSON 문자열") : JSON 문자열 -> 자바스크립트 객체 
+
+	```javascript
+	const json = JSON.stringify(obj);
+	```
+<br>
+
+# 비구조화 할당
+## 1. 배열의 비구조화 할당
+1) 기본적인 사용법
+	- 배열의 값을 변수 각각으로 분해 할당
+	
+	```javascript
+	const fruits = ["Apple" ,"orange","Mango","Melon"];
+	const [fruit1, fruit2] = fruits;
+	
+	const [fruit1, , fruit2] = fruits; // 중간 값 띄우고도 가능.
+	```
+	<br>
+	
+	```javascript
+	let [b,a] = [a,b]; // 공간을 하나 만들어 바꾸지 않아도 비구조화 할당으로 변경가능.
+	```
+	<br>
+	
+2) 이미 선언된 변수를 비구조화 할당하는 예외처리
+
+## 2. 객체의 비구조화 할당
+1) 기본적인 사용법
+
+2) 프로터피의 기본값
+
+3) 프로퍼티 이름 생략하기
+	```javascript
+	const person = {
+    name : "이이름", 
+    age : 40
+		};
+		
+	const { name : name, age : age } = person; //속성명을 찾아서 값을 대입해준다.
+	const { name, age } = person; // 이렇게 하나만써도 인식한다.
+	```
+	<br>
+	
+4) 반복 가능한 객체의 비구조화 할당
+- Iterator
+- Generator (많은 데이터 처리시 사용) 작업하고 비우고를 반복한다.
+	
+	```javascript
+	function* 함수명(){
+		yield 값;
+		yield 값;
+		...
+	}
+	
+	function* items() {
+    yield "A";
+    yield "B";
+    yield "B";
+    yield "C";
+	}
+	for (const v of items()) {
+    console.log(v);
+	}
+	
+	```
+	<br>
+	
+	
+## 3. 전개연산자
+- ... : 전개 연산자(Spread Operator)
+	- 객체의 깊은 복사
+	
+	```
+	const person = { name : "이이름", age : 40 };
+	const person2 = { ...person}; //펼쳐서 넣어준다. 새로운 객체가 생성. 
+	
+	person === person2; //동일성 비교 : false
+	
+	const person2 = {...person, name : "김이름" } //복사만 되면서 값을 입력해버리기.
+	
+	배열도 가능
+	const fruits = ["Apple" ,"orange","Mango","Melon"];
+	const fruits2 = [...fruits];
+	```
+<br>
+
+- ... :나머지 연산자
+
+```
+const [a,b,...c] = fruits;
+```
+<br>
+
+- 매개변수 사용시
+```
+function add(num1, num2){
+    return num1 + num2;
+}
+const nums = [10,20];
+add(...nums);
+```
+<br>
+
+
+
