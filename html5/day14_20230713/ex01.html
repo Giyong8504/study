@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            window.addEventListener("DOMContentLoaded",function() {
+                const openBtn = document.getElementById("openBtn");
+                openBtn.addEventListener("click",function(){
+                    // window.open
+                    const win = open("ex02.html", "winPop","width=500,height=500");
+                    console.log(win);
+
+                    // 창 닫기
+                    const closeBtn = document.getElementById("closeBtn");
+                    closeBtn.addEventListener("click",function(){
+                        win.close();
+                    });
+                });
+            });
+        </script>
+        <button type ="button" id="openBtn">팝업 열기</button>
+        <button type ="button" id="closeBtn">팝업 닫기</button>
+    </body>
+</html>
