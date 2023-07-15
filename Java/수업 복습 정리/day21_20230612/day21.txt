@@ -1,0 +1,96 @@
+TreeSet 
+	- HashSet + 정렬(SortedSet) 이 추가된 기능 // 기본정렬 오름차순.
+	- java.lang.Comparable : 정렬의 기준이 되는 인터페이스
+	    : int compareTo : 
+
+
+	- java.util.Comparator : Comparable의 compareTo 의 대안적인 정렬기준
+	  int compare(T t1, T t2);  내림차순이나 등등 하고 싶을때 
+	 
+	참고) 
+	   Stirng
+		compareTo : 오름차순 정령 (이미 구현되어있음)
+
+트리셋에서 구현하는 기준이 있는데 java. lang.comparable 을 구현해야 사용가능함.
+
+
+
+기본 정렬은 오름차순인데 Comparator.reverseOrder() 를 사용해서 내림차순으로 간단하게 바뀜.
+
+
+3. Map 인터페이스 : 사전 자료구조
+	1) 키 - 값의 쌍 구조
+	2) 키는 값을 찾기 위한 키워드 : 중복 없음.(집합 자료) 같은값 안된다.
+	3) 값은 중복을 허용한다.
+	4) 구현 클래스
+	   HashMap
+	   TreeMap
+	   	- Key의 정렬
+
+	   참고) 예전에 쓰던거
+		Hashtable
+		Properties
+
+	데이터 추가
+	  V put(K k, V v) : k가 없으면 추가, k가 있으면 수정
+	  V putIfAbsent(K k, V v) : k가 없을때만 추가
+	  void putAll(Map...) : 
+
+	데이터 조회
+	  V get(Object key) : key를 가지고 조회
+	  V getOrDefault(Object key, V defaultValue) : key로 조회시 검색된 데이터가 없는 경우 defaultValue를 반환
+	  boolean containsKey(Object key)
+	  boolean containsValue)(Object value)
+	  int size() : 요소 갯수
+
+	데이터 삭제
+	  V remove(Object key)
+	  boolean remove(Object key, Object value);
+
+	데이터 변경
+	  replace(...)
+
+	put(key, value)
+	   -> Map.Entry 구현 클래스의 객체(key - value pair) -> [] table .. 
+	    (내부에는 구현클래스가 담겨있고 put 할때마다 객체가 만들어짐. table이라는 배열에 담겨있음) 
+
+
+Iterator
+  - Collection 인터페이스에 Iterator<E> iterator()가 정의되어있다. 
+
+  - boolean hasNext() : 다음 요소가 있는지 체크
+  - E next() : 다음 요소를 추출
+  - 한번 반복을 다하면 종료해서 재활용이 안된다. 그럼? 다시 만들어야함.
+
+
+ListIterator
+  - List에만 정의된 iterator 
+  - 순방향, 역방향 둘 다가능하게 정의되었음 다만, List에만 정의되어있어서 다른 곳 못씀
+
+
+
+Enumeration (옛날거..)
+  - boolean hasMoreElements() : 다음 요소가 있는지 체크
+  - V nextElement();
+
+
+참고) 
+java.util
+Arrays (s가 붙어있으면 편의기능이 담겨있음)
+1. 배열의 복사 - copyOf(), copyOfRange()
+2. 배열 채우기 - fill(), setAll()
+3.배열의 정렬과 검색 - sort(), binarySearch()
+4. 문자열 비교와 출력 - equals, hashCode()
+
+
+
+deepToString(...) : 2차원 배열 이상
+
+Collections
+
+
+이미 구현되어있는지 체크해보자!!
+
+
+
+
