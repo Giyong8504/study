@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            .on { background: yellow; }
+        </style>
+        <script>
+            window.addEventListener("DOMContentLoaded",function(){
+                const text = document.getElementById("text");
+                text.addEventListener("focus",function() {
+                    this.classList.add("on");
+                });
+
+                text.addEventListener("blur", function(){
+                    this.classList.remove("on");
+                });
+
+                const select = document.getElementById("select");
+                select.addEventListener("change", function(){
+                    console.log(this.value);
+                });
+            });
+        </script>
+        <input type="text" id="text">
+        <br>
+        <select id="select">
+            <option value ="선택1">1</option>
+            <option value ="선택2">2</option>
+            <option value ="선택3">3</option>
+        </select>
+    </body>
+</html>

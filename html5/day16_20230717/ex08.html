@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+        <style>
+            .box { padding-right :150px; }
+            .box1 { background: gray;}
+            .box2 { background: green;}
+            .box3 { background: orange; position: absolute; top: 0; left: 0; height: 400px; width: 100%;}
+        </style>
+        <script>
+            window.addEventListener("DOMContentLoaded",function(){
+                const box1 = document.querySelector(".box1");
+                const box2 = document.querySelector(".box2");
+                const box3 = document.querySelector(".box3");
+                box1.addEventListener("mouseleave",function(){
+                    console.log("box1 클릭!");
+                }, false); // 버블링 단계에서 전파
+                box2.addEventListener("mouseleave",function(){
+                    console.log("box2 클릭!");
+                }, false); // 캡쳐링 단계에서 전파
+                box3.addEventListener("mouseleave",function(e){
+                    e.stopPropagation(); //버블링 단계 이벤트 전파 취소
+                    console.log("box3 클릭!");
+                }, false);
+            });
+        </script>
+        <div class="box box1">
+            BOX1
+            <div class="box box2">
+                BOX2
+                <div class="box box3">
+                    BOX3
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

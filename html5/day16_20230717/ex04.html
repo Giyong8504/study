@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            #box {width:200px; height: 200px; background: orange;}
+        </style>
+        <script>
+            window.addEventListener("DOMContentLoaded", function(){
+                const box = document.getElementById("box");
+                box.addEventListener("click", function(e){
+                    console.log("target", e.target);
+                    console.log("currenttarget", e.currentTarget);
+                    console.log("this", this);
+                });
+            });
+        </script> 
+        <div id="box">
+            <span>클릭!</span>
+        </div>
+    </body>
+</html>

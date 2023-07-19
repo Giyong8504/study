@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            #box {width:300px; height: 300px; background: orange; margin:5000px 0 1000px 200px;}
+        </style>
+        <script>
+            window.addEventListener("DOMContentLoaded", function(){
+                const box = document.getElementById("box");
+                box.addEventListener("click", function(e){
+                    console.log("offsetX=",e.offsetX,", offsetY=", e.offsetY);
+                    console.log("clientX=",e.clientX,", clientY=", e.clientY);
+                    console.log("pageX=",e.pageX,", pageY=", e.pageY);
+                    console.log(e);
+                });
+            });
+        </script>
+        <div id="box"></div>
+    </body>
+</html>
