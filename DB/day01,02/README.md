@@ -157,9 +157,31 @@ CRATE TABLE 테이블명 (
 > -- : 설명, 실행 배제
 <br>
 
+- 외래키 제약조건
+	- ON DELETE CASCADE : 연쇄 삭제 -> 부모 레코드를 삭제하면 자식레코드 연쇄 삭제
 	
+	- SET NULL : 부모 레코드 삭제하면 자식레코드는 외래키 값이 NULL으로 변경
+
+<br>
+
 ## 2. ALTER 문 - 변경
 
+```
+ALTER TABLE 테이블명 ADD 컬럼명 자료형 [제약조건]
+											[AFTER 컬럼명]
+									MODIFY 컬럼명 자료형 [제약조건]
+													컬럼명 자료형 [제약조건] 
+									DROP COLUMN 컬럼명;/ 삭제
+									RENAME COLUMN 기존 컬럼명 새로운 컬럼명;
+									//이름 변경
+									ADD PRIMARY KEY(기본키 컬럼, ...)
+```
+<br>
+
+```
+ALTER TABLE newBook ADD isbn VARCHAR(13) AFTER bookid;
+```
+<br>
 ## 3. DROP 문 - 삭제
 - 데이터베이스 삭제
 
@@ -167,5 +189,37 @@ CRATE TABLE 테이블명 (
 DROP DATABASE 데이터베이스명;
 DROP TABLE 테이블명;
 ```
-
 <br>
+
+테이블 삭제
+```
+DROP TABLE 테이블명;
+```
+<br>
+
+데이터 조작어(DML) - 검색
+1. SELECT문의 기본문법
+```
+SELECT |ALL| DISTINCT| 속성이름(들)
+FROM 테이블 이름(들)
+[WHERE 검색 조건(들)]
+[GROUP BY 속성이름}
+[HAVING BY 검색조건(들)]
+[ORDER BY 속성이름 [ASC|DESC]]
+```
+<br>
+
+
+#### SELECT 컬럼명 ... FROM 테이블명;
+
+#### DISTINCT : 중복 제거외한 레코드
+
+#### WHERE
+- 비교(>, <, =,)
+- 다르다 ( !=,  ^=, <>)
+- AND, OR
+	
+#### 논리연산자
+- AND
+- OR
+- NOT : 부정
