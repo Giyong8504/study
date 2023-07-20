@@ -105,3 +105,65 @@ WHERE custid=2;
 - HAVING 절
 	- GROUP BY와 함께 사용
 	- 집계함수의 조건절(WHERE절에서는 집계합수 조건 X)
+
+
+## 4. 두 개 이상의 테이블에서 SQL 질의 - 조인
+- 카티전 프로덕트 연산 : 무작위 순서쌍 (데카르트 곱)
+
+	- SELECT ...  FROM 테이블, 테이블...
+		- 의미있는 데이터 -> 공통 값을 가지고 조회 조건
+		- AS 별칭
+		
+- 동등조인(내부조인 INNER JOIN) : 같은 값을 가지고 테이블 연결
+	- JOIN - 표준 SQL
+		```
+		FROM 테이블명1 INNER JOIN 테이블명2 ON 테이블명1.공통컬럼 = 테이블2.공통컬럼
+																	USING 공통컬럼
+		
+		SELECT *FROM customer c
+		JOIN orders o ON c.custid = o.custid; //INNER 생략가능
+		
+		```
+<br>
+
+```
+SELECT c.name, b.bookname, price
+FROM orders o, customer c, book b
+WHERE o.custid = c.custid  AND o.bookid = b.bookid
+AND b.price = 20000;
+```
+<br>
+
+- 외부조인(OUTER JOIN)
+
+- 테이블1 LEFT OUTER JOIN 테이블2
+	- 테이블1은 전체가 나오고 테이블2는 테이블1과 공통값이 있으면 나오고 없으면 NULL
+```
+FROM 테이블명 LEFT|RIGHT OUTER JOIN 테이블명2
+		ON 테이블1.공통 항목 = 테이블2.공통항목
+```
+<br>
+
+- 테이블1 RIGHT OUTER JOIN 테이블2
+	- 테이블 2는 전체가 나오고 테이블1은 테이블 2와 공통값이 있으면 나오고 없으면 NULL
+<br>
+
+## 5. 부속질의
+- SELECT 문 안에 SELECT 문이 포함된 
+	- 스칼라 부속질의 
+	<br>
+	
+	>스칼라: 단일값
+	>부속질의가 단일값으로 나오는 형태
+	>SELECT...FROM
+	>비교 조건
+<br>
+	
+	- 인라인 뷰
+		- SELECT...FROM (SELECT...)
+			- 가상의 테이블
+<br>
+			
+	- 상관 부속질의
+
+## 6. 집합 연산
