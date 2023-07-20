@@ -1,0 +1,1 @@
+CREATE TABLE NewBook AS SELECT * FROM book;

@@ -153,17 +153,171 @@ FROM 테이블명 LEFT|RIGHT OUTER JOIN 테이블명2
 	- 스칼라 부속질의 
 	<br>
 	
+	>참고)
 	>스칼라: 단일값
 	>부속질의가 단일값으로 나오는 형태
 	>SELECT...FROM
-	>비교 조건
-<br>
+	>비교 조건 (단일값)
+	> >,<,=,<=,>= 
+	<br>
 	
+	- 복수값 : IN, NOT IN
+<br>
+
 	- 인라인 뷰
 		- SELECT...FROM (SELECT...)
 			- 가상의 테이블
+			```
+			SELECT * FROM 
+				(SELECT bookname, publisher
+					FROM book WHERE publisher IN ('대한미디어','굿스포츠','삼성당')) b
+			WHERE b.publisher = '대한미디어';
+			```
+			<br>
+			
+	- 상관 부속질의
+	```
+	SELECT * FROM boradDatas b
+	WHERE b.totalComments <> (SELECT COUNT(*) FROM boardComments c, WHERE b.id = c.idBoradData)
+	```
 <br>
 			
 	- 상관 부속질의
 
 ## 6. 집합 연산
+- 교집합
+	- IN
+	> 참고)
+	> 오라클, MSSQL
+	>			INTERSCET
+	<br>
+	
+- 합집합
+	- 집합 : 중복 X
+	- UNION : 중복 X
+	- UNION ALL : 중복허용
+	
+	<br>
+	
+- 차집합
+	- NOT IN
+	> 참고)
+	> 오라클, MSSQL
+	>			MINUS
+<br>
+
+## 7. EXISTS
+- 부속질의 결과가 있으면 참
+```
+SELECT * FROM customer
+WHERE EXISTS (SELECT * FROM orders WHERE custid=5);
+```
+<br>
+
+-----------
+# 데이터 조작어 - 삽입, 수정, 삭제
+## 1. INSERT문 - 삽입
+- INSERT INTO 테이블명([컬럼명1, 컬럼명2,...)] VALUES(값1, 값2,...);
+	- 전체 컬럼명과 **값의 순서와 갯수가 동일하면 생략 가능**
+```
+INSERT INTO book 
+	VALUES (12, '스포츠 의학', '한솔의학서적', 90000);
+```
+<br>
+
+- 구조가 동일한 특정 테이블의 값을 복사
+	- INSERT INTO 복사될 테이블명 SELECT ... FROM 복사할 테이블)
+	```
+	INSERT INTO book
+	SELECT * FROM imported_book;
+	```
+	<BR>
+	
+- 테이블 복사
+	- CREATE TABLE 테이블명 AS SELECT ... FROM 컬럼명;
+	```
+	CREATE TABLE NewBook AS SELECT ... FROM book;
+	```
+	<br>
+
+## 2. UPDATE 문 - 수정
+
+```
+UPDATE 테이블명
+SET
+	컬럼명1 = 값,
+	컬럼명2 = 값
+	...
+WHERE 조건식
+	-> 조건식이 없으면 전체 데이터가 변경 (중요! 없으면 안됨)
+```
+<br>
+
+## 3. DELETE 문
+- DELETE FROM 테이블명 -> 전체삭제
+```
+DELETE FROM 테이블명
+	WHERE 조건식;
+```
+<br>
+
+### 증감번호
+- 제약조건 AUTO_INCREMENT : 자동으로 증감번호를 넣어준다.
+```
+CREATE TABLE newbook2 (
+	bookid INT AUTO_INCREMENT,
+    bookname VARCHAR(20) NOT NULL,
+    publisher VARCHAR(20) NOT NULL,
+    price INT,
+    regdt DATETIME DEFAULT NOW(),
+    PRIMARY KEY(bookid)
+);
+```
+<br>
+
+> 참고)
+> 오라클에서는 시퀀스 객체
+
+------------
+# 내장함수
+
+## 숫자함수
+
+|---|---|
+|ABS(숫자)|숫자의 절대값을 계산|
+|CEIL(숫자)|숫자보다 크거나 같은 최소의 정수|
+|FLOOR(숫자)|숫자보다 작거나 같은 최소의 정수|
+|ROUND(숫자, m)|숫자의 반올림, m은 반올림 기준 자릿수|
+|LOG(n, 숫자)|숫자의 자연로그 값을 반환|
+|POWER(숫자, n)|숫자의 n제곱 값을 계산|
+|SQRT(숫자)|숫자의 제곱근 값을 계산|
+|SIGN(숫자|숫자가 음수면 -1, 0이면 0, 양수면|
+
+<br>
+
+## 문자함수
+
+|---|---|---|
+|함수|설명|---|
+|CONCAT(s1, s2)|두 문자열을 연결|
+|LOWER(s)|대상 문자열을 모두 소문자로 변환|
+|LPAD(s,n,c)|대상 문자열의 왼쪽부터 지정한 자리수까지 지정한 문자로 채움|
+|REPLACE(s1, s2, s3)|대상 문자열의 지정한 문자를 원하는 문자로 변경|
+|RPAD(s,n,c)|대상 문자열의 오른쪽부터 지정한 자리수까지 지정한 문자로 채움|
+|SUBSTR(s,n,k)|대상 문자열의 지정된 자리에서부터 지정된 길이만큼 잘라서 반환|
+|TRIM(c FROM s)|	대상 문자열의 양쪽에서 지정된 문자를 삭제(문자열만 넣으면 기본값으로 공백제거)|
+|UPPER(s)|대상 문자열을 모두 대문자로 변환|
+|ASCII(c)|대상 알파벳 문자의 아스키 코드 값을 반환|
+|LENGTH(s)|대상 문자열의 Byte 반환, 알파벳 1byte, 한글 3byte(UTF8)|
+|CHAR_LENGTH(s)|문자열의 문자 수를 반환|
+<br>
+
+>참고)
+> 오라클
+
+<br>
+
+# 날짜, 시간 함수
+- 날짜 : 기본 형식(ISO) : 문자열 -> 날짜 자동 변환
+1. STR_TO_DATE(string, format)
+	-> 문자열 형식날짜 -> 문자열
