@@ -1,0 +1,1 @@
+DROP INDEX ix_book2 ON book;
