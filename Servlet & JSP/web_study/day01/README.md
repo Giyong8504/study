@@ -22,6 +22,7 @@ mvn archetype:generate
 	groupId : 소속(도메인 방식)
 	artifactId : 프로젝트 구분 예) board, shopping
 <br>
+
 ```
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,6 +32,7 @@ mvn archetype:generate
 ```
 
 <br>
+
 ```
 	<dependency>
 	.. 자바 라이브러리 jar
