@@ -29,6 +29,5 @@ public class JoinServlet extends HttpServlet {
         String userId = req.getParameter("userId");
         String userPw = req.getParameter("userPw");
         System.out.printf("userId=%s , userPw=%s%n",userId,userPw);
-
     }
 }
