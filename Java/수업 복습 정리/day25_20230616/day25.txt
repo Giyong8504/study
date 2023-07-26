@@ -1,0 +1,116 @@
+중간연산 
+10. skip() -건너뛰기 (Ex02)
+     limit() - 갯수 제한
+
+11. filter(predicate<T> ...) : Predicate의 test 메서드에서 true      -> 통과, false - 미통과
+ 
+     ditinct() : 중복 제거 ( Ex03)
+12. sorted() (Ex04)
+    변환 메서드 : Funciton<T,R>
+
+13. map()
+
+14. mapToInt(),
+	Stream<Integer> -> IntStream
+     mapToLong()
+	Stream<Long> -> LongStream
+     mapToDouble()
+	Stream<Double> -> DoubleStream
+
+	1) 성능의 향상(오토박싱, 언박싱X)
+	2) 숫자에 특화된 메서드를 제공
+	(합계, 평균, 갯수, 통계)
+
+15. peek( ) (Ex05)
+	참고) forEach와 비슷하게 동작
+	      void forEach는 최정 연산
+	      Stream<T> peek(...) : 중간연산
+	- 중간 부분에서 값을 확인할 때 주고 사용.
+
+
+Optional와 OptionalINt
+JDK8 - NullPointerException
+- null에 대한 다양한 처리를 하기 위해 도입된 클래스
+
+-Warpper 클래스
+1. Optional 객체 생성하기
+	static of(...) : null은 미허용 
+	        ofNullable(..) : null도 허용
+
+2.Optional 객체의 값 가져오기
+	- 다양한 메서드
+	- T get() : 있으면 가져오고 없으면 NoSuchElementException 발생
+	
+	값이없으면 처리 해줘야함 ▼▼▼
+	- orElse(T t) : 잇으면 가져오고 없으면 t값으로 대체
+	- orElseGet : (Supplier<T> supplier)
+	-orElseThrow() : 예외발생
+	- orElseThrow(Supplier<T> supplier)
+
+3. OptionalInt, OptionalLong, OptionalDouble (Book, Ex07)
+객체 형태 가지고 뭔가 할 때많이 씀
+기본형 가지고 하는게 더 효율적임
+
+- 기본형을 처리할 수 있는 Optional 클래스
+- 성능 향상
+
+참고) getAsInt() 
+
+
+
+
+class Optional<T> ... { null 값에 대한 예외로 기본값을 감싸져있음. 
+...
+private T value;
+...
+}
+
+
+스트림의 최종 연산
+1. forEach()
+
+2. boolean allMatch() : 모두 참인지 체크
+boolean anyMatch() : 하나라도 참인지 체크
+boolean noneMatch() : 모두 거짓이면 참
+	-> 위에 세가지는 매개변수가 Preidcate
+
+
+boolean findFirst() : 첫번째 요소
+boolean findAny() : 병렬 스트림 처음 등장하는 요소
+
+
+
+3. count() - 요소갯수 (Stream, IntStream, LongStream, DoubleStream)
+
+-기본자료형 스트림 (주로 통계 관련된 기능)
+sum(), average() 
+
+max() - 일반 스트림 : 정렬 시 가장 마지막 위치, 기본 자료형 스트림 - 최대값
+min() - 일반 스트림 : 정렬 시 가장 첫번째 위치, 기본 자료형 스트림 - 최소값
+
+
+4.reduce()
+
+
+5.collect(Collectors ... ) (Ex14)
+	- Collectors.joining()   ***제일 많이쓰니 기억해두자*** 
+
+	참고)
+	java.util.stream.Collectors : collect 메서드 전용 편의 메서드가 정의 (Collecter... )
+
+	toList(): List로 변환 : 사용빈도가 매우높은 메서드 -> Stream 인터페이스에서도 자체적으로 정의
+	toSet(), Set로 변환
+	toMap(Function<T,R> keyMapper, Function<T,R> valueMapper) : Map으로 변환 
+	toCollection() : ArrayList, LinkedList,HashSet,TreeSet...
+	toArray() : 배열로 반환 : Stream, 기본자료형 Stream 인터페이스에 정의
+	groupingBy() : 그룹이 2그룹 이상인 경우
+	partitioningBy( ) - 2그룹으로 나눌때: 참, 거짓
+
+
+
+
+
+
+
+
+
