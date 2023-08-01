@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+    <resultMap id="userMap" type="models.Users">
+        <result column="userNo" property="userNo" />
+        <result column="userId" property="userId" />
+        <result column="userPw" property="userPw" />
+        <result column="userNm" property="userNm" />
+        <result column="email" property="email"/>
+        <result column="mobile" property="mobile" />
+        <result column="regDt" property="regDt" />
+        <result column="modDt" property="modDt"/>
+    </resultMap>
+    
+    <select id="users" parameterType="models.Users" resultMap="userMap">
+        SELECT * FROM users
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="userId != null">
+                AND userId LIKE #{userId}
+            </if>
+            <if test="userNm != null">
+                AND userNm LIKE #{userNm}
+            </if>
+            <if test="email != null">
+                AND email LIKE #{email}
+            </if>
+            <if test="mobile != null">
+                AND mobile LIKE #{mobile}
+            </if>
+        </trim>
+        ORDER BY regDt DESC;
+    </select>
+
+    <select id="user" parameterType="models.Users" resultMap="userMap">
+        SELECT * FROM users WHERE userId=#{userId};
+    </select>
+
+    <select id="total" resultType="long">
+        SELECT * FROM users;
+    </select>
+    
+    
+     <insert id="insertUser" parameterType="models.Users" useGeneratedKeys="true" keyProperty="userNo">
+         INSERT INTO users (userId, userPw, userNm, email, mobile)
+            VALUES (#{userId}, #{userPw}, #{userNm}, #{email}, #{mobile});
+     </insert>
+
+    <update id="update" parameterType="models.Users">
+        UPDATE users
+            <trim prefix="SET" suffixOverrides=",">
+                <if test="userNm != null">
+                userNm=#{userNm},
+                </if>
+                <if test="email != null">
+                email=#{email},
+                </if>
+                <if test="mobile != null">
+                mobile=#{mobile},
+                </if>
+                modDt=NOW()
+            </trim>
+        WHERE userId=#{userId}
+    </update>
+
+    <delete id="delete" parameterType="models.Users">
+        DELETE FROM users WHERE userId=#{userId};
+    </delete>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d856ab2c-4439-4c62-a469-a8c2a6056f49" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../day05/src/main/java/jdbcex/Ex01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day05/src/main/java/jdbcex/Ex02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day05/src/main/java/jdbcex/Ex03.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day05/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day05/src/main/webapp/exam01/ex04.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day05/src/main/webapp/exam01/ex05.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day05/src/main/webapp/exam01/ex06.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day05/src/main/webapp/exam01/ex06_ps.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day05/src/main/webapp/exam01/ex07.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day05/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../day05/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day05/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day05/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day05/src/main/webapp/exam01/ex03.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../day05/src/main/webapp/exam01/ex03.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2TKgry7JRzc6znbTUuA0umdIDKK" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showModules" value="false" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Administrator/Desktop/김기용/git업로드/Servlet & JSP/web_study"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d856ab2c-4439-4c62-a469-a8c2a6056f49" name="Changes" comment="" />
+      <created>1690797388651</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1690797388651</updated>
+    </task>
+    <servers />
+  </component>
+</project>

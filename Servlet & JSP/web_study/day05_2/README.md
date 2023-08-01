@@ -31,6 +31,7 @@
 		- 반영된 레코드 갯수
 		
 2. PreparedStatement
+1) 동적인 쿼리에 사용
 		
 ```java
     public static void main(String[] args) throws ClassNotFoundException {
@@ -47,3 +48,78 @@
         }
     }
 ```
+
+CREATE DATABASE kanban;
+
+ 이름 : kanban
+ 비밀번호 : aA!123456
+3. CallableStatemnent : 프로시저를 호출
+Connection
+	.prepareCall(String sql)
+	
+kanban / aA!123456
+
+회원번호 - userNo - PK, AI
+아이디 - userId
+비밀번호 - userPw
+회원명 - userNm
+이메일 - email
+전화번호 - mobile
+가입일자 - regDt
+회원정보 수정일시 - modDt
+
+---------
+
+마이바티스(mybatis) 프레임워크 설치 및 적용
+1. 설정
+- POOLED -> 커넥션
+
+<select ...>
+<update...>
+<insert...>
+<delete ...>
+
+2. TypeHandler 적용하기
+1) java.time 패키지 적용
+- mybatis-typeHandler-jsr310 의존선 추가
+
+```
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" />
+        <typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler" />
+        <typeHandler handler="org.apache.ibatis.type.LocalTimeTypeHandler" />
+    </typeHandlers>
+		
+```
+
+<br>
+
+
+2) Enum 타입 적용
+```
+<typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+```
+<br>
+
+3. 적용해보기
+SqlSession
+
+4. MyBatis와 SLF4J 연동하기
+SLF4J API
+logback classic
+
+<settings>
+	
+
+
+
+
+--------
+트랜잭션
+SQL 작성의 단위
+
+
+COMMIT 할때 까지의 단위 트랜잭션 : DB에 영구 반영
+
+COMMIT 전까지는 ROLLBACK : 복구 가능
+

@@ -1,0 +1,1 @@
+CREATE TABLE book2 AS SELECT * FROM book WHERE 1 <> 1;
