@@ -148,16 +148,178 @@ EL 식으로 바로 출력하면 -> HTML 태그가 브라우저에서 해석되�
 - 형식화 관련 라이브러리
 - 날짜, 시간형식, 숫자형식, 메세지(다국어), 시간대
 1) fmt:formatDate
-2) fmt:formatNumber
-3) fmt:setLocale
-4) fmt:timeZone과 fmt:setTimeZone
-5) fmt:setBundle과 fmt:bundle
-6) fmt:requestEncoding
+- java.text.SimpleDateFormat
+- java.util.Date
 
+- value : date 객체를 EL속성
+- type 
+	- date - 날짜만 표기
+	- time - 시간만 표기
+	- both - 날짜와 시간 표기
+- dateStyle : full|long|short
+- timeStyle : full|long|short
+- patten : 직접 패턴을 지정
+
+```
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+```
+
+<br>
+
+2) fmt:formatNumber
+- 숫자 형식화
+- java.text.DecimalFormat
+
+- value : 숫자 -> 형식화
+- groupingUsed
+	- true - 기본값(세자리 마다, )
+	- false - 숫자만 출력				
+- pattern
+	- # : #,###.#### 세자리마다
+		- 예) 10000.12 -> 10,000.12
+	- 0 : 0,000.0000 세자리마다
+		- 예) 10000.12 -> 10,000.1200
+		
+- type
+	- currency - 통화 / <fmt:setLocale
+	- percent - 백분률 / 소수점 
+
+<br>
+
+3) fmt:setLocale
+- java.util.Locale
+
+<fmt:setLocale value="국가코드_언어코드" />
+<fmt:setLocale value="언어코드" />
+
+예)
+<fmt:setLocale value="us_en" />
+<fmt:setLocale value="en" />
+
+<br>
+
+4) fmt:timeZone과 fmt:setTimeZone
+- 시간대 변경을 할때 사용
+
+<fmt:timeZone value="zone id..">
+
+...날짜, 시간
+</fmt:timeZone>
+
+<br>
+
+5) fmt:setBundle과 fmt:bundle
+-	메세지 기능
+- 클래스패스/메세지파일명.properties
+			/메세지파일명_en.properties : 브라우저 언어 설정이 영어/<fmt:setLocale value="en" />
+- java.util.ResourceBundle
+
+- basename="경로.파일명"
+- <fmt:message key="메세지 코드"/>
+	- java.text.MessageFormat
+
+<br>
+
+> 참고)
+> properties 파일 - 주로 설정
+> 키=값
+> 키=값
+> #은 주석
+
+<br>
+
+6) fmt:requestEncoding
+- servlet 6.0 : tomcat 10 버전
+	request.setCharacterEncoding(..);
+	POST형식 데이터
+- servlet 4.0 : tomcat 9 버전(한글 깨짐)
 <br>
 
 4. 함수(functions) 라이브러리
 - 문자열을 가공하는 라이브러리
 - 태그를 사용하지 않고 EL식 변수 내에서 사용가능
+<%@ properties= taglib uri="jakarta.tags.functions" %>
+
 
 <br>
+
+----------------
+
+
+커스텀 액션
+
+1. 커스텀 액션을 만드는 방법
+1) 태그 파일 작성해서 만드는 방법
+	확장자.tag
+	- 번역 기술 : 
+2) 태그 클래스를 작성해서 만드는 방법
+	- SimpleTag 인터페이스
+	- SImpleTagSupport 클래스
+		-  doTag
+	
+2. 태그파일을 이용해서 커스텀 액션 만들기
+1) 태그 파일에서 사용할 수 있는 지시어
+<%@ tag...
+
+ 참고)
+ tag 속성 -> page 속성과 거의 비슷
+ - body-content
+				: empty - 단일 태그
+				
+					- 여는 태그, 닫는 태그
+				: scriptless - 태그 안쪽에 자바 코드X, EL식, 다른 태그, 액션 태그
+				: tagdependent - 태그의 내용물이 전부 문자열로 인식, EL식 번역X
+ - trimDirectiveWhitespaces :true -> 태그 안쪽에 불필요한 공백 제거
+ - pageEncoding="UTF-8" : 한글 깨짐 방지 ()
+ 
+ ```
+ tag 에서 항시 사용하기
+<%@ tag body-content="empty" %>
+<%@ tag pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+```
+- tag 지시자 : <%@ tag ... %>
+- include 지시자 : <%@ include file ...%>
+- attribute 지시자
+- variable 지시자
+	예) <c:set var="num" value="값" />
+	
+- <%@ taglib prefix=".." tagdir="경로" %>
+
+2) 한글을 포함하는 태그 파일
+3) 애트리뷰트를 지원하는 태그 파일
+-	 속성을 정의
+<%@ attribute name="속성명" ...type="속성의 자료형" %>
+- 속성명으로 된 자바 변수, EL식 변수
+- type : 기본값 java.lang.String/ 따로 명시하지 않으면 전부 문자열 인식
+		: 기본 자료형(int, long...) 설정 불가, 기본자료형은 기본형의 래퍼 클래스 형태로 설정
+			예) int -> java.lang.Integer
+속성명으로 된 자바 변수, EL 식 변수
+- required : false - 기본값
+				: true - 필수 속성
+				
+4) 태그 파일의 내장 객체
+	HttpSevletRequest request
+	HttpSevletResponse reponse
+	JspWriter out
+	ServletContext application
+	HttpSession session
+	ServletCOnfig config
+	JspContext jspContext
+	
+5) 동적 애트리뷰트를 지원하는 태그파일
+- <%@ tag dynamic-attribute="attrs" %>
+- 설정한 속성이 전부 map 형태로 추가
+	- attrs.속성명 바로 접근
+- 자료형은 전부 문자열로 인식
+- 필수 여부 설정 불가
+
+참고)
+	태그 속성으로 추가되는 EL식 변수 : 페이지 범위(pageContext)
+
+6) 커스텀 액션의 본체를 처리하는 태그 파일
+	body-content
+					: scriptless - 자바코드 X, EL식 O, 다른 태그 O, 액션 가능O
+					: tagdependent - 무조건 텍스트로만 인식
+					
+					<jsp:doBody />
+					
