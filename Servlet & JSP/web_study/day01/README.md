@@ -27,7 +27,7 @@ mvn archetype:generate
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>20</maven.compiler.source> : 자바 컴파일 버전
-    <maven.compiler.target>20</maven.compiler.target> : ㅂ배포파일(jar) 컴파일 버전
+    <maven.compiler.target>20</maven.compiler.target> : 배포파일(jar) 컴파일 버전
   </properties>
 ```
 
