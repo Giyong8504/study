@@ -72,7 +72,7 @@ Jsp Standard Tag Libarary
 	- step : 증감 단위 - 기본값은 1
 	- var : 변수 : 카운트 변수
 
-	- <c:forEach> 액션의 items 애트리뷰트를 시용해서 처리할 수 있는 데이터
+	- <c:forEach> 액션의 items 애트리뷰트를 사용해서 처리할 수 있는 데이터
 	- items : 배열, 콜렉션(collection - List, Set), Iterator, Enumeration, 콤마(,) 구분된 문자열
 				var : 변수 - 요소 하나하나  (var에 담으면) 
 	- varStatus : 반복 상태에 대한 값이 담겨 있는 객체
@@ -88,7 +88,7 @@ Jsp Standard Tag Libarary
 - java.util.StringTokenizer
 - items : EL식 문자열, 문자열
 - delims : 문자열에 포함된 구분 문자
-- var 
+- var
 <br>
 
 7) <c:catch>
@@ -323,3 +323,18 @@ EL 식으로 바로 출력하면 -> HTML 태그가 브라우저에서 해석되�
 					
 					<jsp:doBody />
 					
+3. 변수를 지원하는 커스텀 액션
+<%@ variable name-given="EL식 속성명" variable-class="속성의 자료형" scope="EL식 속성명을 접근할 수 있는 위치"%>
+- scope
+	- AT_END : 태그가 끝난 후 태그 외부에서 접근 가능
+	- AT_BEGIN : 본체가 있는 태그 : scriptless - > 여는 태그 바로 아래
+	- NESTED : 본체 안에서 사용 가능
+
+- name-from-attribute : 속성으로 지정된 값을 EL식 변수로 설정
+- alias='...'
+
+- 속성
+rtexprvalue : true - 기본값 : EL 변수, 자바 코드를 속성값으로 사용가능
+						: false - 지정한 타입의 기본형 자료만 가능(문자열)
+
+본체가 없으면 empty
