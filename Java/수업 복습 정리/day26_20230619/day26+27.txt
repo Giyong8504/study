@@ -1,0 +1,198 @@
+입출력(I/O)
+java.io
+
+1. 입출력이란?
+Input - 입력 / Output - 출력
+키보드, 파일 .../ 화면 (터미널, 웹화면)
+
+
+2. 스트림(stream)
+-데이터 운반하는데 사용되는 연결통로
+- 추상클래스로 되어있음.
+
+- 입력 스트림 : 입력 받는 통로
+	- 바이트 단위 입력 스트림
+	   (InputStream)
+	- 문자 단위 입력 스트림
+	   (Reader)
+
+- 출력 스트림 : 출력 하는 통로
+	- 바이트 단위 출력 스트림
+	   (OutputStream)
+
+	- 문자 단위 출력 스트림
+	   (Writer)
+
+
+바이트기반 스트림
+1.InputStream : 추상 클래스
+	- int read()
+		-> 파일 데이터를 다 읽으면 -1 반환
+		-> 1바이트씩 한칸씩 이동하면서 읽기 -> 효율성이 떨어진다. (준비에 소요되는 비용이 읽기 비용보다 더 크다.)
+		-> 효율성을 증대 시키려면 버퍼를 고려.
+
+
+		unsigned byte(2) - 양의 정수
+			- -1은 표현X
+
+		byte범위 숫자(0~255) + -1 >short, int, long
+	- int available() : 남아있는 바이트 수 반환, 0 -> 다 읽음
+
+	- int read(byte[ ] b ) : b - 버퍼 메모리 공간을 의미
+	   
+		-버퍼에 읽어온 데이터 기록
+		- 반환값 : 읽어온 바이트 수
+
+	- close() : 자원 해제 / AutoCloseable 인터페이스 구현 클래스이면 
+		try ~ with resources 구문을 사용해서 자동해제 ( 자원을 무조건 해제하는게 중요하다.)
+
+
+	기반 스트림 - 핵심기능
+	- 직접 데이터 소스에 접근하는 스트림
+		예) 파일
+
+	   FileInputStream : 파일 기반 스트림 (엄격한 예외처리) ********************* 많이씀*******
+	   ByteArrayInputStream : 메모리 기반 스트림 (임시로만 담아서 쓰게됨)  (Ex08)
+
+
+	보조 스트림
+	   - 다른 스트림에 추가 기능을 더해주는 스트림(기존 기능에 추가해주는것.)(문서에 매개변수 확인하자.)
+	   -** 생성자 매개변수가 InputStream 이면 보조 스트림이다.**  (나머지는 기반스트림)
+	   - 기본적으로 FilterInputStream 의 하위 클래스 (거의 대부분)  다른 inputstream의 체계만. (exam02.Ex01)
+		- BufferedInputStream : 버퍼 기능 제공, 기본 버퍼 값은 8kb
+		
+		- DataInputStream :  (Ex06)
+			-읽어온느 자료형, 순서가 반드시 일치 : 정확하게 읽을 수 있다.
+			- 같은 자료형 
+			- 파일에 끝에 도달한 경우 EOFException 발생 (End of F)
+
+
+		- ObjectIuputStream ( 객체 불러오는거 )
+
+		참고)
+		- InputStreamReader : 바이트 단위 읽 스트림 -> 문자 단위 읽기 스트림
+
+ 
+	기타
+		- SequenceInputStream -> 두개의  입력 스트림을 합칠 떄
+	
+
+
+2. OutputStream
+	void write(int byte) 
+ 
+	기반 스트림
+		- 직접 데이터에 접근하는 스트림
+		- FileOutputStream : 파일에 출력하는 스트림 / 1바이트씩 출력   ********************* 많이씀*******
+		- ByteArrayOutputStream : 메모리에 출력하는 스트림 (Ex08)
+
+	1 바이트 (0~255 - ASCII)
+
+	'안' -> 유니코드(2) : 50504 스택을 넘으면 다시 처음으로 돌아가 순서를 정해 값을 준다. (나올 때 까지 계속 돔) - 한글이 깨지는 이유.																		
+	보조 스트림
+		- 기존 스트림 + 추가 기능 (문서에 매개변수 확인하자.)
+		- FilterOutputStream  (exam02.Ex01)
+		     - BufferedOutputStream
+			-flush() : 버퍼비우기
+			-close() : 버퍼 
+		     - DataOutputStream
+
+		ObjectOutputStrema
+		OutputStreamWriter : 바이트 단위 출력 스트림 -> 문자 단위 출력 스트림
+
+문자기반 스트림
+1. Reader : 추상 클래스  (Ex06)
+	기반 스트림 
+		- 데이터를 직접 접근하는 스트림
+		-FileReader : 파일을 직접 접근하는 문자단위 입력 스트림  (이거로 하면 한글 안꺠짐~)
+		-CharArrayReader : 메모리 기반 문자 단위 입력 스트림
+		StringReader...
+
+	보조 스트림
+		- 기존 스트림 + 추가 기능
+		- BufferedReader : 기존 스트림 + 버퍼 추가 기능 (8k)  (Ex08)
+
+2.Writer : 추상클래스 (Ex07)
+	기반 스트림 
+		- FileWriter : 파일을 직접 접근해서 출력하는 문자 단위 스트림
+		- CharArrayWriter : 메모리기반 스트림
+		- StringWriter : 메모리기반 스트림
+
+		참고) 
+		printWriter
+		printStream
+			- print, println, printf 와 같은 메서드 추가
+	
+	보조 스트림
+		- BufferedWriter : 기존 스트림 + 버퍼 추가기능 
+
+
+
+
+참고)
+Scanner ((Ex8)을 보면 콘솔 만들 때 내용이 엄청긴데 이 기능이 Scanner이다.)
+
+
+표준 입출력
+1. 표준 입출력 (Standard Input / Output) (실행과 동시 이미 만들어짐)
+- System.in : InputStream
+- System.out : PrintStream  - 정상적인 부분이라 검정색
+- System.err : PrintStream  - 에러부분이라 빨간색으로 표시
+	setIn(InputStream in) : 
+	setOut(PrintStream out) : 표준 출력 
+	setErr(PrintStream  out) : 표준 에러 출력
+
+PrintStream
+	- println(...) : 출력 후 줄개행
+	- print(...) : 출력만, 줄개행 X
+	- printf(...) : 형식화 기능
+		%s : 문자열
+		%c : char
+		%d : 정수
+		%f : 실수
+
+PrintWrite
+
+2. 표준입출력 대상 변경 - setOut(), setErr(), setIn()
+
+File  - 파일의 편의 기능은 여기에 담겼따!
+-자바에서 File클래스를 통해서 파일과 디렉토리를 다룰 수 있도록 하고 있다.
+
+
+다른 플렛폼에서도 사용가능 하도록 되어있다
+static final String separator : 디렉토리 파일 구분 문자 (문서확인.) - OS마다 다르게 사용되는 구분문자를 현재 OS에 맞게 결정
+			윈도우즈 : D:\폴더\파일명... : 구분 문자 : \
+
+			리눅스 : /home/team/uploads 구분문자 : /  
+			맥OS 동일함.
+
+static final String pathSeparator : 환경 변수 구분 문자 - OS에 맞게 알아서 결정.
+				윈도우즈 :   ;
+				리눅스 :   :
+				맥 OS  :   :
+
+.. : 상위 디렉토리
+
+
+******추천책 *******
+GoF(Gang Of Four) 디자인패턴
+	- 데코레이터 패턴
+헤드 퍼스트 디자인 패턴
+******추천책 *******
+
+
+
+
+day27 Ex08 에 Stream<T> lines() 써보기.
+
+
+
+
+
+
+
+
+
+
+
+
