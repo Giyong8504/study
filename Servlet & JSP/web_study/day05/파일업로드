@@ -1,0 +1,10 @@
+# 파일업로드
+1. 파일 업로드를 위한 form 태그 구성
+2. Commons-FileUpload를 이용한 파일 업로드
+commons-fileupload-1.x.bin.zip
+commons-io-2.x.x-bin.zip
+
+3.ServletFileUpload 클래스의 메서드
+4.FileItem 클래스의 메서드
+
+파일다운로드
