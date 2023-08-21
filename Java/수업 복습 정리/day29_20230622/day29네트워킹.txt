@@ -1,0 +1,25 @@
+네트워킹  (Ex03)
+java.net 패키지
+
+1. InetAddress
+-IP주소를 다루기 위한 클래스
+
+byte : -127~126까지 인데 IP는 바이트를 넘어감
+
+IP : unsigned byte : 양의 정수(0~255)
+0~255. 0~255. 0~255. 0~255
+
+2. URL(Uniform Resource Location)
+-인터넷에 존재하는 여러 서버들이 제공하는 자원에 접근할 수 있는 주소를 표현하기 위한 것
+
+https://naver.com
+해당 경로를 찾아서 자원을 조회하고 가져오기 위해.
+
+https://n.news.naver.com/mnews/article/003/0011928375?sid=105#footer
+
+
+3. URLConnection
+-URLConnection은 어플리케이션과 URL간의 통신연결을 나타내는 클래스의 최상위 클래스
+
+URL ->URLConnection  openConnection()
+
