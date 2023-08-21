@@ -17,7 +17,7 @@ JPA(Java Persistence API - ORM 표준 설계)
 	spring-context
 	
 3. 스프링은 객체 컨테이너
-	**IoC** - Invesion Of Control : 제어의 역전 (면 단골주제)
+	**IoC** - Invesion Of Control : 제어의 역전 (면접 단골주제)
 		- 개발자가 해야되는 객체의 관리 -> 스프링 컨테이너가 대신 수행
 		
 	- 다양한 방식으로 객체 관리
@@ -50,7 +50,7 @@ JPA(Java Persistence API - ORM 표준 설계)
 
 <br>
 
-의존 자동 주입
+# 의존 자동 주입 - 4가지의 붙일 수 있는 장소
 1. @Autowired
 1) 멤버 변수
 2) setter 메서드 : 의존성을 주입, 호출
@@ -68,9 +68,35 @@ JPA(Java Persistence API - ORM 표준 설계)
 
 2. 일치하는 빈이 없는 경우
 3. @Qualifier
+- 의존성 주입을 할 스프링 빈의 이름을 명시 (기본 메서드명이 빈의 이름이다.)
+
 4. 빈 이름과 기본 한정
 
 5. @Autowired 애노테이션의 필수 여부
 	required=false : 의존하고 있는 객체가 스프링 컨테이너에 **없으면 호출하지 않는다**
 	
 	@Nullable : setter 메서드는 호출, 의존하는 객체가 없으면 null을 주입
+	
+# 컴포넌트 스캔
+- 지정된 특정 패키지의 범위의 특정 애노테이션이 정의된 클래스를 자동 빈으로 생성
+1. @Component
+2. @ComponentScan
+
+3. 기본 스캔 대상 - 암기!!
+@Component
+@Service
+@Inject
+
+@Configuration 
+@Controller
+@RestController
+@Repository
+@ControllerAdvice
+@RestControllerAdvice
+@Aspect
+
+
+4. 컴포넌트 스캔에 따른 충돌 처리
+1) 빈 이름 충돌
+2) 수동 등록한 빈과 충돌
+3) excludeFilters
