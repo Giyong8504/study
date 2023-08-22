@@ -23,7 +23,7 @@ public class ServiceManager {
     }
 
     public JoinService joinService() {
-        return new JoinService(memberDao(), joinValidator());
+       return new JoinService(memberDao(), joinValidator());
     }
 
     public ListService listService() {
