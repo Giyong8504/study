@@ -63,14 +63,15 @@ JPA(Java Persistence API - ORM 표준 설계)
 			참고) 초기화가 반드시 필요한 멤버 변수
 				초기값이 없는 final 멤버 변수
 				@NonNull 멤버변수
-				
-> 참고)
-> class Optional<T> {
-> ...
-> private final T value;
-> ...
-> }
 
+	```
+	참고)
+		class Optional<T> {
+		...
+		private final T value;
+		...
+		}
+	```
 2. 일치하는 빈이 없는 경우
 3. @Qualifier
 - 의존성 주입을 할 스프링 빈의 이름을 명시 (기본 메서드명이 빈의 이름이다.)
@@ -88,18 +89,20 @@ JPA(Java Persistence API - ORM 표준 설계)
 2. @ComponentScan
 
 3. 기본 스캔 대상 - 암기!!
-@Component
-@Service
-@Inject
 
-@Configuration 
-@Controller
-@RestController
-@Repository
-@ControllerAdvice
-@RestControllerAdvice
-@Aspect
+	```
+	@Component
+	@Service
+	@Inject
 
+	@Configuration 
+	@Controller
+	@RestController
+	@Repository
+	@ControllerAdvice
+	@RestControllerAdvice
+	@Aspect
+	```
 
 4. 컴포넌트 스캔에 따른 충돌 처리
 - 빈의 이름 클래스명에서 앞자만 소문자 (패키지명은 고려하지 않는다.)
