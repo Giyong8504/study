@@ -7,7 +7,6 @@ public class Ex01 {
         long result1 = cal1.factorial(10); // 핵심 기능
         System.out.printf("cal1=%d%n", result1);
 
-
         Calculator cal2 = new ProxyCalculator(new RecCalculator());
         long result2 = cal2.factorial(10); // 핵심 기능
         System.out.printf("cal2=%d%n", result2);

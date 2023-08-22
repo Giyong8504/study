@@ -39,21 +39,51 @@ Aspect Oriented Programming : 프록시
 <br>
 
 	
+2. AOP
+- Aspect Oriented Programming : 관점 지향 프로그래밍
+	관점 : 공통기능
+	spring aop API (인터페이스로 구현체가 필요하다.)
+	+ 구현체 : aspectjweaverd
 	
+	spring-context
 	
-	
-
-2AOP
 3. @Aspect, @Pointcut, @Around를 이용한 AOP 구현
-1) @Aspect
-2) @Pointcut
-3) @Around
+1) @Aspect : 공통 기능이 정의된 클래스
+2) @Pointcut : 공통 기능 적용 범위
+3) @Around : 공통 기능을 수행할 메서드
 
 4. ProceedingJoinPoint의 메서드
-1) Signature getSignnature()
-	- String getName()
+1) Object proceed() // 핵심 기능 수행.
+
+2) Signature getSignnature() : 호출한 메서드에 대한 정보
+	- String getName() : 접근제어자 + 메서드 반환값 타입 + 메서드명 + 매개변수 ..
 	- String toLongString()
 	- String toShortString()
 
-2) Object getTarget()
-3) Object[] getArgs()
+3) Object getTarget()
+4) Object[] getArgs()
+
+
+참고) 
+@enable .. -> 형태는 프록시
+
+
+5. 프록시 생성방식
+
+6. execution 명시자 표현식
+	참고)
+		Ant 패턴
+		 패키지
+			.
+			 예) aopex.* : aopex의 하위 모든 클래스
+			 
+			..
+			
+				예) aopex..* : aopex의 하위 클래스 + 하위 클래스를 포함한 모든 클래스
+				
+			* : 모든 반환값, 모든 클래스, 모든 메소드, 모든 자료형	
+			
+			* aopex.*.* 모든 메서드 모든 클래스
+			* aopex.* 이거만 해도 모두 다 호출한다.
+			
+			
