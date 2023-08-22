@@ -1,12 +1,13 @@
-package exam03.models.member;
+package exam04.models.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Service
 public class ListService {
 
     private MemberDao memberDao;
@@ -20,7 +21,6 @@ public class ListService {
     }
 
     @Autowired
-    @Qualifier("memberDao2")
     public void setMemberDao(MemberDao memberDao) {
 
         this.memberDao = memberDao;

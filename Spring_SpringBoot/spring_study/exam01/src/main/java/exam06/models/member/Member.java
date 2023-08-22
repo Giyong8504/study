@@ -1,4 +1,4 @@
-package exam03.models.member;
+package exam06.models.member;
 
 import lombok.Data;
 
