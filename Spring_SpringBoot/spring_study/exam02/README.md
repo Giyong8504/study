@@ -60,12 +60,15 @@ Aspect Oriented Programming : 프록시
 	- String toLongString()
 	- String toShortString()
 
-3) Object getTarget()
-4) Object[] getArgs()
+3) Object getTarget() : 호출한 메서드가 소속된 객체
+4) Object[] getArgs() : 매개변수로 사용된 값
 
 
 참고) 
-@enable .. -> 형태는 프록시
+@Enable .. -> 형태는 프록시
+
+proxyCache -> ProxyCalculator : 순서의 보장이 매우중요한 프록시(반드시 순서를 지켜주어야한다.)
+
 
 
 5. 프록시 생성방식
@@ -87,3 +90,8 @@ Aspect Oriented Programming : 프록시
 			* aopex.* 이거만 해도 모두 다 호출한다.
 			
 			
+7. @Order
+ : 프록시 실행 순서가 중요한 경우 적용 순서 명시
+ : 숫자가 작을 수록 먼저 수행
+ 
+8. @Around의 Pointcut 
