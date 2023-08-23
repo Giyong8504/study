@@ -47,6 +47,8 @@ INSERT INTO member VALUES (?, ? ,? ...)
 	DEBUG
 	TRACE : 추적(제일 많은 양)
 	
+	
+	
 <br>
 
 ### logback.xml	
@@ -73,7 +75,7 @@ INSERT INTO member VALUES (?, ? ,? ...)
 
 <br>
 
-
+4. PreparedStatement
 
 
 
