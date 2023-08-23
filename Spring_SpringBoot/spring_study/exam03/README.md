@@ -16,12 +16,74 @@
 
 2. DataSource 설정
 3. JdbcTmeplate을 이용한 쿼리 실행
+- PreparedStatement
+INSERT INTO member VALUES (?, ? ,? ...)
 1) query() : 데이터 목록 조회, SELECT 문
 - List query(String sql, RowMapper rowMapper)
 - List query(String sql, Object[] args, RowMapper rowMapper)
+- List query(string sql, RowMapper rowMapper, Object... args)
 
+
+2) T queryForObject() : 데이터 레코드 한개, 단일값 - 통계 데이터 : 합계, 평균...
+- 조회된 데이터가 한개 레코드가 아니면(0개 이거나 2개 이상인 경우) : 예외 발생
+- try~ catch로 예외처리
+
+3) update() : 데이터 변경 쿼리 - INSERT, UPDATE, DELETE / 반환값은 반영된 레코드 갯수
+- int update(String sql)
+= int update(String sql, Object... args)
 
 <br>
+
+참고)
+	쿼리 수행시 기본적으로 로그는 출력 X
+	slf4j api
+	logback classic
+	
+	로그 레벨
+	FATAL
+	ERROR
+	WARN : 경고
+	INFO : 정보성
+	DEBUG
+	TRACE : 추적(제일 많은 양)
+	
+<br>
+
+### logback.xml	
+- Logback은 로그 메시지 형식과 기록 위치를 설정 파일에서 읽어온다. 
+- 이 설정 파일을 src/main/resources에 다음과 같이 작성한다.
+- src/main/resources/logback.xml	
+	
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d %5p %c{2} - %m%n</pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="stdout" />
+    </root>
+
+    <logger name="org.springframework.jdbc" level="DEBUG" />
+</configuration>
+	```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```
 필요한 mvn
@@ -31,5 +93,8 @@
 - mysql connector/j
 - lombok
 ```
+
+1. AppCtx 설정하기
+2. models.member에 member, memberDao 설정하기
 
 <br>

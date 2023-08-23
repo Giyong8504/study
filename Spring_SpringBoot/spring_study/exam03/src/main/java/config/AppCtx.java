@@ -2,9 +2,12 @@ package config;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
+@ComponentScan("models")
 public class AppCtx {
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
@@ -23,5 +26,9 @@ public class AppCtx {
         ds.setMinEvictableIdleTimeMillis(30000);
 
         return ds;
+    }
+    @Bean
+    public JdbcTemplate jdbcTemplate() {
+        return new JdbcTemplate(dataSource());
     }
 }
