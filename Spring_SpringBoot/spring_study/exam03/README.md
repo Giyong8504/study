@@ -144,19 +144,26 @@ WebMvcConfigurer 인터페이스
 3. 코드 및 JSP 구현
 
 4. 스프링 MVC 프레임워크 동작 방식
-- 왜 바로 실행안하고 한번 거치는 이유?  
-요청하게되면(/greet) -> DispatcherServlet에서 필요한 빈을 찾는다. -> HandlerMapping(요청에 따라서 빈을 찾는다.)요청된 URL과 매칭되는 컨트롤러를 검색한다.
-	- 형태를 맞춰서 실행하기 위해 adapter가 필요함. 
-	- 이후 컨트롤 빈을 실행함. 반환은 Model(데이터)/view(템플릿경로) 로 반환(경로와 데이터로 반환된다.)
-	- 응답하기 위해서 viewResolver에서 경로를 검색 하고 view 찾고 응답하게 된다.
+
+## 왜 바로 실행안하고 한번 거치는 이유? 
+요청하게되면(/greet) -> DispatcherServlet에서 필요한 빈을 찾는다. 
+-> HandlerMapping(요청에 따라서 빈을 찾는다.)요청된 URL과 매칭되는 컨트롤러를 검색한다.
+-> 형태를 맞춰서 실행하기 위해 adapter가 필요함. 
+-> 이후 컨트롤 빈을 실행함. 반환은 Model(데이터)/view(템플릿경로) 로 반환(경로와 데이터로 반환된다.)
+-> 응답하기 위해서 viewResolver에서 경로를 검색 하고 view 찾고 응답하게 된다.
+
+<br>
+
+<img src="C:\Users\kky51\Pictures\Screenshots\img123.png">
 	
+<br>
+
 - 컨트롤러 빈
 1) @Controller
 2) Controller 인터페이스 구현체
 3) HttpRequestHandler
 
 5. WebMvcConfigurer 인터페이스와 설정
-
 
 6. 정리
 1) DispatcherServlet 
@@ -186,3 +193,31 @@ WebMvcConfigurer 인터페이스
 ```
 
 <br>
+
+------
+# 스프링 웹 MVC
+
+1. 요청 매핑
+@GetMapping
+@PostMapping
+@PutMapping  완전한 치환
+@PatchMapping 부분 치환
+@DeleteMapping
+
+- 스프링4 이전부터 사용된 애노테이션
+@RequestMapping : method 속성을 설정 x -> 모든 요청 메서드에 매핑 / 공통 url을 설정할 떄 주로 사용
+
+HttpServletRequest
+	String getParameter(String name)
+
+- 요청 메서드 : 요청 파라미터와 동일한 명칭의 변수명 : 자동 주입
+	명칭이 다르면 ? 주입X
+	
+- @RequestParam : 요청 파라미터와 다른 명칭의 변수에 값을 주입
+
+2. 커맨드 객체
+3. 커맨드 객체 : 중첩 , 콜렉션 프로퍼티
+4. 리다이렉트
+5. 컨트롤러 구현 없는 경로 매핑
+6. 폼 태그
+1) <%@ taglib 

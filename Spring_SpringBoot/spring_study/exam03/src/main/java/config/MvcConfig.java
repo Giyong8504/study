@@ -20,7 +20,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.jsp("WEB-INF/view/", ".jsp");
+        registry.jsp("/WEB-INF/view/", ".jsp");
         //템플릿 경로를 찾기 위한. 사용자의 환경에 따라 바꿀 수 있다. (그래서 이건 spring이 안해줌)
     }
 }
