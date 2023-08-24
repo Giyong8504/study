@@ -134,20 +134,55 @@ servlet.jsp-api
 jstl api + 구현체
 
 
-
-
-
-
-
 1. 톰캣 설정
 2. 스프링 MVC 설정
 WebMvcConfigurer 인터페이스
+@EnableWebMvc
+핵심적인 객체들을 위의 애노테이션으로 다 구현해준다.
+
+
 3. 코드 및 JSP 구현
 
 4. 스프링 MVC 프레임워크 동작 방식
+- 왜 바로 실행안하고 한번 거치는 이유?  
+요청하게되면(/greet) -> DispatcherServlet에서 필요한 빈을 찾는다. -> HandlerMapping(요청에 따라서 빈을 찾는다.)요청된 URL과 매칭되는 컨트롤러를 검색한다.
+	- 형태를 맞춰서 실행하기 위해 adapter가 필요함. 
+	- 이후 컨트롤 빈을 실행함. 반환은 Model(데이터)/view(템플릿경로) 로 반환(경로와 데이터로 반환된다.)
+	- 응답하기 위해서 viewResolver에서 경로를 검색 하고 view 찾고 응답하게 된다.
+	
+- 컨트롤러 빈
+1) @Controller
+2) Controller 인터페이스 구현체
+3) HttpRequestHandler
+
 5. WebMvcConfigurer 인터페이스와 설정
+
+
 6. 정리
-1) DispatcherServlet
-2) HandlerMapping
-3) HandlerAdapter
-4) ViewResolver
+1) DispatcherServlet 
+2) HandlerMapping 요청이 들어오면 해당하는 컨트롤 빈을 찾는 역할
+3) HandlerAdapter 형태에 맞춰 처리 : model로 반환 
+4) ViewResolver	위 정보를 가지고 view를 찾아서 응답하고 실행한다.
+
+<br>
+
+참고)
+
+### Ant 경로 패턴
+
+```
+** : 현재 경로와 하위 경로를 모두 포함한 모든 파일
+예) /upload/**
+		/upload/1.png
+		/upload/sub/2.png
+		
+* : 현재 경로의 모든 파일
+	/upload/**
+		/upload/1.png
+		
+? : 글자 1개
+예) /m?00
+		-> /m100, /m200
+```
+
+<br>
