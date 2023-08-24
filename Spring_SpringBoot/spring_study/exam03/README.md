@@ -75,16 +75,39 @@ INSERT INTO member VALUES (?, ? ,? ...)
 
 <br>
 
-4. PreparedStatement
+4. PreparedStatementCreator를 이용한 쿼리 실행
+5. INSERT 쿼리 실행 시 KeyHolder를 이용해서 자동 생성 키값 구하기
+6. 스프링의 익셉션 변환 처리
+	- 각 연동 기술에 따라 발생하는 익셉션을 스프링이 제공하는 익셉션으로 변환함으로써 다음과 같이 구현 기술에 상관없이 동일한 코드로 익셉션을 처리할 수 있게 된다.
+	SQLExcpetion, HibernateException, PersistenceException ->  DataAccessException
+	(RuntimeException)
 
 
+7. 트랜잭션 처리
+
+SQL1
+SQL2
+SQL3
+SQL4
+
+COMMIT을 해야만 -> DB에 영구 반영
+
+conn.setAutoCommit(false); // 추가 공통 기능 
+
+pstmt.executeUpdate(...) //핵심 기능
+pstmt.executeUpdate(...) //핵심 기능
+pstmt.executeUpdate(...) //핵심 기능
+pstmt.executeUpdate(...) //핵심 기능
+
+conn.commit(); // 추가 공통 기능
+
+conn.rollback(); // 다시 돌아감.
 
 
-
-
-
-
-
+1) @Transactional
+	-Proxy 구현(AOP)
+2) PlatformTransactionManager
+3) DataSourceTransactionManager
 
 
 ```
@@ -100,3 +123,101 @@ INSERT INTO member VALUES (?, ? ,? ...)
 2. models.member에 member, memberDao 설정하기
 
 <br>
+
+------------------
+
+# 스프링 MVC
+0. 의존성
+spring webmvc
+servlet-api
+servlet.jsp-api
+jstl api + 구현체
+
+
+1. 톰캣 설정
+2. 스프링 MVC 설정
+WebMvcConfigurer 인터페이스
+@EnableWebMvc
+핵심적인 객체들을 위의 애노테이션으로 다 구현해준다.
+
+
+3. 코드 및 JSP 구현
+
+4. 스프링 MVC 프레임워크 동작 방식
+
+## 왜 바로 실행안하고 한번 거치는 이유? 
+요청하게되면(/greet) -> DispatcherServlet에서 필요한 빈을 찾는다. 
+-> HandlerMapping(요청에 따라서 빈을 찾는다.)요청된 URL과 매칭되는 컨트롤러를 검색한다.
+-> 형태를 맞춰서 실행하기 위해 adapter가 필요함. 
+-> 이후 컨트롤 빈을 실행함. 반환은 Model(데이터)/view(템플릿경로) 로 반환(경로와 데이터로 반환된다.)
+-> 응답하기 위해서 viewResolver에서 경로를 검색 하고 view 찾고 응답하게 된다.
+
+<br>
+
+<img src="C:\Users\kky51\Pictures\Screenshots\img123.png">
+	
+<br>
+
+- 컨트롤러 빈
+1) @Controller
+2) Controller 인터페이스 구현체
+3) HttpRequestHandler
+
+5. WebMvcConfigurer 인터페이스와 설정
+
+6. 정리
+1) DispatcherServlet 
+2) HandlerMapping 요청이 들어오면 해당하는 컨트롤 빈을 찾는 역할
+3) HandlerAdapter 형태에 맞춰 처리 : model로 반환 
+4) ViewResolver	위 정보를 가지고 view를 찾아서 응답하고 실행한다.
+
+<br>
+
+참고)
+
+### Ant 경로 패턴
+
+```
+** : 현재 경로와 하위 경로를 모두 포함한 모든 파일
+예) /upload/**
+		/upload/1.png
+		/upload/sub/2.png
+		
+* : 현재 경로의 모든 파일
+	/upload/**
+		/upload/1.png
+		
+? : 글자 1개
+예) /m?00
+		-> /m100, /m200
+```
+
+<br>
+
+------
+# 스프링 웹 MVC
+
+1. 요청 매핑
+@GetMapping
+@PostMapping
+@PutMapping  완전한 치환
+@PatchMapping 부분 치환
+@DeleteMapping
+
+- 스프링4 이전부터 사용된 애노테이션
+@RequestMapping : method 속성을 설정 x -> 모든 요청 메서드에 매핑 / 공통 url을 설정할 떄 주로 사용
+
+HttpServletRequest
+	String getParameter(String name)
+
+- 요청 메서드 : 요청 파라미터와 동일한 명칭의 변수명 : 자동 주입
+	명칭이 다르면 ? 주입X
+	
+- @RequestParam : 요청 파라미터와 다른 명칭의 변수에 값을 주입
+
+2. 커맨드 객체
+3. 커맨드 객체 : 중첩 , 콜렉션 프로퍼티
+4. 리다이렉트
+5. 컨트롤러 구현 없는 경로 매핑
+6. 폼 태그
+1) <%@ taglib 
