@@ -75,21 +75,39 @@ INSERT INTO member VALUES (?, ? ,? ...)
 
 <br>
 
-4. PreparedStatement
-
-
+4. PreparedStatementCreator를 이용한 쿼리 실행
+5. INSERT 쿼리 실행 시 KeyHolder를 이용해서 자동 생성 키값 구하기
+6. 스프링의 익셉션 변환 처리
+	- 각 연동 기술에 따라 발생하는 익셉션을 스프링이 제공하는 익셉션으로 변환함으로써 다음과 같이 구현 기술에 상관없이 동일한 코드로 익셉션을 처리할 수 있게 된다.
+	SQLExcpetion, HibernateException, PersistenceException ->  DataAccessException
+	(RuntimeException)
 
 
 7. 트랜잭션 처리
+
+SQL1
+SQL2
+SQL3
+SQL4
+
+COMMIT을 해야만 -> DB에 영구 반영
+
+conn.setAutoCommit(false); // 추가 공통 기능 
+
+pstmt.executeUpdate(...) //핵심 기능
+pstmt.executeUpdate(...) //핵심 기능
+pstmt.executeUpdate(...) //핵심 기능
+pstmt.executeUpdate(...) //핵심 기능
+
+conn.commit(); // 추가 공통 기능
+
+conn.rollback(); // 다시 돌아감.
+
+
 1) @Transactional
+	-Proxy 구현(AOP)
 2) PlatformTransactionManager
 3) DataSourceTransactionManager
-
-
-
-
-
-
 
 
 ```
@@ -105,3 +123,31 @@ INSERT INTO member VALUES (?, ? ,? ...)
 2. models.member에 member, memberDao 설정하기
 
 <br>
+
+------------------
+
+# 스프링 MVC
+0. 의존성
+spring webmvc
+servlet-api
+servlet.jsp-api
+jstl api + 구현체
+
+
+
+
+
+
+
+1. 톰캣 설정
+2. 스프링 MVC 설정
+WebMvcConfigurer 인터페이스
+3. 코드 및 JSP 구현
+
+4. 스프링 MVC 프레임워크 동작 방식
+5. WebMvcConfigurer 인터페이스와 설정
+6. 정리
+1) DispatcherServlet
+2) HandlerMapping
+3) HandlerAdapter
+4) ViewResolver
