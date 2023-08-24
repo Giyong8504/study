@@ -80,6 +80,11 @@ INSERT INTO member VALUES (?, ? ,? ...)
 
 
 
+7. 트랜잭션 처리
+1) @Transactional
+2) PlatformTransactionManager
+3) DataSourceTransactionManager
+
 
 
 
