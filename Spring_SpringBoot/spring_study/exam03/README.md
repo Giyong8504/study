@@ -218,8 +218,29 @@ HttpServletRequest
 2. 커맨드 객체
 - getter, setter 형태의 객체 
 
+	JSP : 속성 관리하는 객체 
+	1) PageContext pageContext
+	2) HttpServletRequest
+	3) HttpSession sseion
+	4) Servlet
+	
+	-> EL 속성으로 자동추가 : 클래스명에서 앞글자만 소문자인 속성명
+
 3. 커맨드 객체 : 중첩 , 콜렉션 프로퍼티
+	하나의 파라미터에 여러개의 데이터 매핑 : 배열 또는 컬랙션(Collection - List, Set)
 4. 리다이렉트
 5. 컨트롤러 구현 없는 경로 매핑
 6. 폼 태그
 1) <%@ taglib 
+
+
+7. 모델
+	Model
+		.addAttribute(String name, Object value)
+		.addAllAtrribute(Map...)
+		
+	-> 많이 사용하는 부분들은 요청메서드로 정의 : 주입 한다.
+		
+		
+		
+		
