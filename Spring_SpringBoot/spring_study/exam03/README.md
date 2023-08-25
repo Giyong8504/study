@@ -71,7 +71,7 @@ INSERT INTO member VALUES (?, ? ,? ...)
 
     <logger name="org.springframework.jdbc" level="DEBUG" />
 </configuration>
-	```
+```
 
 <br>
 
@@ -154,7 +154,8 @@ WebMvcConfigurer 인터페이스 ** 암기.
 
 <br>
 
-<img src="C:\Users\kky51\Pictures\Screenshots\img123.png">
+![image](https://github.com/Giyong8504/study/assets/128211712/db3b1d31-9ca1-4a21-a3de-f002981aea5f)
+
 	
 <br>
 
@@ -189,7 +190,7 @@ WebMvcConfigurer 인터페이스 ** 암기.
 		
 ? : 글자 1개
 예) /m?00
-		-> /m100, /m200
+	-> /m100, /m200
 ```
 
 <br>
@@ -252,56 +253,65 @@ WebMvcConfigurer
 	- <form:hidden>
 	
 
-4) <select> 관련 커스탬 태그
+4) <select> 관련 커스텀 태그
+
+```
 	- <form:select>
 		- path, items
 	- <form:options>
 		- items, itemLabel, itemValue
 	- <form:option>
-		- vlaue, label
-		
+		- value, label
+```
+
 5) 체크박스 관련 커스텀 태그
+ 	```
 	- <form:checkboxes>
 		- path, items, itemLabel, itemValue
 		- items : 배열, 컬렉션
-	
+		
 	- <form:checkbox>
-		- label, value
+	 ```
+			- label, value
+6) 라디오버튼 관련 커스텀 태그
+	```
+	- <form:radiobuttons>
+	- <form:radiobutton>
+	```
 
-6) 라디오버튼 관련 커스템 태그
-	- <form:
-	
-7) 
+7) textarea
+
+```  
+ <form:textarea>
+```
 
 8) CSS 및 HTML 태그와 관련된 공통 속성
 	- cssClass: HTML의 class 속성값
 	- cssErrorClass : 폼 검증 에러가 발생했을 때 사용할 HTML의 class 속성값
-	- cssStyle : HTML의 style 속성값
-	
-	- id, title, dir
-	- disab
-
-7. 모델
-	Model
-		.addAttribute(String name, Object value)
-		.addAllAtrribute(Map...)
+	- cssStyle: HTML의 style 속성값
 		
-	-> 많이 사용하는 부분들은 요청메서드로 정의 : 주입 한다.
+	- id, title, dir
+	- disabled, tabindex
+	- onfocus, onblur, onchange onclick, ondblclick
+	- onkeydown, onkeypress, onkeyup
+	- onmousedown, onmousemove, onmouseup
+	- onmouseout, onmouseover
+	
+	- htmlEscape 
+7. 모델
+	Model 
+		.addAttribute(String name, Object value)
+		.addAllAtrribute(Map....)
+	
+	->  요청 메서드로 정의 : 주입
+	
 	
 요청 메서드에 자동 주입
-1) 커맨드 객체 : 요청 데이터가 주입된다.
-2) Model 객체도 주입된다.
+1) 커맨드 객체 : 요청 데이터
+2) Model
 3) Errors : 커맨드 객체 검증 실패(유효성 검사)시 에러에 대한 정보 
 
-서블릿 기본 객체 : 스프링 컨테이너에 관리 객체 추가 : 요청 메서드의 주입, 의존성 자동 주입(@Autowired)
+서블릿 기본 객체 : 스프링 컨테이네어 관리 객체 추가 :  요청 메서드의 주입, 의존성 자동 주입(@Autowired)
 4) HttpServletRequest
-5) HttpServletResponse
+5) HttpServletResponse 
 6) HttpSession
-
-		
-		
-
-
-
-
-cssClass="on" cssClass=""
