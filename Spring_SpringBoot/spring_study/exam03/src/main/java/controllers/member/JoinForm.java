@@ -15,6 +15,7 @@ public class JoinForm {
     private String mobile;
 //    private String[] hobby;
     private List<String> hobby;
-    private Address address;
+//    private Address address;
+    private String intro;
     private boolean agree;
 }

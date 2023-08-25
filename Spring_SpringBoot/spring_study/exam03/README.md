@@ -230,13 +230,21 @@ HttpServletRequest
 	하나의 파라미터에 여러개의 데이터 매핑 : 배열 또는 컬랙션(Collection - List, Set)
 	
 4. 리다이렉트
+요청 메서드의 반환값 "redirect: 주소": response::sendRedirect(...);
+
+예) return "redirect:/member/login"; -> 응답헤더
 
 5. 컨트롤러 구현 없는 경로 매핑
+WebMvcConfigurer
+	- void addViewControllers(...) 설정 메서드
+	(바로 url 없이 설정할 수 있는것. 예) 회사 소개) 
 
 6. 폼 태그
 1) <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 2) <form:form>
 	- medelAttribute : 커맨드 객체의 이름(EL식 속성 이름)
+	- 커맨드 객체의 이름이 command 이면 생략 가능
+	- ModelAttribute : -> 커맨드 객체의 EL식 속성명을 변경
 
 3) <input> 관련 커스텀 태그
 	- <form:input> / type='text' / path="요청 파라미터 명/ 커맨드 객체의 속성 명
@@ -261,6 +269,17 @@ HttpServletRequest
 		- label, value
 
 6) 라디오버튼 관련 커스템 태그
+	- <form:
+	
+7) 
+
+8) CSS 및 HTML 태그와 관련된 공통 속성
+	- cssClass: HTML의 class 속성값
+	- cssErrorClass : 폼 검증 에러가 발생했을 때 사용할 HTML의 class 속성값
+	- cssStyle : HTML의 style 속성값
+	
+	- id, title, dir
+	- disab
 
 7. 모델
 	Model
@@ -268,7 +287,21 @@ HttpServletRequest
 		.addAllAtrribute(Map...)
 		
 	-> 많이 사용하는 부분들은 요청메서드로 정의 : 주입 한다.
+	
+요청 메서드에 자동 주입
+1) 커맨드 객체 : 요청 데이터가 주입된다.
+2) Model 객체도 주입된다.
+3) Errors : 커맨드 객체 검증 실패(유효성 검사)시 에러에 대한 정보 
+
+서블릿 기본 객체 : 스프링 컨테이너에 관리 객체 추가 : 요청 메서드의 주입, 의존성 자동 주입(@Autowired)
+4) HttpServletRequest
+5) HttpServletResponse
+6) HttpSession
+
 		
 		
-		
-		
+
+
+
+
+cssClass="on" cssClass=""

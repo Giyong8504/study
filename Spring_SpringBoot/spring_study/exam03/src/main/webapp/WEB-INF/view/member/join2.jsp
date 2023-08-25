@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:url var="action" value="/member/join" />
@@ -6,13 +6,23 @@
     <dl>
         <dt>가입유형</dt>
         <dd>
+            <%--
             <form:radiobuttons path="type" items="${types}" itemLabel="label" itemValue="_value" />
+            --%>
+            <%--
+            <form:select path="type" items="${types}" itemLabel="label" itemValue="_value" />
+            --%>
+            <form:select path="type">
+                <option value="">- 선택하세요 -</option>
+                <form:options items="${types}" itemLabel="label" itemValue="_value" />
+            </form:select>
         </dd>
     </dl>
+
     <dl>
         <dt>아이디</dt>
         <dd>
-            <form:input path="userId" />
+            <form:input path="userId" cssClass="on" cssStyle="border: 1px solid red;" />
         </dd>
     </dl>
     <dl>
@@ -40,7 +50,7 @@
         </dd>
     </dl>
     <dl>
-        <dt>휴대전화번호<dt>
+        <dt>휴대전화 번호</dt>
         <dd>
             <form:input path="mobile" />
         </dd>
@@ -48,11 +58,17 @@
     <dl>
         <dt>취미</dt>
         <dd>
-            <form:checkboxes path="hobby" items="${hobbies}" itemLabel= "label" itemValue="_value" />
+            <form:checkboxes path="hobby" items="${hobbies}" itemLabel="label" itemValue="_value" />
+        </dd>
+    </dl>
+    <dl>
+        <dt>자기소개</dt>
+        <dd>
+            <form:textarea path="intro" rows="10" cols="40" />
         </dd>
     </dl>
     <div>
-        <form:checkbox path="agree" value="true" label="회원가입약관에 동의합니다." />
+        <form:checkbox path="agree" value="true" label="회원가입약관에 동의 합니다." />
     </div>
     <button type="submit">가입하기</button>
 </form:form>

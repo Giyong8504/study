@@ -12,8 +12,9 @@ import java.util.List;
 public class MemberJoinController {
     @GetMapping // /member/join
     //@RequestMapping(method = RequestMethod.GET, path="/member/join")
-    public String join(Model model) {
-        model.addAttribute("joinForm", new JoinForm());
+    public String join(@ModelAttribute JoinForm joinForm, Model model) {
+        //model.addAttribute("joinForm", new JoinForm());
+        // 커맨드 객체 @ModelAttribute 을 사용하면 알아서 바로 위의 주석의 내용을 알아서 추가 해준다.
 
         List<Item> hobbies = getHobbies();
         model.addAttribute("hobbies", hobbies);
@@ -25,7 +26,7 @@ public class MemberJoinController {
     }
 
     @PostMapping
-    public String joinPs(JoinForm form, Model model) { // JoinForm -> joinForm : EL 속성 추가
+    public String joinPs(/*@ModelAttribute("command") */ JoinForm form, Model model) { // JoinForm -> joinForm : EL 속성 추가
         //model.addAttribute("joinForm", joinForm);
         //System.out.println(form);
 
@@ -35,7 +36,7 @@ public class MemberJoinController {
         List<Item> types = getMemberTypes();
         model.addAttribute("types", types);
 
-        return "member/join2";
+        return "redirect:/member/login";
     }
 
     private List<Item> getMemberTypes() {
@@ -75,4 +76,5 @@ public class MemberJoinController {
     }
 
      */
+
 }
