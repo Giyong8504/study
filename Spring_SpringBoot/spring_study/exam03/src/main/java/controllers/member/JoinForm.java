@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class JoinForm {
+    private String type = "private";  // 값을 입력하게 되면 알아서 선택이 되어있다.
     private String userId;
     private String userPw;
     private String userPwRe;

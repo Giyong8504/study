@@ -228,11 +228,39 @@ HttpServletRequest
 
 3. 커맨드 객체 : 중첩 , 콜렉션 프로퍼티
 	하나의 파라미터에 여러개의 데이터 매핑 : 배열 또는 컬랙션(Collection - List, Set)
+	
 4. 리다이렉트
-5. 컨트롤러 구현 없는 경로 매핑
-6. 폼 태그
-1) <%@ taglib 
 
+5. 컨트롤러 구현 없는 경로 매핑
+
+6. 폼 태그
+1) <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+2) <form:form>
+	- medelAttribute : 커맨드 객체의 이름(EL식 속성 이름)
+
+3) <input> 관련 커스텀 태그
+	- <form:input> / type='text' / path="요청 파라미터 명/ 커맨드 객체의 속성 명
+	- <form:password>
+	- <form:hidden>
+	
+
+4) <select> 관련 커스탬 태그
+	- <form:select>
+		- path, items
+	- <form:options>
+		- items, itemLabel, itemValue
+	- <form:option>
+		- vlaue, label
+		
+5) 체크박스 관련 커스텀 태그
+	- <form:checkboxes>
+		- path, items, itemLabel, itemValue
+		- items : 배열, 컬렉션
+	
+	- <form:checkbox>
+		- label, value
+
+6) 라디오버튼 관련 커스템 태그
 
 7. 모델
 	Model
