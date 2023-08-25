@@ -136,7 +136,7 @@ jstl api + 구현체
 
 1. 톰캣 설정
 2. 스프링 MVC 설정
-WebMvcConfigurer 인터페이스
+WebMvcConfigurer 인터페이스 ** 암기.
 @EnableWebMvc
 핵심적인 객체들을 위의 애노테이션으로 다 구현해준다.
 
@@ -216,6 +216,8 @@ HttpServletRequest
 - @RequestParam : 요청 파라미터와 다른 명칭의 변수에 값을 주입
 
 2. 커맨드 객체
+- getter, setter 형태의 객체 
+
 3. 커맨드 객체 : 중첩 , 콜렉션 프로퍼티
 4. 리다이렉트
 5. 컨트롤러 구현 없는 경로 매핑

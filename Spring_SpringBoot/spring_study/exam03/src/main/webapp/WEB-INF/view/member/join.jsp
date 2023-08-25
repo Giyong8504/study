@@ -5,7 +5,7 @@
     <dl>
         <dt>아이디</dt>
         <dd>
-            <!-- <input type="text" name="userId"> -->
+            <input type="text" name="userId">
         </dd>
     </dl>
     <dl>

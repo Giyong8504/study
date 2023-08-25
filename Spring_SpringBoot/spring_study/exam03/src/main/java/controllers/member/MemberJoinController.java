@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller // 요청 컨트롤러
-@RequestMapping("/member/join")
+@RequestMapping("/member/join") // 정보에 대해 handle
 public class MemberJoinController {
     @GetMapping // /member/join
 //    @RequestMapping(method = RequestMethod.GET, path="/member/join")
