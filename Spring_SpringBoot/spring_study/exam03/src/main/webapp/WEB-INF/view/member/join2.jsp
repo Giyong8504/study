@@ -25,7 +25,8 @@
             <spring:message code="member.userId" />
         </dt>
         <dd>
-            <form:input path="userId" cssClass="on" cssStyle="border: 1px solid red;" />
+            <form:input path="userId" cssErrorsClass="error" />
+            <form:errors path="userId" element="div" />
         </dd>
     </dl>
     <dl>
@@ -34,6 +35,7 @@
         </dt>
         <dd>
             <form:password path="userPw" />
+            <form:errors path="userPw" element="div" />
         </dd>
     </dl>
     <dl>
@@ -42,6 +44,7 @@
         </dt>
         <dd>
             <form:password path="userPwRe" />
+            <form:errors path="userPwRe" element="div" />
         </dd>
     </dl>
     <dl>
@@ -50,6 +53,7 @@
         </dt>
         <dd>
             <form:input path="userNm" />
+            <form:errors path="userNm" element="div" />
         </dd>
     </dl>
     <dl>

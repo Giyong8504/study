@@ -332,7 +332,7 @@ WebMvcConfigurer
    commons_jp.properties
    commons._zn.properties
 
-2. 커맨드 객체 검증
+### 2. 커맨드 객체 검증
 - 커맨드 객체 : 템플릿쪽에서 EL식 변수로 접근
   변수명은 커맨드 객체 클래스명에서 첫 글자만 소문자
 
@@ -340,7 +340,7 @@ WebMvcConfigurer
 	- supports(...) : 검증할 커맨드 객체의 유형을 한정
 	- validate(...) : 실 검증 코드가 작성되는 메서드
 
-2) Errors
+2) Errors 
    - 커맨드 객체 자체의 오류 -
    reject("에러코드")
    reject("에러코드", "기본메세지")
@@ -365,7 +365,7 @@ WebMvcConfigurer
    	
    	- @ModelAttribute  : 커맨드 객체 -> EL 식 변수 추가 
 
-3) ValidationUtils : 필수 항목 검증을 쉽게 할 수 있는 정적 메서드 정의
+3) ValidationUtils : 필수 항목 검증을 쉽게 할 수 있는 정적 메서드 정의 
    rejectIfEmpty(...) : 항목이 null
    rejectIfEmptyOrWhitespace(...) : 항목이 null 이거나 공백만 포함 하는지
 
@@ -382,7 +382,7 @@ WebMvcConfigurer
 에러코드 + "." + 필드명[인덱스].중첩필드명
 에러코드 + "." + 필드명.중첩필드명
 에러코드 + "." + 중첩필드명
-에러코드 + "." + 필드타입
+에러코드 + "." + 필드타입(자료형)
 에러코드
 
 5. 글로벌 범위 Validator와 컨트롤러 범위 Validator
@@ -398,9 +398,13 @@ WebMvcConfigurer
    }
 
 3) 컨트롤러 범위 Validator  > 글로벌 범위 Validator
+WebMvcConfigurer
+	getValidator() : 전역 Validator 설정
+	-> @Valid 애노테이션을 커맨드 객체 앞에 
 
-6. Bean Validation
-
+6. Bean Validation API
+- jakarta.validation 패키지
++ Hibernate Validator <-- 구현체 
 
 1) 설정
 2) Bean Validation의 주요 애노테이션
