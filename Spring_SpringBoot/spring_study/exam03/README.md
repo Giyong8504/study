@@ -324,6 +324,9 @@ WebMvcConfigurer
 1. 메시지
 1) MessageSource
 2) ResourceBundleMessageSource
+	<%@ taglib profix="spring" uri="http://www.springframework.org/tags"%>
+	<spring:message code="메세지 코드" />
+		- arguments="값1, 값2..."
 3) 다국어 지원 위한 메시지 파일
    commons_en.proproperties
    commons_jp.properties
@@ -333,7 +336,9 @@ WebMvcConfigurer
 - 커맨드 객체 : 템플릿쪽에서 EL식 변수로 접근
   변수명은 커맨드 객체 클래스명에서 첫 글자만 소문자
 
-1) Validator 인터페이스
+1) Validator 인터페이스 - 틀 내에서 제공해준다.
+	- supports(...) : 검증할 커맨드 객체의 유형을 한정
+	- validate(...) : 실 검증 코드가 작성되는 메서드
 
 2) Errors
    - 커맨드 객체 자체의 오류 -
@@ -350,6 +355,9 @@ WebMvcConfigurer
    	- 에러의 정보 
    	
    	- 템플릿 연동 
+		<form:errors path = "필드명 이름" />
+		
+		
    	#fields.errors("필드명") : 특정 필드의 에러 메세지, 배열 
    	#fields.globalErrors() : 커맨드 객체 자체 에러 메세지
    		참고)#fields.errors('global')

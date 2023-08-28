@@ -11,9 +11,7 @@ import java.util.List;
 @RequestMapping("/member/join")
 public class MemberJoinController {
     @GetMapping // /member/join
-    //@RequestMapping(method = RequestMethod.GET, path="/member/join")
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
-        //model.addAttribute("joinForm", new JoinForm());
         // 커맨드 객체 @ModelAttribute 을 사용하면 알아서 바로 위의 주석의 내용을 알아서 추가 해준다.
 
         List<Item> hobbies = getHobbies();

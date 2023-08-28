@@ -1,6 +1,9 @@
 package config;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
@@ -31,5 +34,13 @@ public class MvcConfig implements WebMvcConfigurer { // 중요! 반드시 외워
     public void configureViewResolvers(ViewResolverRegistry registry) {
 
         registry.jsp("/WEB-INF/view/", ".jsp");
+    }
+    @Bean
+    public MessageSource messageSource() { // 반드시 이름은 이걸로 사용 해야 한다. 문구를 하나만 바꿔도 한꺼번에 바뀔 수 있도록 해당 설정.
+        ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
+        ms.setDefaultEncoding("UTF-8");
+        ms.setBasenames("messages.commons");
+
+        return ms;
     }
 }
