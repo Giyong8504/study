@@ -1,12 +1,16 @@
 package controllers.member;
 
+import lombok.RequiredArgsConstructor;
+import models.member.MemberDao;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 @Component
+@RequiredArgsConstructor
 public class JoinValidator implements Validator {
+
+    private final MemberDao memberDao;
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -16,15 +20,18 @@ public class JoinValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         JoinForm joinForm = (JoinForm)target;
-
+        
         /*
-        * 1. 필수 항목 검증 (userId, userPw, userPwRe, userNm), null, "   "  null값과 빈값으로 에러를 처리하면된다.
-        *
+        * 1. 아이디 중복 여부 체크
+        * 2. 비번(userPw)과 비번 확인(userPwRe) 일치 여부
+        * 3. 휴대전화번호(필수X) -> 입력된 경우는 형식 체크
         * */
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userId", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPw", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPwRe", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userNm", "required");
 
+        String userId = joinForm.getUserId();
+
+        // 1. 아이디 중복 여부 체크
+        if(memberDao.exists(userId)) {
+            errors.rejectValue("userId", "duplicate");
+        }
     }
 }

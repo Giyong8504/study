@@ -9,6 +9,17 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer { // 중요! 반드시 외워라. 복습 복습!!
+/*
+
+    @Autowired
+    private JoinValidator joinValidator;
+
+    @Override
+    public Validator getValidator() {
+        return joinValidator;
+    }
+*/
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();

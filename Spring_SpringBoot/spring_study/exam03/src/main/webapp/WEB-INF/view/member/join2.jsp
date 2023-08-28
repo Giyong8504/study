@@ -26,7 +26,7 @@
         </dt>
         <dd>
             <form:input path="userId" cssErrorsClass="error" />
-            <form:errors path="userId" element="div" />
+            <form:errors path="userId" element="div" delimiter="<p>*****</p>"/>
         </dd>
     </dl>
     <dl>
@@ -70,22 +70,6 @@
         </dt>
         <dd>
             <form:input path="mobile" />
-        </dd>
-    </dl>
-    <dl>
-        <dt>
-            <spring:message code="member.hobby" />
-        </dt>
-        <dd>
-            <form:checkboxes path="hobby" items="${hobbies}" itemLabel="label" itemValue="_value" />
-        </dd>
-    </dl>
-    <dl>
-        <dt>
-            <spring:message code="member.intro" />
-        </dt>
-        <dd>
-            <form:textarea path="intro" rows="10" cols="40" />
         </dd>
     </dl>
     <div>

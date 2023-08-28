@@ -1,5 +1,6 @@
 package controllers.member;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ public class MemberJoinController {
 
     @Autowired
     private final JoinValidator joinValidator;
+
     @GetMapping // /member/join
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
         // 커맨드 객체 @ModelAttribute 을 사용하면 알아서 바로 위의 주석의 내용을 알아서 추가 해준다.
@@ -30,9 +32,7 @@ public class MemberJoinController {
     }
 
     @PostMapping
-    public String joinPs(JoinForm form, Errors errors, Model model) { //에러는 커먼객체 바로 뒤에 있어야함.
-
-        commonProcess(model);
+    public String joinPs(@Valid JoinForm form, Errors errors, Model model) { //에러는 커먼객체 바로 뒤에 있어야함.
 
         joinValidator.validate(form, errors);
 
@@ -70,6 +70,13 @@ public class MemberJoinController {
 
         return hobbies;
     }
+/*
+
+    @InitBinder
+    public void InitBinder(WebDataBinder binder) {
+        binder.setValidator(joinValidator);
+    }
+*/
 
     /*
     private List<String> getHobbies() {
