@@ -315,3 +315,139 @@ WebMvcConfigurer
 4) HttpServletRequest
 5) HttpServletResponse 
 6) HttpSession
+
+
+-----------
+스프링 웹 MVC
+
+스프링 MVC
+1. 메시지
+1) MessageSource
+2) ResourceBundleMessageSource
+	<%@ taglib profix="spring" uri="http://www.springframework.org/tags"%>
+	<spring:message code="메세지 코드" />
+		- arguments="값1, 값2..."
+3) 다국어 지원 위한 메시지 파일
+   commons_en.proproperties
+   commons_jp.properties
+   commons._zn.properties
+
+### 2. 커맨드 객체 검증
+- 커맨드 객체 : 템플릿쪽에서 EL식 변수로 접근
+  변수명은 커맨드 객체 클래스명에서 첫 글자만 소문자
+
+1) Validator 인터페이스 - 틀 내에서 제공해준다.
+	- supports(...) : 검증할 커맨드 객체의 유형을 한정
+	- validate(...) : 실 검증 코드가 작성되는 메서드
+
+2) Errors 
+   - 커맨드 객체 자체의 오류 -
+   reject("에러코드")
+   reject("에러코드", "기본메세지")
+
+   	- 커맨드 객체의 특정 필드 한정 오류 -
+   	rejectValue("양식 필드명(name)", "에러코드")
+   	rejectValue("양식 필드명(name)", "에러코드", "기본메세지")
+   	
+   	
+   	boolean hasErrors()  : reject, rejectValue가 한개라도 호출되면 true
+   	
+   	- 에러의 정보 
+   	
+   	- 템플릿 연동 
+		<form:errors path = "필드명 이름" />
+		
+		
+   	#fields.errors("필드명") : 특정 필드의 에러 메세지, 배열 
+   	#fields.globalErrors() : 커맨드 객체 자체 에러 메세지
+   		참고)#fields.errors('global')
+   	
+   	
+   	- @ModelAttribute  : 커맨드 객체 -> EL 식 변수 추가 
+
+3) ValidationUtils : 필수 항목 검증을 쉽게 할 수 있는 정적 메서드 정의 
+   rejectIfEmpty(...) : 항목이 null
+   rejectIfEmptyOrWhitespace(...) : 항목이 null 이거나 공백만 포함 하는지
+
+3. 에러 코드에 해당하는 메시지 코드를 찾는 규칙
+- 에러코드 + "." + 커맨드객체이름 + "." + 필드명
+- 에러코드 + "." + 필드명
+- 에러코드 + "." + 필드타입(자료형)
+- 에러코드
+
+4. 프로퍼티 타입이 List나 목록인 경우 다음 순서를 사용해서 메시지 코드를 생성한다.
+
+에러코드 + "." + 커맨드객체이름 + "." + 필드명[인덱스].중첩필드명
+에러코드 + "." + 커맨드객체이름 + "." + 필드명.중첩필드명
+에러코드 + "." + 필드명[인덱스].중첩필드명
+에러코드 + "." + 필드명.중첩필드명
+에러코드 + "." + 중첩필드명
+에러코드 + "." + 필드타입(자료형)
+에러코드
+
+5. 글로벌 범위 Validator와 컨트롤러 범위 Validator
+1) 글로벌 범위 Validator 설정과 @Valid 애노테이션
+-  WebMvcConfigurer의 getValidalor()
+- @Valid 커맨드 객체  : 검증을 할 커맨드 객체
+	- Bean Validation API + Hibernate Validator
+
+2) @InitBinder 애노테이션을 이용한 컨트롤러 범위 Validator
+   @InitBinder
+   protected void InitBinder(WebDataBinder binder) {
+   binder.setValidator(new RegisterRequestValidator());
+   }
+
+3) 컨트롤러 범위 Validator  > 글로벌 범위 Validator
+WebMvcConfigurer
+	getValidator() : 전역 Validator 설정
+	-> @Valid 애노테이션을 커맨드 객체 앞에 
+
+6. Bean Validation API
+- jakarta.validation 패키지
++ Hibernate Validator <-- 구현체 
+
+1) 설정
+2) Bean Validation의 주요 애노테이션
+   @AssertTrue
+   @AssertFalse
+   @DecimalMax
+   @DecimalMin
+   @Max
+   @Min
+   @Digits
+   @Size
+   @Null
+   @NonNull
+   @Pattern
+
+@NotEmpty
+@NotBlank
+@Positive
+@PositiveOrZero
+@Email
+@Future
+@FutureOrPresent
+@Past
+@PastOrPresent
+
+@CreditCardNumber
+
+
+----------
+
+스프링 웹 MVC
+1. 세션
+2. 인터셉터
+
+HandlerInterceptor 인터페이스
+
+1) boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception;
+2) void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception;
+3) void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception;
+
+Ant 경로 패턴
+1) *
+2) ?
+3) **
+
+3. 쿠키

@@ -1,42 +1,54 @@
 package controllers.member;
 
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Controller
 @RequestMapping("/member/join")
+@RequiredArgsConstructor
 public class MemberJoinController {
+
+    @Autowired
+    private final JoinValidator joinValidator;
+
     @GetMapping // /member/join
-    //@RequestMapping(method = RequestMethod.GET, path="/member/join")
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
-        //model.addAttribute("joinForm", new JoinForm());
         // 커맨드 객체 @ModelAttribute 을 사용하면 알아서 바로 위의 주석의 내용을 알아서 추가 해준다.
 
-        List<Item> hobbies = getHobbies();
-        model.addAttribute("hobbies", hobbies);
-
-        List<Item> types = getMemberTypes();
-        model.addAttribute("types", types);
+        commonProcess(model);
 
         return "member/join2";
     }
 
     @PostMapping
-    public String joinPs(/*@ModelAttribute("command") */ JoinForm form, Model model) { // JoinForm -> joinForm : EL 속성 추가
-        //model.addAttribute("joinForm", joinForm);
-        //System.out.println(form);
+    public String joinPs(@Valid JoinForm form, Errors errors, Model model) { //에러는 커먼객체 바로 뒤에 있어야함.
 
+        joinValidator.validate(form, errors);
+
+        if(errors.hasErrors()) { // reject, rejectValue -> true
+            return "member/join2";
+        }
+
+        return "redirect:/member/login";
+    }
+
+    private void commonProcess(Model model) {
         List<Item> hobbies = getHobbies();
         model.addAttribute("hobbies", hobbies);
 
         List<Item> types = getMemberTypes();
         model.addAttribute("types", types);
-
-        return "redirect:/member/login";
     }
 
     private List<Item> getMemberTypes() {
@@ -58,6 +70,13 @@ public class MemberJoinController {
 
         return hobbies;
     }
+/*
+
+    @InitBinder
+    public void InitBinder(WebDataBinder binder) {
+        binder.setValidator(joinValidator);
+    }
+*/
 
     /*
     private List<String> getHobbies() {
