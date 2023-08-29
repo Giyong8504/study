@@ -2,12 +2,10 @@ package controllers.member;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import models.member.LoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/member/login")
@@ -15,9 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
     private final LoginValidator loginValidator;
+    private final LoginService loginService;
 
     @GetMapping
-    public String login(@ModelAttribute LoginForm loginForm) {
+    public String login(@ModelAttribute LoginForm loginForm, @CookieValue(name="saveId", required = false) String userId) { // 자동으로 쿠키를 넘겨줌
+        if (userId != null) { // 커맨드 객체로 넘겨서 자동 체크.
+            loginForm.setSaveId(true);
+            loginForm.setUserId(userId);
+        }
 
         return "member/login";
     }
@@ -30,6 +33,8 @@ public class LoginController {
         if (errors.hasErrors()) {
             return "member/login";
         }
+
+        loginService.login(loginForm);
 
         return "redirect:/";
     }
