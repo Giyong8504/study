@@ -437,14 +437,24 @@ WebMvcConfigurer
 ----------
 
 # 스프링 웹 MVC
-#### 1. 세션
-#### 2. 인터셉터
+## 1. 세션
+## 2. 인터셉터
 
-HandlerInterceptor 인터페이스
+HandlerInterceptor 인터페이스 **중요!!** 
 
 1) boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception;
+	- 컨트롤러 빈을 실행 하기전 호출 (공통기능 부분들을 추가)
+	- 공통 기능 + 통제
+	- 반환값이 true -> 컨트롤러 빈이 실행
+	- 반환값이 false -> 컨트롤러 빈이 실행 안됨.
+
 2) void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception;
+	- 컨트롤러 빈을 실행, ModelAndView 반환 직후 호출,(응답전)
+
 3) void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception;
+	- 응답이 완료된 직후 호출된다.
+
+
 
 Ant 경로 패턴
 1) *
@@ -452,3 +462,13 @@ Ant 경로 패턴
 3) **
 
 #### 3. 쿠키
+
+HttpServletRequest
+	String[] getCookies()
+	
+@CookieValue 쿠키명과 동일한 변수명
+
+
+
+참고)
+ModelMapper : 동일한 명칭의 getter, setter 자동호출
