@@ -437,8 +437,8 @@ WebMvcConfigurer
 ----------
 
 # 스프링 웹 MVC
-#### 1. 세션
-#### 2. 인터셉터
+## 1. 세션
+## 2. 인터셉터
 
 HandlerInterceptor 인터페이스
 
