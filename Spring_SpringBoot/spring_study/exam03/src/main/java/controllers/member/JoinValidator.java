@@ -45,13 +45,13 @@ public class JoinValidator implements Validator {
 
         // 3. 휴대전화번호(필수 X) -> 입력된 경우는 형식 체크
         if (mobile != null && !mobile.isBlank()) {
-            /**
+            /*
              * 1) 형식 통일화 010-0000-0000 010.0000.0000 -> 숫자로 변환
              * 2) 패턴
-             *      010,016,011
+             *       010,016,011
              *
-             *      000001000000000000000000
-             */
+             *
+             * */
 
             mobile = mobile.replaceAll("\\D", "");
             joinForm.setMobile(mobile);
@@ -61,7 +61,7 @@ public class JoinValidator implements Validator {
                 errors.rejectValue("mobile", "format");
             }
 
-            errors.reject("commonError", "공통 오류 출력!!");
+            // errors.reject("commonError", "공통 오류 출력!!");
         }
     }
 }
