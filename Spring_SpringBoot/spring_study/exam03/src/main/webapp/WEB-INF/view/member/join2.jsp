@@ -9,17 +9,7 @@
 --%>
 
 <form:form method="POST" action="${action}" modelAttribute="joinForm">
-    <dl>
-        <dt>
-            <spring:message code="member.type" />
-        </dt>
-        <dd>
-            <form:select path="type">
-                <option value="">- 선택하세요 -</option>
-                <form:options items="${types}" itemLabel="label" itemValue="_value" />
-            </form:select>
-        </dd>
-    </dl>
+    <form:errors />
     <dl>
         <dt>
             <spring:message code="member.userId" />
@@ -67,6 +57,7 @@
     <dl>
         <dt>
             <spring:message code="member.mobile" />
+            <form:errors path="mobile" element="div" />
         </dt>
         <dd>
             <form:input path="mobile" />

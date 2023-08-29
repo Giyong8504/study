@@ -2,7 +2,7 @@ package controllers.member;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import models.member.JoinService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -19,8 +19,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberJoinController {
 
-    @Autowired
     private final JoinValidator joinValidator;
+    private final JoinService joinService;
 
     @GetMapping // /member/join
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
@@ -32,13 +32,15 @@ public class MemberJoinController {
     }
 
     @PostMapping
-    public String joinPs(@Valid JoinForm form, Errors errors, Model model) { //에러는 커먼객체 바로 뒤에 있어야함.
+    public String joinPs(@Valid JoinForm form, Errors errors, Model model) { //에러는 커맨드 객체 바로 뒤에 있어야 함.
 
         joinValidator.validate(form, errors);
 
         if(errors.hasErrors()) { // reject, rejectValue -> true
             return "member/join2";
         }
+
+        joinService.join(form);
 
         return "redirect:/member/login";
     }

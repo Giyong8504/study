@@ -452,3 +452,8 @@ Ant 경로 패턴
 3) **
 
 #### 3. 쿠키
+
+
+
+참고)
+ModelMapper : 동일한 명칭의 getter, setter 자동호출
