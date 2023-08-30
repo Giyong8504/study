@@ -472,3 +472,58 @@ HttpServletRequest
 
 참고)
 ModelMapper : 동일한 명칭의 getter, setter 자동호출
+
+
+
+
+-------------
+
+
+
+1. 날짜 값 변환
+2. @PathVariable
+3. 익셉션 처리
+@ExceptionHandler 
+@ControllerAdvice
+
+
+
+
+
+스프링 파일 업로드(MultipartFile)
+1. multipart 
+2. 설정
+<multipart-config>
+    <max-file-size>20971520</max-file-size> <!--  1MB * 20 -->
+    <max-request-size>41943040</max-request-size> <!-- 40MB -->
+</multipart-config>
+3. MultipartFile
+
+
+프로필과 프로퍼티 파일
+1. @Profile
+
+2. PropertySourcesPlaceholderConfigurer
+3. @Value
+
+
+
+
+
+JSON 응답과 요청 처리
+1. JSON이란?
+2. Jackson 의존 설정
+	1) jackson-databind
+	2) jackson-datatype-jsr310
+3. @RestController
+4. @ResponstBody
+5. @Jsonlgnore
+6. @JsonFormat
+7. @RequestBody
+8. ResponseEntity
+1) status(...)
+2) body(...)
+3) build()
+
+9. @ExceptionHandler
+10. @RestControllerAdvice
