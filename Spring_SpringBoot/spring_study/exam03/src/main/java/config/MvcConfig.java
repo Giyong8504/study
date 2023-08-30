@@ -1,5 +1,6 @@
 package config;
 
+import config.interceptors.MemberOnlyInterceptor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,9 +11,8 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 @EnableWebMvc
 @Import(DbConfig.class)
-public class MvcConfig implements WebMvcConfigurer { // 중요! 반드시 외워라. 복습 복습!!
-/*
-
+public class MvcConfig implements WebMvcConfigurer {
+    /*
     @Autowired
     private JoinValidator joinValidator;
 
@@ -20,7 +20,18 @@ public class MvcConfig implements WebMvcConfigurer { // 중요! 반드시 외워
     public Validator getValidator() {
         return joinValidator;
     }
-*/
+    */
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(memberOnlyInterceptor())
+                .addPathPatterns("/mypage/**");
+    }
+
+    @Bean
+    public MemberOnlyInterceptor memberOnlyInterceptor() {
+        return new MemberOnlyInterceptor();
+    }
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -29,12 +40,13 @@ public class MvcConfig implements WebMvcConfigurer { // 중요! 반드시 외워
     }
 
     @Override
-    public void addViewControllers(ViewControllerRegistry registry) { //컨트롤 없이 바로 설정하는 것. 예) 회사소개 페이지
+    public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/")
                 .setViewName("main/index");
 
         registry.addViewController("/mypage")
-                .setViewName("member/mypage"); // 마이페이지에 설정없이 바로 가게 할 수 있는 것.
+                .setViewName("member/mypage");
+
     }
 
     @Override
@@ -48,8 +60,9 @@ public class MvcConfig implements WebMvcConfigurer { // 중요! 반드시 외워
 
         registry.jsp("/WEB-INF/view/", ".jsp");
     }
+
     @Bean
-    public MessageSource messageSource() { // 반드시 이름은 이걸로 사용 해야 한다. 문구를 하나만 바꿔도 한꺼번에 바뀔 수 있도록 해당 설정.
+    public MessageSource messageSource() {
         ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
         ms.setDefaultEncoding("UTF-8");
         ms.setBasenames("messages.commons");

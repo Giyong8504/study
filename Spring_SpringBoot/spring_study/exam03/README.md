@@ -443,10 +443,10 @@ WebMvcConfigurer
 HandlerInterceptor 인터페이스 **중요!!** 
 
 1) boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception;
-	- 컨트롤러 빈을 실행 하기전 호출 (공통기능 부분들을 추가)
+	- 컨트롤러 빈을 실행 하기전 호출 (공통기능 부분들을 추가) 
 	- 공통 기능 + 통제
-	- 반환값이 true -> 컨트롤러 빈이 실행
-	- 반환값이 false -> 컨트롤러 빈이 실행 안됨.
+		- 반환값이 true -> 컨트롤러 빈이 실행
+		- 반환값이 false -> 컨트롤러 빈이 실행 안됨.
 
 2) void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception;
 	- 컨트롤러 빈을 실행, ModelAndView 반환 직후 호출,(응답전)
@@ -455,11 +455,15 @@ HandlerInterceptor 인터페이스 **중요!!**
 	- 응답이 완료된 직후 호출된다.
 
 
+WebMvcConfigurer <- 여기에 설정을 추가한다.
+	
+
 
 Ant 경로 패턴
 1) *
 2) ?
 3) **
+
 
 #### 3. 쿠키
 
@@ -479,24 +483,51 @@ ModelMapper : 동일한 명칭의 getter, setter 자동호출
 -------------
 
 
+# 스프링 웹 MVC
 
 1. 날짜 값 변환
-2. @PathVariable
-3. 익셉션 처리
-@ExceptionHandler 
-@ControllerAdvice
+@DateTimeFormat
+	- pattern
+	
+에러코드 : typeMismatch
 
+2. @PathVariable : 경로 변수
+3. 익셉션 처리
+@ExceptionHandler
+	- 요청 메서드의 주입 가능한 객체
+	1) 발생한 예외 객체
+	2) Model
+	3) HttpServletRequest
+	4) HttpServletResponse
+	5) HttpSession
+	
+@ControllerAdvice 
+
+
+
+------------
 
 
 
 
 스프링 파일 업로드(MultipartFile)
-1. multipart 
+1. multipart - 파일 양식을 나눠서 업로드.
+
 2. 설정
+
+```
+web.xml
 <multipart-config>
     <max-file-size>20971520</max-file-size> <!--  1MB * 20 -->
     <max-request-size>41943040</max-request-size> <!-- 40MB -->
 </multipart-config>
+```
+
+1kb -> 1024byte
+1mb -> 1024kb
+
+1024 * 1024 * 20 -> 20MB
+
 3. MultipartFile
 
 
