@@ -533,13 +533,28 @@ web.xml
 
 프로필과 프로퍼티 파일
 1. @Profile
+	- 설정 관련 빈을 분리해서 관리하는 것. 설정 관리 빈을 다르게 생성할 수 있다.
+		- spring.profiles.active=프로필명  -> 부트에서도 사용하니 외우기.
+	
 
 2. PropertySourcesPlaceholderConfigurer
+	-> static 메서드로 정의
+	-> @Bean
+
 3. @Value
 
+	@Value("${설정이름}") : 자동으로 알아서 문자열로 주입된다.
+
+
+spring.profiles.active : properties 파일 방식의 설정
 
 
 
+> 참고)
+> yml 파일 방식의 설정 방법 (들여쓰기 방식으로 설정하게 된다.)
+> spring 
+> 	profiles
+> 		active=dev
 
 JSON 응답과 요청 처리
 1. JSON이란?
