@@ -443,10 +443,10 @@ WebMvcConfigurer
 HandlerInterceptor 인터페이스 **중요!!** 
 
 1) boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception;
-	- 컨트롤러 빈을 실행 하기전 호출 (공통기능 부분들을 추가)
+	- 컨트롤러 빈을 실행 하기전 호출 (공통기능 부분들을 추가) 
 	- 공통 기능 + 통제
-	- 반환값이 true -> 컨트롤러 빈이 실행
-	- 반환값이 false -> 컨트롤러 빈이 실행 안됨.
+		- 반환값이 true -> 컨트롤러 빈이 실행
+		- 반환값이 false -> 컨트롤러 빈이 실행 안됨.
 
 2) void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception;
 	- 컨트롤러 빈을 실행, ModelAndView 반환 직후 호출,(응답전)
@@ -455,11 +455,15 @@ HandlerInterceptor 인터페이스 **중요!!**
 	- 응답이 완료된 직후 호출된다.
 
 
+WebMvcConfigurer <- 여기에 설정을 추가한다.
+	
+
 
 Ant 경로 패턴
 1) *
 2) ?
 3) **
+
 
 #### 3. 쿠키
 
@@ -472,3 +476,100 @@ HttpServletRequest
 
 참고)
 ModelMapper : 동일한 명칭의 getter, setter 자동호출
+
+
+
+
+-------------
+
+
+# 스프링 웹 MVC
+
+1. 날짜 값 변환
+@DateTimeFormat
+	- pattern
+	
+에러코드 : typeMismatch
+
+2. @PathVariable : 경로 변수
+3. 익셉션 처리
+@ExceptionHandler
+	- 요청 메서드의 주입 가능한 객체
+	1) 발생한 예외 객체
+	2) Model
+	3) HttpServletRequest
+	4) HttpServletResponse
+	5) HttpSession
+	
+@ControllerAdvice 
+
+
+
+------------
+
+
+
+
+스프링 파일 업로드(MultipartFile)
+1. multipart - 파일 양식을 나눠서 업로드.
+
+2. 설정
+
+```
+web.xml
+<multipart-config>
+    <max-file-size>20971520</max-file-size> <!--  1MB * 20 -->
+    <max-request-size>41943040</max-request-size> <!-- 40MB -->
+</multipart-config>
+```
+
+1kb -> 1024byte
+1mb -> 1024kb
+
+1024 * 1024 * 20 -> 20MB
+
+3. MultipartFile
+
+
+프로필과 프로퍼티 파일
+1. @Profile
+	- 설정 관련 빈을 분리해서 관리하는 것. 설정 관리 빈을 다르게 생성할 수 있다.
+		- spring.profiles.active=프로필명  -> 부트에서도 사용하니 외우기.
+	
+
+2. PropertySourcesPlaceholderConfigurer
+	-> static 메서드로 정의
+	-> @Bean
+
+3. @Value
+
+	@Value("${설정이름}") : 자동으로 알아서 문자열로 주입된다.
+
+
+spring.profiles.active : properties 파일 방식의 설정
+
+
+
+> 참고)
+> yml 파일 방식의 설정 방법 (들여쓰기 방식으로 설정하게 된다.)
+> spring 
+> 	profiles
+> 		active=dev
+
+JSON 응답과 요청 처리
+1. JSON이란?
+2. Jackson 의존 설정
+	1) jackson-databind
+	2) jackson-datatype-jsr310
+3. @RestController
+4. @ResponstBody
+5. @Jsonlgnore
+6. @JsonFormat
+7. @RequestBody
+8. ResponseEntity
+1) status(...)
+2) body(...)
+3) build()
+
+9. @ExceptionHandler
+10. @RestControllerAdvice
