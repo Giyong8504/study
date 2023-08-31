@@ -556,7 +556,12 @@ spring.profiles.active : properties 파일 방식의 설정
 > 	profiles
 > 		active=dev
 
-JSON 응답과 요청 처리
+
+-------
+
+
+
+# JSON 응답과 요청 처리
 1. JSON이란?
 2. Jackson 의존 설정
 	1) jackson-databind
