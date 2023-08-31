@@ -1,14 +1,23 @@
 package controllers.member;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import models.member.Member;
+import models.member.MemberDao;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/members")
+@RequiredArgsConstructor
 public class MembersController {
+
+    private final MemberDao memberDao;
+
+
     @GetMapping
     public String list(@ModelAttribute @Valid SearchForm form, Errors errors) { //객체가 없어도 알아서 만들어줌 @ModelAttribute
         System.out.println(form);
@@ -26,4 +35,12 @@ public class MembersController {
         return "member/info";
     }
 
+    @ResponseBody //json 에서 응답과 처리
+    @GetMapping("/members2")
+    public List<Member> members2() {
+        List<Member> members = memberDao.getList();
+
+        return members;
+
+    }
 }

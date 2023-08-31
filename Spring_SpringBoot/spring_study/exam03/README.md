@@ -560,21 +560,61 @@ spring.profiles.active : properties 파일 방식의 설정
 -------
 
 
-
 # JSON 응답과 요청 처리
 1. JSON이란?
+1) JSON(JavaScript Object Notation): 자바스크립트 객체 표기법
+{"이름1" : "값1", "이름2" : "값2"...}
+- 통일된 형식으로 다른 플렛폼도 서비스를 이용할 수 있게 형식을 정한것.
+
 2. Jackson 의존 설정
 	1) jackson-databind
 	2) jackson-datatype-jsr310
-3. @RestController
-4. @ResponstBody
+		
+3. @RestController : 요청과 응답에 특화 
+1) 스프링5에서 추가
+2) 기존 컨트롤러와 다른점은 **반환값이 객체**이다.
+	-> getter를 호출 -> JSON 출력
+3) 문자열 반환 -> 문자열 출력
+4) 반환값(void)-> 응답 바디 empty.
+	
+	
+	
+4. @ResponstBody :
+1) 스프링4 까지는 자주 사용된 애노테이션
+2) 일반 컨트롤러@Controller)에서 JSON 요청과 응답을 처리
+
+
+
 5. @Jsonlgnore
+- JSON 변환 배제 (보여지지 않은 부분에 사용)
+
+
+
 6. @JsonFormat
-7. @RequestBody
-8. ResponseEntity
-1) status(...)
-2) body(...)
-3) build()
+- 날짜의 형식화 (패턴으로 알려주면된다.)
+- pattern
+	
+	
+7. @RequestBody 이름과 값형태의 문자만 받는다. 요청에 대한 바디를 해석
+-	다른 형태로 요청하면 응답이 null로 온다.
+- 요청 데이터를 JSON 형식으로 인식할 수 있도록 알려주는 애노테이션
+-	 Content-Type : application/json
+
+
+
+> 참고)
+> 	ARC(Advanced Rest Client)
+
+
+
+8. ResponseEntity 
+	- 응답 상태 코드 + 응답 바티에 대한 상세한 통제
+1) status(...) : 응답 상태 코드
+2) body(...) : 바디에 출력 데이터가 있다.
+3) build() : 바디 출력x
 
 9. @ExceptionHandler
+	- JSON 응답으로 오류 페이지 공통으로 처리
+	
+	
 10. @RestControllerAdvice
