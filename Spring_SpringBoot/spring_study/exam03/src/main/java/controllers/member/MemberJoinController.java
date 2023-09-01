@@ -26,9 +26,10 @@ public class MemberJoinController {
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
         // 커맨드 객체 @ModelAttribute 을 사용하면 알아서 바로 위의 주석의 내용을 알아서 추가 해준다.
 
-        commonProcess(model);
+        joinForm.setUserId("user99");
+        joinForm.setUserNm("사용자99");
 
-        return "member/join2";
+        return "member/join";
     }
 
     @PostMapping
