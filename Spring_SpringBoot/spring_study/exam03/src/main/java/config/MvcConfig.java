@@ -1,5 +1,6 @@
 package config;
 
+import commons.Utils;
 import config.interceptors.MemberOnlyInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
@@ -89,5 +90,9 @@ public class MvcConfig implements WebMvcConfigurer {
 
 
         return conf;
+    }
+    @Bean
+    public Utils utils() {
+        return new Utils();
     }
 }
