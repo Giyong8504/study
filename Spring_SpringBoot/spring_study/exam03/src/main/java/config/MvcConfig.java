@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 @EnableWebMvc
-@Import(DbConfig.class)
+@Import({DbConfig.class, TplConfig.class})
 public class MvcConfig implements WebMvcConfigurer {
 
     @Value("${file.upload.path")
@@ -64,12 +64,14 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/upload/**")
                 .addResourceLocations("file:///" + uploadPath);
     }
+/*
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
 
         registry.jsp("/WEB-INF/view/", ".jsp");
     }
+*/
 
     @Bean
     public MessageSource messageSource() {

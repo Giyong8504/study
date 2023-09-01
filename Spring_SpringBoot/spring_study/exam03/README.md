@@ -618,3 +618,99 @@ spring.profiles.active : properties 파일 방식의 설정
 	
 	
 10. @RestControllerAdvice
+
+
+-------------
+
+
+
+# 타임리프(Thymeleaf)
+1. 설정
+   thymeleaf-spring6
+   thymeleaf - java8time // JDK8 Date & TIME API  -> #temporals : 형식화
+   thymeleaf layout :레이아웃 기능
+
+2. 특징
+	- Natural Template
+	- 원래 HTML과 서버사이드 렌더링 결과 거의 동일하게 보이는 효과
+	- 번역 기술
+		- cacheable
+
+타임리프 기본문법
+1. 타임리프의 주요 식(expression)
+1) 변수 식 : ${식...}
+   - 속성으로 설정 -> 내용 부분이 번역
+   - 속성으로 설정을 못하는 경우 [[${...}]]
+
+2) 메세지 식 : #{메세지 코드}
+
+   참고)
+   fmt:setBundle
+   <fmt:message key="메세지 코드">
+
+3) 링크 식 : @{링크}
+	- 컨텍스트 경로 추가
+	-  URL 변수 식, 요청 파라미터 쉽게 추가
+
+   참고)
+   <c:url value="...." />
+
+   참고) 번역되는 속성 th:속성명
+
+4) 선택 변수식
+   th:object="${객체}"
+   *{속성명}
+
+
+참고)
+th:block : 태그 없이 값을 설정, 번역 문법을 적용
+
+2. 타임리프 식 객체
+1) #strings
+2) #numbers
+3) #dates, #calendars, #temporals
+4) #lists, #sets, #maps
+
+- 없는 기능은 만들어 사용
+- 스프링 빈으로 등록한 모든 객체를 @스프링빈 이름.메서드명(...)
+
+3. th:text
+	- 텍스트만 인식, HTML은 해석 X
+
+	- th:utext  : HTML 해석
+
+4. th:each
+   status
+   - 반복 상태에 대한 값을 가지고 있는 객체
+   - index : 0부터 시작하는 순서
+   - count : 1부터 시작하는 순서
+   - last, first : 처음, 마지막
+   - odd(홀수), even(짝수)
+   참고)
+   JSTL:
+   <c:forEach varStatus="status"
+5. th:if, th:unless
+
+   th:unless="${...}" : ${...} 조건을 반대로 바꿔주는 조건식
+6. th:switch
+   th:case="..."
+
+   조건식에 사용 가능한 상수 : true, false
+7. th:href, th:src ...
+
+8. th:object : 선택 변수식
+
+9. th:classappend
+	- 특정 조건하에서 클래스 속성을 추가하고 제거
+
+스프링 MVC 폼과 에러 메시지 연동
+1. #fields.errors(..)
+2. #fields.globalErrors(..)
+
+
+타임리프 페이지 레이아웃
+th:replace
+- 특정 템플릿 파일에 있는 부분 HTML을 치환
+
+th:fragment
+- 치환될 부분 HTML이 정의된 영역 
