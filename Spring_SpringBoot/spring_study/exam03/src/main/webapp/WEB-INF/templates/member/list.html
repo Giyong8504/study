@@ -4,6 +4,7 @@
         <table border="1">
             <thead>
                 <tr>
+                    <th>순번</th>
                     <th>회원번호</th>
                     <th>아이디</th>
                     <th>회원명</th>
@@ -12,6 +13,7 @@
             </thead>
             <tbody>
                 <tr th:each="member : ${members}" th:object="${member}">
+                    <td th:text="${status.index}"></td>
                     <td th:text="*{userNo}"></td>
                     <td th:text="*{userId}"></td>
                     <td th:text="*{userNm}"></td>
