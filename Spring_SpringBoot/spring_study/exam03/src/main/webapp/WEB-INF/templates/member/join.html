@@ -1,20 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>회원가입</title>
-</head>
-<body>
-<h1>회원가입</h1>
-<form method="post">
-    <dl>
-        <dt>아이디</dt>
-        <dd th:text="${joinForm.userId}">user01</dd>
-    </dl>
-    <dl>
-        <dt>회원명</dt>
-        <dd th:text="${joinForm.userNm}">사용자01</dd>
-    </dl>
-</form>
+    <head>
+        <meta charset="UTF-8">
+        <title>회원가입</title>
+    </head>
+    <body>
+    <h1>회원가입</h1>
+    <form method="post" th:action="@{/member/join}" th:object="${joinForm}">
+        <dl>
+            <dt th:text="#{member.userId}"></dt>
+            <dd>
+                <input type="text" name="userId" th:field="*{userId}">
+            </dd>
+        </dl>
+        <dl>
+            <dt th:text="#{member.userNm}"></dt>
+            <dd>
+                <input type="text" name="userNm" th:field="*{userNm}">
+            </dd>
+        </dl>
+        <dl>
+            <dt th:text="#{member.userPw}"></dt>
+            <dd>
+                <input type="password" name="userPw" th:field="*{userPw}">
+            </dd>
+        </dl>
+        <dl>
+            <dt th:text="#{member.userPwRe}"></dt>
+            <dd>
+                <input type="password" name="userPwRe" th:field="*{userPwRe}">
+            </dd>
+        </dl>
+        <dl>
+            <dt th:text="#{member.email}" ></dt>
+            <dd>
+                <input type="text" name="email" th:field="*{email}">
+            </dd>
+        </dl>
+        <dl>
+            <dt th:text="#{member.mobile}"></dt>
+            <dd>
+                <input type="text" name="mobile" th:field="*{mobile}">
+            </dd>
+        </dl>
+        <div>
+            <input type="checkbox" name="agree" value="true" id="agree" th:field="*{agree}">
+            <label for="agree" th:text="#{member.agree}"></label>
+        </div>
+        <button type="submit" th:text="#{join}"></button>
+    </form>
 </body>
 </html>

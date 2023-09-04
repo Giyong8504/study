@@ -688,24 +688,54 @@ th:block : 태그 없이 값을 설정, 번역 문법을 적용
    - odd(홀수), even(짝수)
    참고)
    JSTL:
-   <c:forEach varStatus="status"
-5. th:if, th:unless
+   <c:forEach varStatus="status">
+	 
+	 
+	 
+5. th:if : 조건식 사용빈도가 높다., th:unless  
 
    th:unless="${...}" : ${...} 조건을 반대로 바꿔주는 조건식
-6. th:switch
+	 
+	 
+	 
+6. th:switch 
    th:case="..."
 
    조건식에 사용 가능한 상수 : true, false
+	 
+	 
+	 
 7. th:href, th:src ...
+		th:name... , th:id...
+		th:type...
+
+
 
 8. th:object : 선택 변수식
 
+
+
 9. th:classappend
 	- 특정 조건하에서 클래스 속성을 추가하고 제거
+	- 복잡하면 삼항 조건으로하고 나머지는 간단하게 생략해도 된다.
+	
+	```
+	<a href="#" class="tab" th:classappend="${menuCode == 'member'} ? 'on'">회원관리</a>
+	```
 
-스프링 MVC 폼과 에러 메시지 연동
-1. #fields.errors(..)
+
+
+## 스프링 MVC 폼과 에러 메시지 연동
+1. #fields.errors(..) : 배열형태의 반환값.
 2. #fields.globalErrors(..)
+
+th:field : 값을 유지할 떄 쓰고 태그에 따라 다르게 동작하게 된다.
+- path와 동일한 역할 
+- 필요한 속성을 알아서 체크해서 넣어준다.
+
+
+참고)
+<form:errors path="필드명" />을 -> #fields.errors(..) 사용한다.
 
 
 타임리프 페이지 레이아웃

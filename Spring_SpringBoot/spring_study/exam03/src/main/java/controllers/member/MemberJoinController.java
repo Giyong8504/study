@@ -38,7 +38,7 @@ public class MemberJoinController {
         joinValidator.validate(form, errors);
 
         if(errors.hasErrors()) { // reject, rejectValue -> true
-            return "member/join2";
+            return "member/join";
         }
 
         joinService.join(form);
