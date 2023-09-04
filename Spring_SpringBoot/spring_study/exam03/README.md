@@ -636,7 +636,9 @@ spring.profiles.active : properties 파일 방식의 설정
 	- 번역 기술
 		- cacheable
 
-타임리프 기본문법
+
+
+## 타임리프 기본문법
 1. 타임리프의 주요 식(expression)
 1) 변수 식 : ${식...}
    - 속성으로 설정 -> 내용 부분이 번역
@@ -648,6 +650,9 @@ spring.profiles.active : properties 파일 방식의 설정
    fmt:setBundle
    <fmt:message key="메세지 코드">
 
+
+
+
 3) 링크 식 : @{링크}
 	- 컨텍스트 경로 추가
 	-  URL 변수 식, 요청 파라미터 쉽게 추가
@@ -657,6 +662,9 @@ spring.profiles.active : properties 파일 방식의 설정
 
    참고) 번역되는 속성 th:속성명
 
+
+
+
 4) 선택 변수식
    th:object="${객체}"
    *{속성명}
@@ -664,6 +672,9 @@ spring.profiles.active : properties 파일 방식의 설정
 
 참고)
 th:block : 태그 없이 값을 설정, 번역 문법을 적용
+
+
+
 
 2. 타임리프 식 객체
 1) #strings
@@ -674,10 +685,14 @@ th:block : 태그 없이 값을 설정, 번역 문법을 적용
 - 없는 기능은 만들어 사용
 - 스프링 빈으로 등록한 모든 객체를 @스프링빈 이름.메서드명(...)
 
+
+
 3. th:text
 	- 텍스트만 인식, HTML은 해석 X
 
 	- th:utext  : HTML 해석
+
+
 
 4. th:each
    status
@@ -688,24 +703,56 @@ th:block : 태그 없이 값을 설정, 번역 문법을 적용
    - odd(홀수), even(짝수)
    참고)
    JSTL:
-   <c:forEach varStatus="status"
-5. th:if, th:unless
+   <c:forEach varStatus="status">
+	 
+	 
+	 
+5. th:if : 조건식 사용빈도가 높다., th:unless  
 
    th:unless="${...}" : ${...} 조건을 반대로 바꿔주는 조건식
-6. th:switch
+	 
+	 
+	 
+6. th:switch 
    th:case="..."
 
    조건식에 사용 가능한 상수 : true, false
+	 
+	
+	 
 7. th:href, th:src ...
+		th:name... , th:id...
+		th:type...
+
+
 
 8. th:object : 선택 변수식
 
+
+
 9. th:classappend
 	- 특정 조건하에서 클래스 속성을 추가하고 제거
+	- 복잡하면 삼항 조건으로하고 나머지는 간단하게 생략해도 된다.
+	
+	```
+	<a href="#" class="tab" th:classappend="${menuCode == 'member'} ? 'on'">회원관리</a>
+	```
 
-스프링 MVC 폼과 에러 메시지 연동
-1. #fields.errors(..)
-2. #fields.globalErrors(..)
+
+
+## 스프링 MVC 폼과 에러 메시지 연동
+1. #fields.errors(..) : 배열형태의 반환값. : errors.rejectValue(필드명, 에러코드) - 필드 오류
+2. #fields.globalErrors() : errors.reject(에러코드) - 커맨드 객체 자체 오류
+ = #fields.errors('global') 이것과 동일한 기능이나 위의 2번을 사용하자.
+
+
+th:field : 값을 유지할 떄 쓰고 태그에 따라 다르게 동작하게 된다.
+- path와 동일한 역할 
+- 필요한 속성을 알아서 체크해서 넣어준다.
+
+
+참고)
+<form:errors path="필드명" />을 -> #fields.errors(..) 사용한다.
 
 
 타임리프 페이지 레이아웃
@@ -713,4 +760,9 @@ th:replace
 - 특정 템플릿 파일에 있는 부분 HTML을 치환
 
 th:fragment
-- 치환될 부분 HTML이 정의된 영역 
+- 치환될 부분 HTML이 정의된 영역 : 메인부분 레이아웃 치환 역할
+
+
+참고) 
+	<jsp:include.. 와 비슷한 용도이다. 
+	템플릿을 치환하는 기능.

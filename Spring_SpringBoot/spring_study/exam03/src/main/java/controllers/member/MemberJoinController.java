@@ -26,9 +26,15 @@ public class MemberJoinController {
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
         // 커맨드 객체 @ModelAttribute 을 사용하면 알아서 바로 위의 주석의 내용을 알아서 추가 해준다.
 
-        joinForm.setUserId("user99");
-        joinForm.setUserNm("사용자99");
+        //joinForm.setUserId("user99");
+        //joinForm.setUserNm("사용자99");
 
+        String[] addCss = {"member/join1", "member/join2"};
+        List<String> addScript = Arrays.asList("member/joinjs1", "member/joinjs2");
+        model.addAttribute("addCss", addCss);
+        model.addAttribute("addScript", addScript);
+
+        model.addAttribute("pageTitle", "회원가입");
         return "member/join";
     }
 
@@ -38,7 +44,7 @@ public class MemberJoinController {
         joinValidator.validate(form, errors);
 
         if(errors.hasErrors()) { // reject, rejectValue -> true
-            return "member/join2";
+            return "member/join";
         }
 
         joinService.join(form);
