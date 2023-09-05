@@ -19,6 +19,7 @@ Spring Data JPA
   - void clear() : 영속성 상태 있는 엔티티를 모두 비우기
   - void close() : 영속성 메모리 제거
   - void remove() : 영속성 상태 -> 제거 상태 (변화 감지 상태) : DELETE 쿼리
+	- void find() :
 
 ddl-auto : 테이블, 인덱스, 제약조건
 create : 서버가 시작되면 기존 테이블, 인덱스, 제약조건 DROP -> 다시 테이블, 인덱스, 제약조건 생성
@@ -53,3 +54,17 @@ JPQL  : Java Persistence Query Language
 4. Repository 설계하기
 
 5. 쿼리 메서드
+
+6. @Query 애노테이션
+
+7. Querydsl
+
+8. 연관 관계 매핑
+1) @ManyToOne
+2) @OneToMany
+3) @OneToOne
+4) @ManyToMany
+
+9. 영속성 전이
+
+10. 지연로딩
