@@ -1,5 +1,5 @@
-Spring Data : 추상화(공통)
-Spring Data JPA
+# Spring Data : 추상화(공통)
+## Spring Data JPA
 
 1. JPA란?
 1) JPA(Java Persistence API')는 자바 ORM 기술에 대한 API 표준입니다.
@@ -49,6 +49,8 @@ JPQL  : Java Persistence Query Language
 	 @Lob : Large Object
 		 매칭되는 것 : text : 여러줄 입력가능하다. 더 크게 사용하고 싶다면 DB에서 변경해주면 된다.
 
+
+
 ```
 	Enum 클래스의 ORDINAL?
 	상수의 순서.
@@ -59,14 +61,45 @@ JPQL  : Java Persistence Query Language
 	@Enumerated(EnumType.STRING)
 ```
 
+
+
 @Transient //DB필드로 생성되지 않는다 내부에서 사용되는 부분을 정의할 수 있다
 
 
 2) 공통속성화 : 추상클래스가 적합하다! 상속의 이점을 사용하자
     - 상속
     - @MappedSuperclass : 반드시 넣어야지만 상위클래스임을 인식한다.
+		
+		
+		@CreatedDate //처음 추가할 때 등록됨
+		
+		@LastModifiedDate // 수정 날짜가 등록됨.
+		
+3) 기본키(Primary Key) 여러개 조합해서 생성
+@IdClass
+캡쳐한 사진 파일명 : 유일성으로 조합 사진.png
+
+- 기본생성자, 멤버 변수를 초기화 하는 생성자
+- equals() and hashcode()
+
 
 4. Repository 설계하기
+JpaReopsitory 인터페이스를 상속 -> 구현 객체가 자동 생성 
+
+
+### 추가되는 메서드
+Opitonal S findById(...)
+List<S> findAll(...) 전체조회
+S save(S entity) : EntityManager::persist :영속성안에 넣어주는 역할
+S saveAndFlush(S entity) : -> save() + flush()
+List<S> saveAll(Colletion<S> entity)
+List<S> saveAllAndFlush(Colletion<S> entity)
+void delete(S entity) : EntityManager::remove(...)
+long count(...) 
+void flush()
+
+Opitonal 클래스 null 값에 대한 처리.
+
 
 5. 쿼리 메서드
 
