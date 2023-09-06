@@ -5,20 +5,38 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.koreait.constants.Role;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name="es_member")
 @Data
 @Builder
 @AllArgsConstructor @NoArgsConstructor
-public class Member {
+public class Member extends BaseEntity{
 
-    @Id
+    @Id @GeneratedValue //증감번호를 자동생성해준다. userNo 추가하지않아도 자동으로 추가해줌.
     private Long userNo;
-    private String userId;
+
+    @Column(name="memId", length = 40, unique = true, nullable = false)
+    private String userId; // memId
+
+    @Column(length = 65, nullable = false)
     private String userPw;
+
+    @Column(length = 40, nullable = false)
     private String userNm;
-    private LocalDateTime regDt;
+
+    @Transient //DB필드로 생성되지 않는다
+    private String introduction;
+
+    @Enumerated(EnumType.STRING) //Enum 상수를 의미
+    private Role role;
+
+
 
 }
