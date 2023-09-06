@@ -88,18 +88,23 @@ JpaReopsitory 인터페이스를 상속 -> 구현 객체가 자동 생성
 
 
 ### 추가되는 메서드
-Opitonal S findById(...)
-List<S> findAll(...) 전체조회
-S save(S entity) : EntityManager::persist :영속성안에 넣어주는 역할
-S saveAndFlush(S entity) : -> save() + flush()
-List<S> saveAll(Colletion<S> entity)
-List<S> saveAllAndFlush(Colletion<S> entity)
-void delete(S entity) : EntityManager::remove(...)
-long count(...) 
-void flush()
+```
+- Opitonal S findById(...)
+- List<S> findAll(...) 전체조회
+- S save(S entity) : EntityManager::persist :영속성안에 넣어주는 역할
+- S saveAndFlush(S entity) : -> save() + flush()
+- List<S> saveAll(Colletion<S> entity)
+- List<S> saveAllAndFlush(Colletion<S> entity)
+- void delete(S entity) : EntityManager::remove(...)
+- long count(...) 
+- void flush()
+```
+<br>
+
 
 Opitonal 클래스 null 값에 대한 처리.
 
+<Br>
 
 5. 쿼리 메서드
 
