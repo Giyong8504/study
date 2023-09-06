@@ -45,6 +45,17 @@ JPQL  : Java Persistence Query Language
    mysql : PRIMARY KEY + AUTO_INCREMENT : 시스템에서 알아서 생성
    oracle : 시퀀스 객체
    - 테이블
+	 
+	 @Lob : Large Object
+		 매칭되는 것 : text : 여러줄 입력가능하다. 더 크게 사용하고 싶다면 DB에서 변경해주면 된다.
+		 
+	Enum 클래스의 ORDINAL?
+	상수의 순서.
+	기본값이 ORDINAL 이다.
+	이건 쓰지말자. 순서 바뀌면 큰일난다.
+	
+	그래서 STRING을 사용함.
+	@Enumerated(EnumType.STRING)
 
 
 2) 공통속성화
