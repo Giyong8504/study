@@ -48,7 +48,8 @@ JPQL  : Java Persistence Query Language
 	 
 	 @Lob : Large Object
 		 매칭되는 것 : text : 여러줄 입력가능하다. 더 크게 사용하고 싶다면 DB에서 변경해주면 된다.
-		 
+
+```
 	Enum 클래스의 ORDINAL?
 	상수의 순서.
 	기본값이 ORDINAL 이다.
@@ -56,11 +57,14 @@ JPQL  : Java Persistence Query Language
 	
 	그래서 STRING을 사용함.
 	@Enumerated(EnumType.STRING)
+```
+
+@Transient //DB필드로 생성되지 않는다 내부에서 사용되는 부분을 정의할 수 있다
 
 
-2) 공통속성화
+2) 공통속성화 : 추상클래스가 적합하다! 상속의 이점을 사용하자
     - 상속
-    - @MappedSuperclass
+    - @MappedSuperclass : 반드시 넣어야지만 상위클래스임을 인식한다.
 
 4. Repository 설계하기
 
