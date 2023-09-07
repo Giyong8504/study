@@ -107,6 +107,11 @@ Opitonal 클래스 null 값에 대한 처리.
 <Br>
 
 5. 쿼리 메서드
+ 
+ 
+Pageable 인터페이스
+-> PageRequest
+
 
 6. @Query 애노테이션
 
