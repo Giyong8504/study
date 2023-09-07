@@ -116,6 +116,24 @@ Pageable 인터페이스
 6. @Query 애노테이션
 
 7. Querydsl
+- 비표준 이지만 더 많이쓴다.
+- 조회 쿼리 관련 쿼리빌딩 라이브러리를 제공.
+- Querydsl JPA
+- QUerydls APT
+	- Q엔티티명.java가 자동생성된다. : 자동 생성 클래스를 만들어주게 된다.
+	
+
+논리 연산자를 대신할 수 있는 조건
+BooleanBuilder --> Predicate
+- and(Predicate...)
+- or(Predicate...)
+- not(Predicate...)
+
+메서드 체이닝 으로 사용가능하다. 전부 this가 리턴이다.
+
+builder 프리 구현클래스
+
+QMember member = QMember.member; 싱글톤 패턴으로 
 
 8. 연관 관계 매핑
 1) @ManyToOne
@@ -126,3 +144,6 @@ Pageable 인터페이스
 9. 영속성 전이
 
 10. 지연로딩
+
+
+Predicate
