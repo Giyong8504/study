@@ -133,13 +133,48 @@ BooleanBuilder --> Predicate
 
 builder 프리 구현클래스
 
-QMember member = QMember.member; 싱글톤 패턴으로 
+QMember member = QMember.member; 싱글톤 패턴
+
 
 8. 연관 관계 매핑
 1) @ManyToOne
-2) @OneToMany
-3) @OneToOne
-4) @ManyToMany
+- 다대일관계 
+- 게시글(Many) - 회원(One)
+- Many쪽 테이블 외래키가 등록된다
+
+- 엔티티명 + 기본키 형식으로 만들어진다.
+	@JoinColumn(name="외래키명") 원하는 이름으로 생성가능하다. Alias 이군?
+
+2) @OneToMany 본인이 작성한 글이나 장바구니만 조회하겠따.
+- 일대다
+- 회원(One) - 게시글(Many)
+- 연관 관계의 주인을 명시 (mappedby)
+
+- 연관 관계의 주인 
+	- Many쪽이 관계의 주인이다.
+	- 외래키가 있는 쪽
+	- 데이터 수정, 변경가능하다.
+	
+	관계주인이 아닌 회원쪽은 절대 바꿀 수 없다.
+	
+	
+	```
+참고)
+	lombok : toString()
+		-> 멤버 변수의 출력 getter 메서드를 호출 한다. 근데 문제가 있음.
+		
+		BoardData::toString() -> getMember()가 호출된다. -> Member::toString() 호출됨.
+		-> getBoardDatas() -> getMember() -> Member::......->
+		서로 참조하기 떄문에 순환잠초 오류가 뜬다. 원인 : 롬복.
+		
+		해결방법 1) toString 메서드를 getter을 이용하지 않고 직접 멤버 변수로 정의한다.
+					2) @ToString.Exclude : 순환참조가 발생하는 필드중에 하나에 적용하면된다.
+양방향으로 참조할경우는 @toString.Exclude 애노테이션을 사용하면 참조가하나 끊겨서 오류가 해결된다.
+```
+
+
+3) @OneToOne 1:1 매핑
+4) @ManyToMany : 다대다
 
 9. 영속성 전이
 
@@ -147,3 +182,7 @@ QMember member = QMember.member; 싱글톤 패턴으로
 
 
 Predicate
+
+
+ng.StackOverflowError
+롬복떄문에 순환참조 오류가 뜬다.

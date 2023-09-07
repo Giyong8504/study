@@ -11,6 +11,8 @@ import org.koreait.constants.Role;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="es_member")
@@ -37,6 +39,7 @@ public class Member extends BaseEntity{
     @Enumerated(EnumType.STRING) //Enum 상수를 의미
     private Role role;
 
-
+    @OneToMany(mappedBy = "member")
+    private List<BoardData> boardDatas = new ArrayList<>();
 
 }
