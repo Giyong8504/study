@@ -12,7 +12,6 @@ public class BoardData extends BaseEntity {
     @GeneratedValue
     private Long id;
 
-
     @Column(nullable = false)
     private String subject;
 
