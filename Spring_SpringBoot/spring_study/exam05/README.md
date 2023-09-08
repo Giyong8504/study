@@ -187,5 +187,3 @@ Predicate
 ng.StackOverflowError
 롬복떄문에 순환참조 오류가 뜬다.
 
-
-
