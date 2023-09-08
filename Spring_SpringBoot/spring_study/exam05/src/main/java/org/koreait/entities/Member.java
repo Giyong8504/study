@@ -1,10 +1,7 @@
 package org.koreait.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.koreait.constants.Role;
 
 import java.util.ArrayList;
@@ -35,7 +32,11 @@ public class Member extends BaseEntity{
     @Enumerated(EnumType.STRING) //Enum 상수를 의미
     private Role role;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
     private List<BoardData> boardDatas = new ArrayList<>();
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="addressId") // 주인 외래키
+    @ToString.Exclude
+    private Address address;
 }
