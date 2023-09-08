@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.koreait.constants.Role;
 import org.koreait.entities.BoardData;
 import org.koreait.entities.Member;
+import org.koreait.models.board.BoardInfoService;
 import org.koreait.repositories.BoardDataRepository;
 import org.koreait.repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class Ex05 {
 
     @Autowired
     private BoardDataRepository boardDataRepository;
+
+    @Autowired
+    private BoardInfoService infoService;
 
 
     @BeforeEach
@@ -93,5 +97,17 @@ public class Ex05 {
             String userId = member.getUserId();
             System.out.println(userId);
         }
+    }
+    @Test
+    void test5() {
+        List<BoardData> items = infoService.getList();
+
+    }
+
+    @Test
+    void test6() {
+        Member member = memberRepository.findByUserId("user01");
+        memberRepository.delete(member);
+        memberRepository.flush();
     }
 }

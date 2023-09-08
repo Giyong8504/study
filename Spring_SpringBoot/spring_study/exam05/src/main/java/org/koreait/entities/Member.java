@@ -32,7 +32,7 @@ public class Member extends BaseEntity{
     @Enumerated(EnumType.STRING) //Enum 상수를 의미
     private Role role;
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<BoardData> boardDatas = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY)
