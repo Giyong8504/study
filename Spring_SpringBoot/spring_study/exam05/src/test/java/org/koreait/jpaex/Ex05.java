@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.koreait.constants.Role;
 import org.koreait.entities.BoardData;
 import org.koreait.entities.Member;
+import org.koreait.models.board.BoardInfoService;
 import org.koreait.repositories.BoardDataRepository;
 import org.koreait.repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class Ex05 {
 
     @Autowired
     private BoardDataRepository boardDataRepository;
+
+    @Autowired
+    private BoardInfoService infoService;
 
 
     @BeforeEach
@@ -60,9 +64,12 @@ public class Ex05 {
     @Test
     void test1() {
         BoardData data = boardDataRepository.findById(1L).orElse(null);
-        System.out.println(data);
-        Member member = data.getMember();
-        System.out.println(member);
+        Member member = data.getMember(); // 죄회가 안된다.
+        String userId = member.getUserId();
+        System.out.println(userId);
+//        System.out.println(data);
+//        Member member = data.getMember();
+//        System.out.println(member);
     }
 
     @Test
@@ -70,6 +77,37 @@ public class Ex05 {
         Member member = memberRepository.findById(1L).orElse(null);
         List<BoardData> items = member.getBoardDatas();
         items.stream().forEach(System.out::println);
+    }
 
+    @Test
+    void test3() {
+        List<BoardData> items = boardDataRepository.findAll();
+        for (BoardData item : items) {
+            Member member = item.getMember();
+            String userId = member.getUserId();
+            System.out.println(userId);
+        }
+    }
+
+    @Test
+    void test4() {
+        List<BoardData> items = boardDataRepository.getList();
+        for (BoardData item : items) {
+            Member member = item.getMember();
+            String userId = member.getUserId();
+            System.out.println(userId);
+        }
+    }
+    @Test
+    void test5() {
+        List<BoardData> items = infoService.getList();
+
+    }
+
+    @Test
+    void test6() {
+        Member member = memberRepository.findByUserId("user01");
+        memberRepository.delete(member);
+        memberRepository.flush();
     }
 }
