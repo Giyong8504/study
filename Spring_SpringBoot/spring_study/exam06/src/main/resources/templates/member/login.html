@@ -6,16 +6,19 @@
 <main layout:fragment="content">
     <h1 th:text="#{title.login}"></h1>
     <form method="POST" th:action="@{/member/login}">
+        <div th:if="${session.globalError != null}" th:text="${session.globalError}"></div>
         <dl>
             <dt th:text="#{member.userId}"></dt>
             <dd>
-                <input type="text" name="userId">
+                <input type="text" name="userId" th:value="${session.userId}">
+                <div th:if="${session.requiredUserId != null}" th:text="${session.requiredUserId}"></div>
             </dd>
         </dl>
         <dl>
             <dt th:text="#{member.userPw}"></dt>
             <dd>
                 <input type="password" name="userPw">
+                <div th:if="${session.requiredUserPw != null}" th:text="${session.requiredUserPw}"></div>
             </dd>
         </dl>
         <button type="submit" th:text="#{btn.login}"></button>

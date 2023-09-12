@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/member")
 @RequiredArgsConstructor
 public class MemberController {
-
     private final MemberJoinService joinService;
 
     @GetMapping("/join")
@@ -28,7 +27,7 @@ public class MemberController {
 
         joinService.join(joinForm, errors);
 
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             return "member/join";
         }
 
@@ -40,4 +39,6 @@ public class MemberController {
 
         return "member/login";
     }
+
+
 }

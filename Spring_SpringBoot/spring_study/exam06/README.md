@@ -15,9 +15,12 @@
 	
 4. 시큐리티를 이용한 회원 인증(로그인) 구현 
 5. 로그인 정보 가져오기
-1) Principal 요청메서드에 주입  : getName() : 아이디  : 요청 메서드의 주입
-2) SecurityContextHolder를 통해서 가져오기
-3) @AuthenticationPrincipal  : UserDetails 구현 객체 주입, 요청 메서드의 주입시 밖에 사용 가능 
+1) Principal 요청메서드에 주입  : String getName() : 아이디  : 요청 메서드의 주입  //잘 쓰진않음
+
+2) SecurityContextHolder 를 통해서 가져오기
+	- 요청메서드와 같이 주입할 수 없는 상황에서 사용이 가능하다.
+
+3) @AuthenticationPrincipal  : UserDetails 구현 객체 주입, 요청 메서드의 주입을 통해서만 사용 가능하다.
 
 4) Authentication
 	Object getPrincipal(...) : UserDetails의 구현 객체 a
