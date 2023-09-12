@@ -4,7 +4,21 @@
       layout:decorate="~{layouts/main}">
 
 <main layout:fragment="content">
-    <h1>로그인</h1>
-
+    <h1 th:text="#{title.login}"></h1>
+    <form method="POST" th:action="@{/member/login}">
+        <dl>
+            <dt th:text="#{member.userId}"></dt>
+            <dd>
+                <input type="text" name="userId">
+            </dd>
+        </dl>
+        <dl>
+            <dt th:text="#{member.userPw}"></dt>
+            <dd>
+                <input type="password" name="userPw">
+            </dd>
+        </dl>
+        <button type="submit" th:text="#{btn.login}"></button>
+    </form>
 </main>
 </html>

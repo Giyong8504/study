@@ -18,14 +18,14 @@
             <dl>
                 <dt th:text="#{member.userPw}"></dt>
                 <dd>
-                    <input type="text" name="userPw" th:field="*{userPw}">
+                    <input type="password" name="userPw" th:field="*{userPw}">
                     <div th:each="err : ${#fields.errors('userPw')}" th:text="${err}"></div>
                 </dd>
             </dl>
             <dl>
                 <dt th:text="#{member.userPwRe}"></dt>
                 <dd>
-                    <input type="text" name="userPwRe" th:field="*{userPwRe}">
+                    <input type="password" name="userPwRe" th:field="*{userPwRe}">
                     <div th:each="err : ${#fields.errors('userPwRe')}" th:text="${err}"></div>
                 </dd>
             </dl>

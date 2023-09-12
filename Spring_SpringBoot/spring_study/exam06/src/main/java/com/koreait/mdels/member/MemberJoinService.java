@@ -5,7 +5,6 @@ import com.koreait.controllers.member.JoinValidator;
 import com.koreait.entities.Member;
 import com.koreait.repositories.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
@@ -26,8 +25,14 @@ public class MemberJoinService {
         }
 
 
-        Member member = new ModelMapper().map(form, Member.class);
-        member.setUserPw(encoder.encode(form.getUserPw())); // 비밀번호 해시화
+//        Member member = new ModelMapper().map(form, Member.class);
+        Member member = Member.builder()
+                        .userId(form.getUserId())
+                        .userPw(encoder.encode(form.getUserPw()))
+                        .userNm(form.getUserNm())
+                        .email(form.getEmail())
+                        .mobile(form.getMobile())
+                        .build();
 
         repository.saveAndFlush(member);
     }
