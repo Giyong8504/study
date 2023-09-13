@@ -1,6 +1,8 @@
 # 스프링 시큐리티 
 - 회원 인증(로그인), 인가(접근 통제), +보안(CSRF))
+
 1. 의존성 설치
+
 2. 스프링 시큐티리 설정 
 3. __회원가입__ 구현
 	1) UserDetails 인터페이스 : DTO 
@@ -26,7 +28,14 @@
 	Object getPrincipal(...) : UserDetails의 구현 객체 a
 
 /error 템플릿 경로 : 응답 코드.html
-
+- EL변수
+	- status : 응답 코드
+	- path : 현재 경로
+	- error
+	- message
+	- timestamp : 발생한 날짜 시간
+	
+	
 6. thymeleaf-extras-springsecurity6
 	1) xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 		
@@ -37,6 +46,7 @@
 	5) csrf 토큰 설정하기 
 		- ${_csrf.token}
 		- ${_csrf.headerName}
+		meta에 작성하며, 토큰을 가지고 검증하는데 name, context 요청헤더에 담아서 검증하게 된다.
 	
 7. 페이지 권한 설정하기 
 	- AuthenticationEntryPoint 
@@ -44,6 +54,7 @@
 8.  Spring Data JPA Auditing + Spring Security
 - 로그인 사용자가 자동 DB 추가 
 1) AuditorAware 인터페이스
+- 사용자 아이디 사용자 번호를 넘겨주면 알아서 다 설정된다.
 
 
 

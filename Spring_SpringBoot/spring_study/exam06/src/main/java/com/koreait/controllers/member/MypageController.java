@@ -1,7 +1,8 @@
 package com.koreait.controllers.member;
 
 import com.koreait.commons.MemberUtil;
-import com.koreait.mdels.member.MemberInfo;
+import com.koreait.entities.BoardData;
+import com.koreait.repositories.BoardDataRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -14,18 +15,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/mypage")
 @RequiredArgsConstructor
 public class MypageController {
-
+    private final BoardDataRepository repository;
     private final MemberUtil memberUtil;
 
     @GetMapping
     @ResponseBody
 
-    public void index() { // 로그인 여부를 여기다가 따로 만들어서 편리하게 사용하는 것
+    public void index() {
+
+        BoardData data = repository.findById(1L).orElse(null);
+        data.setSubject("(수정)제목1");
+        repository.flush();
+
+        /*BoardData data = BoardData.builder()
+                .subject("제목")
+                .content("내용1")
+                .build();
+
+        repository.saveAndFlush(data);
+*/
+
+
+   /*     // 로그인 여부를 여기다가 따로 만들어서 편리하게 사용하는 것
         log.info("로그인 여부 : " + memberUtil.isLogin());
         if (memberUtil.isLogin()) {
             MemberInfo member = memberUtil.getMember();
             log.info(member.toString());
-        }
+        }*/
     }
 
     /*
