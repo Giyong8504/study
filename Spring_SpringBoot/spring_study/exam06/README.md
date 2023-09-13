@@ -28,6 +28,14 @@
 	Object getPrincipal(...) : UserDetails의 구현 객체 a
 
 /error 템플릿 경로 : 응답 코드.html
+- EL변수
+	- status : 응답 코드
+	- path : 현재 경로
+	- error
+	- message
+	- timestamp : 발생한 날짜 시간
+	
+	
 
 6. thymeleaf-extras-springsecurity6
 	1) xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
