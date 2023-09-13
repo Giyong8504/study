@@ -1,5 +1,6 @@
 package com.koreait.mdels.member;
 
+import com.koreait.commons.Role;
 import com.koreait.controllers.member.JoinForm;
 import com.koreait.controllers.member.JoinValidator;
 import com.koreait.entities.Member;
@@ -32,6 +33,7 @@ public class MemberJoinService {
                         .userNm(form.getUserNm())
                         .email(form.getEmail())
                         .mobile(form.getMobile())
+                        .role(Role.USER)
                         .build();
 
         repository.saveAndFlush(member);
