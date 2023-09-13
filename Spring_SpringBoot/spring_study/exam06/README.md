@@ -36,7 +36,6 @@
 	- timestamp : 발생한 날짜 시간
 	
 	
-
 6. thymeleaf-extras-springsecurity6
 	1) xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 		
@@ -47,6 +46,7 @@
 	5) csrf 토큰 설정하기 
 		- ${_csrf.token}
 		- ${_csrf.headerName}
+		meta에 작성하며, 토큰을 가지고 검증하는데 name, context 요청헤더에 담아서 검증하게 된다.
 	
 7. 페이지 권한 설정하기 
 	- AuthenticationEntryPoint 
@@ -54,6 +54,7 @@
 8.  Spring Data JPA Auditing + Spring Security
 - 로그인 사용자가 자동 DB 추가 
 1) AuditorAware 인터페이스
+- 사용자 아이디 사용자 번호를 넘겨주면 알아서 다 설정된다.
 
 
 

@@ -34,13 +34,13 @@ public class SecurityConfig {
                    .logoutSuccessUrl("/member/login");
         });
 
-        /*회원 인가 설정(접근 통제)*/
+        /*회원 인가 설정(접근 통제)*//*
         http.authorizeHttpRequests(c -> {
            c.requestMatchers("/mypage/**").authenticated() //회원전용 (로그인 했을때만 가능한 페이지)
                    .requestMatchers("/admin/**").hasAnyAuthority("ADMIN") //관리자 전용페이지
                    .anyRequest().permitAll(); // 나머지 페이지는 전체 접근 가능
         });
-
+        */
         http.exceptionHandling(c -> {
            c.authenticationEntryPoint((req, res, e) -> {
                String URI = req.getRequestURI();
