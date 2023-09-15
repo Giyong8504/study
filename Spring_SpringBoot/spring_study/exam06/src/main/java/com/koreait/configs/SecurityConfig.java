@@ -44,7 +44,7 @@ public class SecurityConfig {
         http.exceptionHandling(c -> {
            c.authenticationEntryPoint((req, res, e) -> {
                String URI = req.getRequestURI();
-               if (URI.indexOf("/admin") != 1) { // 관리자 페이지
+               if (URI.indexOf("/admin") != -1) { // 관리자 페이지
                    res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "NOT AUTHORIZED");
 
                } else { // 회원 전용 페이지
@@ -62,9 +62,9 @@ public class SecurityConfig {
         return w -> w.ignoring().requestMatchers(
                 "/css/**",
                 "/js/**",
-                "images/**",
+                "/images/**",
                 "/uploads/**",
-                "admin/css"
+                "/admin/css/**"
         );
     }
 
