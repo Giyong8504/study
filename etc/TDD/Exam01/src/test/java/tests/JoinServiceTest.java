@@ -1,23 +1,24 @@
 package tests;
 
 import commons.BadRequestException;
+import models.member.DuplicateUserIdException;
 import models.member.JoinService;
 import models.member.Member;
-import org.junit.jupiter.api.AfterEach;
+import models.member.ServiceManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("회원가입기능 테스트")
 public class JoinServiceTest {
 
     private JoinService joinService;
 
     @BeforeEach
     void init() {
-        joinService = new JoinService();
+        joinService = ServiceManager.getInstance().joinService();
     }
 
     private Member getMember() {
@@ -40,11 +41,21 @@ public class JoinServiceTest {
     @Test
     @DisplayName("필수항목(userId, userNm, userPw) 체크, 필수 항목 누락시 BadRequestException 발생")
     void requiredFieldsTest() {
-        /** userId의 필수 여부 - null, 빈값이면 예외 발생 */
-        requiredFieldEachTest("userId", "아이디");
-        requiredFieldEachTest("userPw", "비밀번호");
-        requiredFieldEachTest("userNm", "회원명");
+        assertAll(
+                () -> requiredFieldEachTest("userId", "아이디"),
+                () -> requiredFieldEachTest("userPw", "비밀번호"),
+                () -> requiredFieldEachTest("userNm", "회원명")
+        );
+    }
 
+    @Test
+    @DisplayName("중복 userId로 가입한 경우 DuplicateUserIdException")
+    void duplicateUserIdTest() {
+        assertThrows(DuplicateUserIdException.class, () -> {
+           Member member = getMember();
+           joinService.join(member);
+           joinService.join(member);
+        });
     }
 
     private void requiredFieldEachTest(String field, String word) {
@@ -52,7 +63,7 @@ public class JoinServiceTest {
         if (field.equals("userId")) {
             member.setUserId(null);
         }else if (field.equals("userPw")) {
-//            member.setUserPw(null);
+            member.setUserPw(null);
         }else if (field.equals("userNm")) {
             member.setUserNm(null);
         }

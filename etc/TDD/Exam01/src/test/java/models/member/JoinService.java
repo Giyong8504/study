@@ -3,11 +3,22 @@ package models.member;
 import commons.BadRequestException;
 import commons.RequiredValidator;
 
-public class JoinService implements RequiredValidator {
-    public void join(Member member) {
-        requiredCheck(member.getUserId(), new BadRequestException("아이디를 입력하세요."));
-        requiredCheck(member.getUserPw(), new BadRequestException("비밀번호를 입력하세요"));
-        requiredCheck(member.getUserNm(), new BadRequestException("회원명을 입력하세요."));
+public class JoinService {
 
+    private MemberDao memberDao;
+    private JoinValidator validator;
+    public JoinService(MemberDao memberDao, JoinValidator validator) {
+        this.memberDao = memberDao;
+        this.validator = validator;
+    }
+
+    public void join(Member member) {
+
+        validator.check(member);
+
+        if (memberDao.exists(member.getUserId())) {
+            throw new DuplicateUserIdException();
+        }
+        memberDao.add(member);
     }
 }
