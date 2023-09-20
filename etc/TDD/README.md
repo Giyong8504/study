@@ -42,3 +42,23 @@ TDD 기본 원칙
 
 7. @TempDir
 8. @Timeout 
+
+
+
+# Mockito 기초 사용법
+1. 의존설정
+	- mockito-core
+	- mockito-junit-jupiter
+	
+2. 모의 객체 생성 
+HttpServletRequest
+	.getParameter 
+	
+3. 스텁 설정
+- 가짜 데이터를 넣어 줄 수 있다.
+- 필요한 예를 반환하게 만들 수 있다.
+- given을 주었을 때 뭘 하겠다!-> willReturn
+
+SOLID
+
+통합 테스트

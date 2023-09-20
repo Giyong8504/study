@@ -7,26 +7,27 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class Ex02Test {
+
+
     @TempDir
     File dir;
 
-
-    @BeforeAll // 처음 실행
+    @BeforeAll
     static void beforeAll() {
         System.out.println("BeforeAll");
     }
 
-    @AfterAll // 마지막에 실행
+    @AfterAll
     static void afterAll() {
         System.out.println("AfterAll");
     }
 
-    @BeforeEach // 메서드 전에 실행
+    @BeforeEach
     void beforeEach() {
         System.out.println("BeforeEach!");
     }
 
-    @AfterEach // 메서드 후에 실행
+    @AfterEach
     void afterEach() {
         System.out.println("AfterEach!");
     }
@@ -35,19 +36,20 @@ public class Ex02Test {
     @DisplayName("테스트1")
     void test1() {
         System.out.println("테스트1");
-        System.out.println(dir.getAbsoluteFile());
+        System.out.println(dir.getAbsolutePath());
     }
 
     @Test
     @DisplayName("테스트2")
-    @Disabled // 테스트 배제.
+    @Disabled
     void test2() {
         System.out.println("테스트2");
     }
 
     @Test
-    @Timeout(value = 2000, unit = TimeUnit.MILLISECONDS)
-    void test3() throws InterruptedException{
-        Thread.sleep(4000);
+    @Timeout(value=2000, unit= TimeUnit.MILLISECONDS)
+    void test3() throws InterruptedException {
+        Thread.sleep(1000);
     }
+
 }
