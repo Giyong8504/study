@@ -1,4 +1,4 @@
-package models.member;
+package member;
 
 public class DuplicateUserIdException extends RuntimeException {
     public DuplicateUserIdException() {

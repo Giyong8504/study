@@ -1,4 +1,4 @@
-package models.member;
+package member;
 
 public class ServiceManager {
 
@@ -11,6 +11,7 @@ public class ServiceManager {
 
         return instance;
     }
+
     public MemberDao memberDao() {
         return new MemberDao();
     }
@@ -19,7 +20,19 @@ public class ServiceManager {
         return new JoinValidator();
     }
 
+    public LoginValidator loginValidator() {
+        LoginValidator validator = new LoginValidator();
+        validator.setMemberDao(memberDao());
+        return validator;
+    }
+
+
     public JoinService joinService() {
+
         return new JoinService(memberDao(), joinValidator());
+    }
+
+    public LoginService loginService() {
+        return new LoginService(memberDao(),loginValidator());
     }
 }
