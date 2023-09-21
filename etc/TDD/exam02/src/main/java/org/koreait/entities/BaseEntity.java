@@ -9,10 +9,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
-@Setter
-@Getter
+@Setter @Getter
 @MappedSuperclass
-public class BaseEntity {
+public abstract class BaseEntity {
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime regDt;
